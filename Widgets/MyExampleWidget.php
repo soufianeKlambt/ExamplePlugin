@@ -78,6 +78,7 @@ class MyExampleWidget extends Widget
 foreach ($rows as $row) {
     $data[]=$row['idvisit'];
 } 
+        print_r($data);
        return $this->renderTemplate('myViewTemplate', $data);
 
        
