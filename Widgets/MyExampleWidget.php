@@ -11,6 +11,7 @@ namespace Piwik\Plugins\ExamplePlugin\Widgets;
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
 use Piwik\Db\SchemaInterface;
+use Piwik\Tests\Fixtures\TwoSitesEcommerceOrderWithItems;
 use Piwik\Db;
 /**
  * This class allows you to add your own widget to the Piwik platform. In case you want to remove widgets from another
@@ -20,7 +21,8 @@ use Piwik\Db;
  */
 class MyExampleWidget extends Widget
 {
-    
+        public static $fixture = null; // initialized below class definition
+
     public static function configure(WidgetConfig $config)
     {
         /**
