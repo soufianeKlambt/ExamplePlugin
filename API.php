@@ -14,17 +14,17 @@ use Piwik\Piwik;
 use Piwik\Segment;
 
 /**
- * API for plugin ExamplePlugin
+ * API for plugin PagesGreatestActivity
  *
- * @method static \Piwik\Plugins\ExamplePlugin\API getInstance()
+ * @method static \Piwik\Plugins\PagesGreatestActivity\API getInstance()
  */
 class API extends \Piwik\Plugin\API
 {
     /**
      * Example method. Please remove if you do not need this API method.
      * You can call this API method like this:
-     * /index.php?module=API&method=ExamplePlugin.getAnswerToLife
-     * /index.php?module=API&method=ExamplePlugin.getAnswerToLife&truth=0
+     * /index.php?module=API&method=PagesGreatestActivity.getAnswerToLife
+     * /index.php?module=API&method=PagesGreatestActivity.getAnswerToLife&truth=0
      *
      * @param  bool $truth
      *
@@ -72,7 +72,7 @@ class API extends \Piwik\Plugin\API
         Piwik::checkUserHasViewAccess($idSite);
 
         $archive = Archive::build($idSite, $period, $date, $segment);
-        $dataTable = $archive->getDataTableFromNumeric([Archiver::EXAMPLEPLUGIN_METRIC_NAME, Archiver::EXAMPLEPLUGIN_CONST_METRIC_NAME]);
+        $dataTable = $archive->getDataTableFromNumeric([Archiver::PagesGreatestActivity_METRIC_NAME, Archiver::PagesGreatestActivity_CONST_METRIC_NAME]);
         return $dataTable;
     }
 
