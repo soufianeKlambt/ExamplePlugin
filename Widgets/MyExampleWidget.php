@@ -18,8 +18,8 @@ class MyExampleWidget extends Widget
 
     public static function configure(WidgetConfig $config)
     {
-        $config->setCategoryId('About Matomo');
-        $config->setName('Example Widget Name');
+        $config->setCategoryId('Besucher');
+        $config->setName('Seiten mit größter Aktivität');
         $config->setOrder(99);
     }
 

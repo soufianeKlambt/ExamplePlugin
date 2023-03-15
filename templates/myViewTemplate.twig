@@ -1,12 +1,11 @@
  <table cellspacing="0" class="dataTable">
   <thead>
-  <tr><th>Full URL</th><th>Relative URL</th><th>Visits</th></tr>
+  <tr><th>Relative URL</th><th>Visits</th></tr>
   </thead>
   <tbody> 
   {% for row in rows %}
    <tr>
-    <td>{{ row['full_url'] }}</td>
-    <td>{{ row['relative_url'] }}</td>
+    <td><a href="{{ row['full_url'] }}" target="_blank">{{ row['relative_url'] }}</a></td>
     <td>{{ row['visits'] }}</td>
    </tr>
 {% endfor %}
