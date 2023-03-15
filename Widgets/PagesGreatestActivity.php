@@ -40,7 +40,7 @@ class PagesGreatestActivity extends Widget
        $fp = fopen($file,"w+");
        fwrite($fp,"sss");
        fclose($fp);
-       $filename = 'test.txt';
+       $filename = './test.txt';
 $somecontent = "Add this to the file\n";
 
 // Let's make sure the file exists and is writable first.
