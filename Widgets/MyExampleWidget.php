@@ -74,7 +74,7 @@ class MyExampleWidget extends Widget
 
               $db = \Piwik\Db::get();
         $data=array();
-        $rows = $db->fetchAll('select * from log_visit where idsite = ? limit 5', [$idsite]);
+        $rows = $db->fetchAll('select * from matomo_log_link_visit_action where idsite = ? limit 5', [$idsite]);
 foreach ($rows as $row) {
     $data[]=$row['idvisit'];
 } 
