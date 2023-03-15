@@ -70,7 +70,7 @@ class MyExampleWidget extends Widget
      */
     public function render()
     {
-       return $this->renderTemplate('myViewTemplate', array(...view variables...));
+       return $this->renderTemplate('myViewTemplate', array());
 
        
     }
