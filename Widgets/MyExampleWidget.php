@@ -20,6 +20,8 @@ use Piwik\Db;
  */
 class MyExampleWidget extends Widget
 {
+    public static $fixture = null;
+    
     public static function configure(WidgetConfig $config)
     {
         /**
