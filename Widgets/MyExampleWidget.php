@@ -70,7 +70,14 @@ class MyExampleWidget extends Widget
      */
     public function render()
     {
-       return $this->renderTemplate('myViewTemplate', array());
+        $db = \Piwik\Db::get();
+        $data=array();
+        $rows = $db->fetchAll('select * from log_visit where idvisit = ? and idsite = ?', [$idvisit, $idsite]);
+foreach ($rows as $row) {
+    $data[]=$row['idvisit'];
+} 
+
+       return $this->renderTemplate('myViewTemplate', $data);
 
        
     }
