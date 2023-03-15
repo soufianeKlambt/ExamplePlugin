@@ -6,9 +6,9 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\ExamplePlugin;
+namespace Piwik\Plugins\PagesGreatestActivity;
 
-class ExamplePlugin extends \Piwik\Plugin
+class PagesGreatestActivity extends \Piwik\Plugin
 {
     public function registerEvents()
     {
@@ -20,8 +20,8 @@ class ExamplePlugin extends \Piwik\Plugin
     // support archiving just this plugin via core:archive
     public function getArchivingAPIMethodForPlugin(&$method, $plugin)
     {
-        if ($plugin == 'ExamplePlugin') {
-            $method = 'ExamplePlugin.getExampleArchivedMetric';
+        if ($plugin == 'PagesGreatestActivity') {
+            $method = 'PagesGreatestActivity.getExampleArchivedMetric';
         }
     }
 }
