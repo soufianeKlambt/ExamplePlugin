@@ -10,7 +10,8 @@ namespace Piwik\Plugins\ExamplePlugin\Widgets;
 
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
-
+use Piwik\Db\SchemaInterface;
+use Piwik\Db;
 /**
  * This class allows you to add your own widget to the Piwik platform. In case you want to remove widgets from another
  * plugin please have a look at the "configureWidgetsList()" method.
