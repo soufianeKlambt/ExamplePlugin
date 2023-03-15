@@ -79,7 +79,9 @@ foreach ($rows as $row) {
     $data[]=$row['idvisit'];
 } 
         print_r($data);
-       return $this->renderTemplate('myViewTemplate', $data);
+       return $this->renderTemplate('myViewTemplate', array(
+            'data' => $data,
+        ));
 
        
     }
