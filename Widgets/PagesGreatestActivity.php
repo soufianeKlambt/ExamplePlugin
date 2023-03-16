@@ -19,11 +19,12 @@ class PagesGreatestActivity extends Widget
     public static function configure(WidgetConfig $config)
     {
         $config->setCategoryId('Besucher');
-        $config->setName('Seiten mit größter Aktivität');
+        $config->setName('Seiten mit größter Aktivität (30 Min)');
         $config->setOrder(99);
     }
 
     /**
+     * https://gist.github.com/johnvilsack/cfe7a36c0582d4ebf8cc
      * This method renders the widget. It's on you how to generate the content of the widget.
      * As long as you return a string everything is fine. You can use for instance a "Piwik\View" to render a
      * twig template. In such a case don't forget to create a twig template (eg. myViewTemplate.twig) in the
