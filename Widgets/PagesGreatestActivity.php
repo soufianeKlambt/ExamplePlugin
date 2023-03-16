@@ -32,8 +32,8 @@ class PagesGreatestActivity extends Widget
      */
     public function render()
     {
-      $file= "./data.cache";
-      $expire = 9;
+      $file= "./cache/plugin-PagesGreatestActivity.cache";
+      $expire = 300;
       if (filemtime($file) < (time() - $expire)) {
         $db = \Piwik\Db::get();
         $idSite = $_GET['idSite'];
