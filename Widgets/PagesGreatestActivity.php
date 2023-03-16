@@ -32,17 +32,17 @@ class PagesGreatestActivity extends Widget
      */
     public function render()
     {
-      $expire = 300;
-      $file = dirname(__FILE__)."/data.cache";
-      echo $file;
-    //  if (filemtime($file) < (time() - $expire)) {
+      $redis = new Redis();
+      $redis->connect('10.1.100.104', 10100);
+      echo "Connection to server sucessfully";
+      //  if (filemtime($file) < (time() - $expire)) {
         $db = \Piwik\Db::get();
         $idSite = $_GET['idSite'];
         $result = $db->fetchAll("SELECT concat('https://',pageimpressions.url) as full_url,REGEXP_REPLACE(pageimpressions.url,'^[a-zA-Z0-9\.\-]*','') as relative_url,pageimpressions.idsite,COUNT(pageimpressions.idvisit) as visits FROM (SELECT matomo_log_link_visit_action.server_time,REGEXP_REPLACE(action_url.name,'[\?|#].*$', '') as url,matomo_log_link_visit_action.idsite,matomo_log_link_visit_action.idvisit,matomo_log_link_visit_action.idpageview,matomo_log_link_visit_action.idaction_url,action_url.hash,action_url.type FROM matomo_log_link_visit_action INNER JOIN matomo_log_action as action_url ON matomo_log_link_visit_action.idaction_url = action_url.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE))  AND idsite = " . $idSite . " ORDER BY matomo_log_link_visit_action.idlink_va desc) as pageimpressions GROUP BY `url`, idsite ORDER BY visits desc LIMIT 40");
-        $fp = fopen($file, "w");
+       /* $fp = fopen($file, "w");
         fputs($fp, "klambt test");
         fclose($fp);
-      /*}else{
+      }else{
         $result = file_get_contents(json_decode($file));
       }*/
         return $this->renderTemplate('myViewTemplate', array(
