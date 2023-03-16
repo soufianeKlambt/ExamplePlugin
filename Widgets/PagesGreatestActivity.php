@@ -32,9 +32,9 @@ class PagesGreatestActivity extends Widget
      */
     public function render()
     {
-      $redis = new Redis();
+    /*  $redis = new Redis();
       $redis->connect('10.1.100.104', 10100);
-      echo "Connection to server sucessfully";
+      echo "Connection to server sucessfully";*/
       //  if (filemtime($file) < (time() - $expire)) {
         $db = \Piwik\Db::get();
         $idSite = $_GET['idSite'];
