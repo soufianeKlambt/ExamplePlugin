@@ -32,9 +32,7 @@ class PagesGreatestActivity extends Widget
      */
     public function render()
     {
-      $file= dirname(__FILE__)."/data.cache";
-      echo $file;
-      exit();
+      $file= "/var/www/html/plugins/PagesGreatestActivity/Widgets/data.cache";
       $expire = 900;
       if (filemtime($file) < (time() - $expire)) {
         $db = \Piwik\Db::get();
