@@ -42,7 +42,7 @@ class PagesGreatestActivity extends Widget {
       fclose($fp);
     }
     else {
-      $result = file_get_contents(json_decode($file));
+      $result = file_get_contents($file);
     }
     return $this->renderTemplate('myViewTemplate', [
       'rows' => $result,
