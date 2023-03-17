@@ -1,12 +1,19 @@
-{{ sum }}
 <table cellspacing="0" class="dataTable">
   <thead>
-<tr><th class="sortable label first">Aktive Seite</th><th class="sortable"><div id="thDIV">Aktive Nutzer</div></th></tr>  </thead>
+<tr><th class="sortable label first"></th>
+<tr><th class="sortable label first">Aktive Seite</th>
+    <th class="sortable"><div id="thDIV">Aktive Nutzer</div></th>
+    <th class="sortable"><div id="thDIV"></div></th>
+
+</tr>
+  </thead>
   <tbody> 
   {% for row in rows %}
    <tr>
+       <td></td>
     <td class="label first"><a href="{{ row['full_url'] }}" target="_blank">{{ row['relative_url'] }}</a></td>
     <td class="column">{{ row['visits'] }}</td>
+       <td>{{ (row['visits'] / sum) * 100 |round }}%</td>
    </tr>
 {% endfor %}
   </tbody> 
