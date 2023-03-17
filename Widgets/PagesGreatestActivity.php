@@ -44,7 +44,11 @@ class PagesGreatestActivity extends Widget {
      }
      else {
        echo "Cache<br>";
-       $result = file_get_contents(json_decode($file));
+       try {
+         $result = file_get_contents(json_decode($file));
+        } catch (Exception $e) {
+          echo 'Caught exception: ',  $e->getMessage(), " ";
+       }
      }
     print_r($result);
     $db = \Piwik\Db::get();
