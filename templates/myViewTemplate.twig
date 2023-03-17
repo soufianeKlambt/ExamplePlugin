@@ -13,7 +13,7 @@
     {% for key,row in rows %}
         <tr>
             <td>{{ key+1 }}</td>
-            <td class="label first"><a href="{{ row['full_url'] }}" target="_blank">{{ row['relative_url'] }}</a></td>
+            <td class="label first"><a style="font-size: 11px;" href="{{ row['full_url'] }}" target="_blank">{{ row['relative_url'] }}</a></td>
             <td class="column">{{ row['visits'] }}</td>
             <td>{{ ((row['visits'] / sum) * 100) |round }}%</td>
         </tr>
