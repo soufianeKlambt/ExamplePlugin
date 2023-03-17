@@ -48,7 +48,7 @@ class PagesGreatestActivity extends Widget {
 
      }
     $ww=file_get_contents($file);
-    print_r(json_decode($ww));
+    print_r(json_decode($ww,true));
     return $this->renderTemplate('myViewTemplate', [
       'rows' => $result,
     ]);
