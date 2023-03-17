@@ -40,7 +40,6 @@ class PagesGreatestActivity extends Widget {
       $fp = fopen($file, "w");
       fputs($fp, $result);
       fclose($fp);
-      ed
     }
     else {
       $result = file_get_contents($file);
