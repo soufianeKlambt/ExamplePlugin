@@ -34,21 +34,19 @@ class PagesGreatestActivity extends Widget {
     $idSite = $_GET['idSite'];
     $file = '/var/www/html/cache/plugin-PGA-site-' . $idSite . '.cache';
     $expire = 300;
-    if (filemtime($file) < (time() - $expire)) {
+   // if (filemtime($file) < (time() - $expire)) {
       $db = \Piwik\Db::get();
       $result = $db->fetchAll("SELECT concat('https://',pageimpressions.url) as full_url,REGEXP_REPLACE(pageimpressions.url,'^[a-zA-Z0-9\.\-]*','') as relative_url,pageimpressions.idsite,COUNT(pageimpressions.idvisit) as visits FROM (SELECT matomo_log_link_visit_action.server_time,REGEXP_REPLACE(action_url.name,'[\?|#].*$', '') as url,matomo_log_link_visit_action.idsite,matomo_log_link_visit_action.idvisit,matomo_log_link_visit_action.idpageview,matomo_log_link_visit_action.idaction_url,action_url.hash,action_url.type FROM matomo_log_link_visit_action INNER JOIN matomo_log_action as action_url ON matomo_log_link_visit_action.idaction_url = action_url.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE))  AND idsite = " . $idSite . " ORDER BY matomo_log_link_visit_action.idlink_va desc) as pageimpressions GROUP BY `url`, idsite ORDER BY visits desc LIMIT 40");
-      $fp = fopen($file, "w");
-      fputs($fp, json_encode($result));
-      fclose($fp);
-      echo  "sql<br>";
-    }
-    else {
-      echo "Cache<br>";
-      $result = file_get_contents(json_decode($file));
-    }
+    /*   $fp = fopen($file, "w");
+       fputs($fp, json_encode($result));
+       fclose($fp);
+       echo  "sql<br>";
+     }
+     else {
+       echo "Cache<br>";
+       $result = file_get_contents(json_decode($file));
+     }*/
     print_r($result);
-    $db = \Piwik\Db::get();
-    $result = $db->fetchAll("SELECT concat('https://',pageimpressions.url) as full_url,REGEXP_REPLACE(pageimpressions.url,'^[a-zA-Z0-9\.\-]*','') as relative_url,pageimpressions.idsite,COUNT(pageimpressions.idvisit) as visits FROM (SELECT matomo_log_link_visit_action.server_time,REGEXP_REPLACE(action_url.name,'[\?|#].*$', '') as url,matomo_log_link_visit_action.idsite,matomo_log_link_visit_action.idvisit,matomo_log_link_visit_action.idpageview,matomo_log_link_visit_action.idaction_url,action_url.hash,action_url.type FROM matomo_log_link_visit_action INNER JOIN matomo_log_action as action_url ON matomo_log_link_visit_action.idaction_url = action_url.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE))  AND idsite = " . $idSite . " ORDER BY matomo_log_link_visit_action.idlink_va desc) as pageimpressions GROUP BY `url`, idsite ORDER BY visits desc LIMIT 40");
 
     return $this->renderTemplate('myViewTemplate', [
       'rows' => $result,
