@@ -44,9 +44,13 @@ class PagesGreatestActivity extends Widget {
     else {
       $result =json_decode( file_get_contents($file),true);
     }
-
+    $sum = 0;
+    foreach($result as $num => $values) {
+      $sum += $values[ 'visits' ];
+    }
     return $this->renderTemplate('myViewTemplate', [
       'rows' => $result,
+      'sum' => $sum,
     ]);
 
 
