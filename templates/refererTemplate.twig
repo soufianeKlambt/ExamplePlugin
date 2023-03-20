@@ -1,0 +1,21 @@
+<table cellspacing="0" class="dataTable">
+    <thead>
+    <tr>
+        <th class="sortable label first">#</th>
+        <th class="sortable"><center>Quelle</center></th>
+        <th class="sortable">
+            <div id="thDIV">Aktive Nutzer</div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key,row in rows %}
+        <tr>
+            <td>{{ key+1 }}</td>
+            <td class="label first">{{ row['referer_name'] }}</td>
+            <td>{{ row['visits']  }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
