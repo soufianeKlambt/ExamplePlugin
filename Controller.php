@@ -1,5 +1,5 @@
 <?php
-namespace Piwik\Plugins\PagesGreatestActivity;
+namespace Piwik\Plugins\WidgetKLAMBT;
 
 
 class Controller extends \Piwik\Plugin\Controller

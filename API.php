@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\PagesGreatestActivity;
+namespace Piwik\Plugins\WidgetKLAMBT;
 
 use Piwik\Archive;
 use Piwik\DataTable;
@@ -14,17 +14,17 @@ use Piwik\Piwik;
 use Piwik\Segment;
 
 /**
- * API for plugin PagesGreatestActivity
+ * API for plugin WidgetKLAMBT
  *
- * @method static \Piwik\Plugins\PagesGreatestActivity\API getInstance()
+ * @method static \Piwik\Plugins\WidgetKLAMBT\API getInstance()
  */
 class API extends \Piwik\Plugin\API
 {
     /**
      * Example method. Please remove if you do not need this API method.
      * You can call this API method like this:
-     * /index.php?module=API&method=PagesGreatestActivity.getAnswerToLife
-     * /index.php?module=API&method=PagesGreatestActivity.getAnswerToLife&truth=0
+     * /index.php?module=API&method=WidgetKLAMBT.getAnswerToLife
+     * /index.php?module=API&method=WidgetKLAMBT.getAnswerToLife&truth=0
      *
      * @param  bool $truth
      *
@@ -72,7 +72,7 @@ class API extends \Piwik\Plugin\API
         Piwik::checkUserHasViewAccess($idSite);
 
         $archive = Archive::build($idSite, $period, $date, $segment);
-        $dataTable = $archive->getDataTableFromNumeric([Archiver::PagesGreatestActivity_METRIC_NAME, Archiver::PagesGreatestActivity_CONST_METRIC_NAME]);
+        $dataTable = $archive->getDataTableFromNumeric([Archiver::WidgetKLAMBT_METRIC_NAME, Archiver::WidgetKLAMBT_CONST_METRIC_NAME]);
         return $dataTable;
     }
 

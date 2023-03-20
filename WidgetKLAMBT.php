@@ -6,9 +6,9 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\PagesGreatestActivity;
+namespace Piwik\Plugins\WidgetKLAMBT;
 
-class PagesGreatestActivity extends \Piwik\Plugin
+class WidgetKLAMBT extends \Piwik\Plugin
 {
     public function registerEvents()
     {
@@ -20,8 +20,8 @@ class PagesGreatestActivity extends \Piwik\Plugin
     // support archiving just this plugin via core:archive
     public function getArchivingAPIMethodForPlugin(&$method, $plugin)
     {
-        if ($plugin == 'PagesGreatestActivity') {
-            $method = 'PagesGreatestActivity.getExampleArchivedMetric';
+        if ($plugin == 'WidgetKLAMBT') {
+            $method = 'WidgetKLAMBT.getExampleArchivedMetric';
         }
     }
 }
