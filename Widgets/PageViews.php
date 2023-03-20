@@ -18,7 +18,7 @@ class PageViews extends Widget {
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
     $config->setName('Seitenaufrufe (30 Min)');
-    $config->setOrder(99);
+    $config->setOrder(97);
   }
 
   /**
@@ -54,8 +54,6 @@ class PageViews extends Widget {
       'xValues' => $xValues,
       'yValues' => $yValues,
     ]);
-
-
   }
 
 
