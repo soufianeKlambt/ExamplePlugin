@@ -7,7 +7,7 @@
  *
  */
 
-namespace Piwik\Plugins\PagesGreatestActivity\Widgets;
+namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
@@ -32,7 +32,7 @@ class Referer extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    $file = '/var/www/html/cache/referer-' . $idSite . '.cache';
+    $file = '/var/www/html/cache/WidgetKLAMBT-referer-site-' . $idSite . '.cache';
     $expire = 300;
     if (filemtime($file) < (time() - $expire)) {
       $db = \Piwik\Db::get();
@@ -44,13 +44,8 @@ class Referer extends Widget {
     else {
       $result =json_decode( file_get_contents($file),true);
     }
-    $sum = 0;
-    foreach($result as $num => $values) {
-      $sum += $values[ 'visits' ];
-    }
     return $this->renderTemplate('refererTemplate', [
       'rows' => $result,
-      'sum' => $sum,
     ]);
 
 

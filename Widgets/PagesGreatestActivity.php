@@ -7,7 +7,7 @@
  *
  */
 
-namespace Piwik\Plugins\PagesGreatestActivity\Widgets;
+namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
@@ -32,7 +32,7 @@ class PagesGreatestActivity extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    $file = '/var/www/html/cache/plugin-PGA-site-' . $idSite . '.cache';
+    $file = '/var/www/html/cache/WidgetKLAMBT-PGA-site-' . $idSite . '.cache';
     $expire = 300;
     if (filemtime($file) < (time() - $expire)) {
       $db = \Piwik\Db::get();
@@ -48,7 +48,7 @@ class PagesGreatestActivity extends Widget {
     foreach($result as $num => $values) {
       $sum += $values[ 'visits' ];
     }
-    return $this->renderTemplate('myViewTemplate', [
+    return $this->renderTemplate('PGATemplate', [
       'rows' => $result,
       'sum' => $sum,
     ]);
