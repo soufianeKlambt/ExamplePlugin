@@ -12,7 +12,7 @@
     {% for key,row in rows %}
         <tr>
             <td>{{ key+1 }}</td>
-            <td class="label first">{{ row['referer_name'] }}</td>
+            <td class="label first">{{ row['referer_name']  |raw }}</td>
             <td>{{ row['visits']  }}</td>
         </tr>
     {% endfor %}
