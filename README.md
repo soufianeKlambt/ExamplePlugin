@@ -1,7 +1,6 @@
-# Matomo ExamplePlugin Plugin
+# Matomo WidgetKLAMBT Plugin
 
 ## Description
 
-Add your plugin description here.
 
-# ExamplePlugin
+
