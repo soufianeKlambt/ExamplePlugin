@@ -18,7 +18,7 @@ class Referer extends Widget {
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
     $config->setName('Häufigste Verweise (30 Min)');
-    $config->setOrder(99);
+    $config->setOrder(97);
   }
 
   /**

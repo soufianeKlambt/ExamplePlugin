@@ -18,7 +18,7 @@ class PageViews extends Widget {
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
     $config->setName('Seitenaufrufe Graph (30 Min)');
-    $config->setOrder(97);
+    $config->setOrder(98);
   }
 
   /**
