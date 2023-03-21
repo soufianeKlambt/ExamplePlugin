@@ -18,13 +18,13 @@ class WidgetKLAMBT extends \Piwik\Plugin
   public function registerEvents()
   {
     return [
-      'AssetManager.getJavaScriptFiles'        => 'getJsFiles'
+      'AssetManager.getJavaScriptFiles'=> 'getJsFiles'
     ];
   }
 
   public function getJsFiles(&$jsFiles)
   {
-    $jsFiles[] = ' plugins/WidgetKLAMBT/js/Chart.js';
+    $jsFiles[] = 'plugins/WidgetKLAMBT/js/Chart.js';
   }
 
     // support archiving just this plugin via core:archive
