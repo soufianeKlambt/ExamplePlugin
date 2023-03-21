@@ -20,18 +20,11 @@ use Piwik\Widget\WidgetsList;
 
 class GetSimpleLastVisitCount extends Base
 {
-    protected function init()
-    {
-        parent::init();
-        $this->categoryId = 'General_Visitors';
-        $this->order = 3;
-    }
-
-    public function configureWidgets(WidgetsList $widgetsList, ReportWidgetFactory $factory)
-    {
-        $widget = $factory->createWidget()->setName('Live_RealTimeVisitorCount')->setOrder(15);
-        $widgetsList->addWidgetConfig($widget);
-    }
+  public static function configure(WidgetConfig $config) {
+    $config->setCategoryId('Besucher');
+    $config->setName('KLAMBT besucher');
+    $config->setOrder(96);
+  }
 
     public function render()
     {
