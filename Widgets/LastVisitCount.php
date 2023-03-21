@@ -11,7 +11,15 @@ namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
-
+use Piwik\Config;
+use Piwik\Metrics\Formatter;
+use Piwik\Piwik;
+use Piwik\Plugins\Live\Controller;
+use Piwik\API\Request;
+use Piwik\Plugins\Live\Exception\MaxExecutionTimeExceededException;
+use Piwik\Report\ReportWidgetFactory;
+use Piwik\View;
+use Piwik\Widget\WidgetsList;
 
 class LastVisitCount extends Widget {
 
