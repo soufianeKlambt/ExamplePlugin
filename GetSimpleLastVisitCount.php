@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  *
  */
-namespace Piwik\Plugins\Live\Reports;
+namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 
 use Piwik\Config;
 use Piwik\Metrics\Formatter;
