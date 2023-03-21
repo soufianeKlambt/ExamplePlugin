@@ -24,7 +24,7 @@ class WidgetKLAMBT extends \Piwik\Plugin
 
   public function getJsFiles(&$jsFiles)
   {
-    $jsFiles[] = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js';
+    $jsFiles[] = ' plugins/WidgetKLAMBT/js/Chart.js';
   }
 
     // support archiving just this plugin via core:archive
