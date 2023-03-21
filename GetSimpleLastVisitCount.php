@@ -11,14 +11,14 @@ namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 use Piwik\Config;
 use Piwik\Metrics\Formatter;
 use Piwik\Piwik;
-use Piwik\Plugins\Live\Controller;
+use Piwik\Plugins\WidgetKLAMBT\Controller;
 use Piwik\API\Request;
 use Piwik\Plugins\Live\Exception\MaxExecutionTimeExceededException;
 use Piwik\Report\ReportWidgetFactory;
 use Piwik\View;
 use Piwik\Widget\WidgetsList;
 
-class GetSimpleLastVisitCount extends Base
+class GetSimpleLastVisitCount extends Widget
 {
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
