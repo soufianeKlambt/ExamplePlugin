@@ -1,10 +1,12 @@
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<canvas id="myChart" style="width:100%;"></canvas>
 <script>
-    const xValues = [ {% for value in xValues %}
-        {{ value }},
+    const xValues = [
+        {% for value in xValues %}
+        {{ value }}+' Min.',
         {% endfor %}
     ];
-    const yValues = [ {% for value in yValues %}
+    const yValues = [
+        {% for value in yValues %}
         {{ value }},
         {% endfor %}
     ];
@@ -14,9 +16,9 @@
         data: {
             labels: xValues,
             datasets: [{
-                fill: false,
+                fill: true,
                 lineTension: 0,
-                backgroundColor: "#0a07d8",
+                backgroundColor: "rgb(0 100 255 / 47%)",
                 borderColor: "#0a8eff",
                 data: yValues
             }]
