@@ -8,6 +8,7 @@
     width: 15px;
     height: 15px;
     margin: 0 5px;
+    background: #b6b6b6;
 }
 #realtime-user-legend #reflect{
     margin-top: 15px;
@@ -26,8 +27,9 @@
     text-align: center;
     color:#fff;
     border-left: 1px solid #fff;
+    background: #b6b6b6;
 }
-#realtime-user-legend .Smartphone{background:#2fdb2f;}
-#realtime-user-legend .Tablet{background:#457ae9;}
-#realtime-user-legend .Desktop\/Notebook{background:#ff8a22;}
-#realtime-user-legend .andere{ background:#ff1818;}
+#realtime-user-legend .Smartphone{background:#2fdb2f !important;}
+#realtime-user-legend .Tablet{background:#457ae9 !important;}
+#realtime-user-legend .Desktop\/Notebook{background:#ff8a22 !important;}
+#realtime-user-legend .andere{ background:#ff1818 !important;}
