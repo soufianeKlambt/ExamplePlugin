@@ -7,6 +7,7 @@
     display: inline-block;
     width: 15px;
     height: 15px;
+    margin: 0 5px;
 }
 #realtime-user-legend #reflect{
     margin-top: 15px;
