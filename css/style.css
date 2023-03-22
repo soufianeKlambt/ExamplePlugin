@@ -1,0 +1,32 @@
+#realtime-user-legend #legend div{
+    display: inline;
+    line-height: 15px;
+    text-transform: capitalize;
+}
+#realtime-user-legend #legend div span{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+#realtime-user-legend #reflect{
+    margin-top: 15px;
+    width: 100%;
+    display: table;
+    transform: rotatex(180deg) translatey(15px);
+    opacity: 0.2;
+    --gradient: linear-gradient(transparent 50%, white 90%);
+    -webkit-mask-image: var(--gradient);
+    mask-image: var(--gradient);
+}
+#realtime-user-legend #progress div,#reflect div{
+    display: table-cell;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#fff;
+    border-left: 1px solid #fff;
+}
+#realtime-user-legend .smartphone{background:#2fdb2f;}
+#realtime-user-legend .tablet{background:#457ae9;}
+#realtime-user-legend .desktop{background:#ff8a22;}
+#realtime-user-legend .andere{ background:#ff1818;}

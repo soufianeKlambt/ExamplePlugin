@@ -18,10 +18,13 @@ class WidgetKLAMBT extends \Piwik\Plugin
   public function registerEvents()
   {
     return [
-      'AssetManager.getJavaScriptFiles'=> 'getJsFiles'
+      'AssetManager.getJavaScriptFiles' => 'getJsFiles',
+      'AssetManager.getStylesheetFiles' => 'getStylesheetFiles',
     ];
   }
-
+  public function getStylesheetFiles(&$stylesheets) {
+    $stylesheets[] = "plugins/WidgetKLAMBT/css/style.css";
+  }
   public function getJsFiles(&$jsFiles)
   {
     $jsFiles[] = 'plugins/WidgetKLAMBT/js/Chart.js';
