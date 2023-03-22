@@ -39,19 +39,17 @@ class RealtimeVisitorCounter extends Widget {
    * @return string
    */
   public function render() {
+    try {
     $lastMinutes = Config::getInstance()->General[Controller::SIMPLE_VISIT_COUNT_WIDGET_LAST_MINUTES_CONFIG_KEY];
 
     $params    = array('lastMinutes' => $lastMinutes, 'showColumns' => array('visits', 'visitors', 'actions'));
     $refereshAfterSeconds = Config::getInstance()->General['live_widget_refresh_after_seconds'];
 
     $error = '';
-    try {
+
       $lastNData = Request::processRequest('Live.getCounters', $params);
-    } catch (MaxExecutionTimeExceededException $e) {
-      $error = $e->getMessage();
-      $lastNData = [0 => ['visitors' => '-', 'visits' => '-', 'actions' => '-']];
-      $refereshAfterSeconds = 999999999; // we don't want it to refresh again any time soon as same issue would happen again
-    }
+
+
 
     $formatter = new Formatter();
 
@@ -65,7 +63,10 @@ class RealtimeVisitorCounter extends Widget {
 
 
     return $view->render();
-
+    } catch (MaxExecutionTimeExceededException $e) {
+      $error = $e->getMessage();
+      echo $error;
+    }
   }
 
 
