@@ -23,7 +23,7 @@ class WidgetKLAMBT extends \Piwik\Plugin
     ];
   }
   public function getStylesheetFiles(&$stylesheets) {
-    $stylesheets[] = "plugins/WidgetKLAMBT/css/style.css";
+    $stylesheets[] = 'plugins/WidgetKLAMBT/css/style.css';
   }
   public function getJsFiles(&$jsFiles)
   {
