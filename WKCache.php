@@ -15,7 +15,7 @@ class WKCache {
 
   public function getCacheData($name,$sql)
   {
-    $expire = 24*60*60;
+    $expire = 500;
     $cacheKey=$name;
     $result = $this->cache->fetch($cacheKey);
     echo "before<br>";
