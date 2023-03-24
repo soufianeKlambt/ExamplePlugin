@@ -10,7 +10,7 @@ class WKCache {
   private $cache;
   public function __construct()
   {
-    $this->cache = Cache::getLazyCache();
+   // $this->cache = Cache::getLazyCache();
   }
 
   public function getCacheData($name,$sql)
