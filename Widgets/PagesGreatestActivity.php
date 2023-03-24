@@ -36,9 +36,9 @@ class PagesGreatestActivity extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    $this->cache = Cache::getLazyCache();
+    //$this->cache = Cache::getLazyCache();
     $cacheKey = 'PGA-'.$idSite;
-    $expire = 500;
+    $expire = 24*60*60;
     $result = $this->cache->fetch($cacheKey);
     if (!$result) {
       echo "no cache";
