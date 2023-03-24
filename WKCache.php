@@ -13,7 +13,7 @@ class WKCache {
     $this->cache = Cache::getLazyCache();
   }
 
-  public function getData($name,$sql)
+  public function getCacheData($name,$sql)
   {
     $expire = 24*60*60;
     $cacheKey=$name;
