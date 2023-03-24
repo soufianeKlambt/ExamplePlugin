@@ -32,16 +32,7 @@ class Referer extends Widget {
    * @return string
    */
   public function render() {
-    $idSite = $_GET['idSite'];
-      $result= null;//$cache->getCacheData('Devices-'.$idSite,$sql);
-    $sum = 0;
-    foreach($result as $values) {
-      $sum += $values[ 'visits' ];
-    }
-    return $this->renderTemplate('DevicesTemplate', [
-      'rows' => $result,
-      'sumResult' => $sum,
-    ]);
+
 
   }
 

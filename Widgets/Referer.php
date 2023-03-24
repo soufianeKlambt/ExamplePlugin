@@ -32,12 +32,6 @@ class Referer extends Widget {
    * @return string
    */
   public function render() {
-    $idSite = $_GET['idSite'];
-      $result= null;//$cache->getCacheData('Referer-'.$idSite,$sql);
-      $result= null;//$cache->getCacheData('Referer-'.$idSite,$sql);
-    return $this->renderTemplate('RefererTemplate', [
-      'rows' => $result,
-    ]);
 
 
   }

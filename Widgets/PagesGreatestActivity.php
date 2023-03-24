@@ -31,16 +31,7 @@ class PagesGreatestActivity extends Widget {
    * @return string
    */
   public function render() {
-    $idSite = $_GET['idSite'];
-     $result= null;//$cache->getCacheData('PGA-'.$idSite,$sql);
-    $sum = 0;
-    foreach($result as $values) {
-      $sum += $values[ 'visits' ];
-    }
-    return $this->renderTemplate('PGATemplate', [
-      'rows' => $result,
-      'sum' => $sum,
-    ]);
+
   }
 
 

@@ -33,18 +33,7 @@ class PageViews extends Widget {
    * @return string
    */
   public function render() {
-    $idSite = $_GET['idSite'];
-    $result= null;//$cache->getCacheData('PageView-'.$idSite,$sql);
-    $xValues= array();
-    $yValues= array();
-    foreach($result as $values) {
-      $xValues[]=$values['timeinterval'];
-      $yValues[]=$values['hits'];
-    }
-    return $this->renderTemplate('PageviewsTemplate', [
-      'xValues' => $xValues,
-      'yValues' => $yValues,
-    ]);
+
   }
 
 
