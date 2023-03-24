@@ -11,7 +11,7 @@ namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
-
+use Piwik\Cache as PiwikCache;
 
 class PagesGreatestActivity extends Widget {
   /**
@@ -38,7 +38,7 @@ class PagesGreatestActivity extends Widget {
 
 
     $idSite = $_GET['idSite'];
-    $this->cache = \Piwik\Container\StaticContainer::get('Piwik\Cache\Lazy');
+    $this->cache = PiwikCache::getLazyCache();
     $cacheKey = \Piwik\CacheId::siteAware('WidgetKLAMBT-PGA', $idSite);
     $expire = 300;
     $result = json_decode($this->cache->fetch($cacheKey));
