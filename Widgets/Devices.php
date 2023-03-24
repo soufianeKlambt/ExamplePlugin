@@ -9,6 +9,7 @@
 
 namespace Piwik\Plugins\WidgetKLAMBT\Widgets;
 
+use Piwik\Plugins\WidgetKLAMBT\WKCache;
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
 
