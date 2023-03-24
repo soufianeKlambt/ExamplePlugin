@@ -19,6 +19,11 @@ class PagesGreatestActivity extends Widget {
    * @var Lazy
    */
   private $cache;
+
+  public function __construct()
+  {
+    $this->cache = Cache::getLazyCache();
+  }
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
     $config->setName('Seiten mit größter Aktivität (30 Min)');
@@ -36,7 +41,6 @@ class PagesGreatestActivity extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    //$this->cache = Cache::getLazyCache();
     $cacheKey = 'PGA-'.$idSite;
     $expire = 24*60*60;
     $result = $this->cache->fetch($cacheKey);
