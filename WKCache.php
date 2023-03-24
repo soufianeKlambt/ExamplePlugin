@@ -18,7 +18,9 @@ class WKCache {
     $expire = 24*60*60;
     $cacheKey=$name;
     $result = $this->cache->fetch($cacheKey);
+    echo "before<br>";
     if (!$result) {
+      echo "not cache";
       $db = \Piwik\Db::get();
       $result = $db->fetchAll($sql);
       $this->cache->save($cacheKey,$result, $expire);
