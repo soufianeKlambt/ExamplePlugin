@@ -41,7 +41,7 @@ class Devices extends Widget {
       $sum += $values[ 'visits' ];
     }
     return $this->renderTemplate('DevicesTemplate', [
-      'rows' => $result,
+      'result' => $result,
       'sumResult' => $sum,
     ]);
 
