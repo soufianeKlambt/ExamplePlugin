@@ -32,25 +32,17 @@ class PageViews extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    $file = '/var/www/html/cache/WidgetKLAMBT-referer-site-' . $idSite . '.cache';
-    $expire = 300;
-    if (filemtime($file) < (time() - $expire)) {
-      $db = \Piwik\Db::get();
-      $result = $db->fetchAll("SELECT TIMESTAMPDIFF(Minute,UTC_TIMESTAMP(),matomo_log_link_visit_action.server_time) as timeinterval, count(matomo_log_action.name) as hits FROM matomo_log_link_visit_action INNER JOIN matomo_log_action ON matomo_log_link_visit_action.idaction_url = matomo_log_action.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 31 MINUTE)) AND matomo_log_link_visit_action.idsite = ".$idSite." GROUP BY timeinterval ORDER BY timeinterval desc LIMIT 0,30");
-      $fp = fopen($file, "w");
-      fputs($fp, json_encode($result));
-      fclose($fp);
-    }
-    else {
-      $result =json_decode( file_get_contents($file),true);
-    }
+
+    $sql="SELECT TIMESTAMPDIFF(Minute,UTC_TIMESTAMP(),matomo_log_link_visit_action.server_time) as timeinterval, count(matomo_log_action.name) as hits FROM matomo_log_link_visit_action INNER JOIN matomo_log_action ON matomo_log_link_visit_action.idaction_url = matomo_log_action.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 31 MINUTE)) AND matomo_log_link_visit_action.idsite = ".$idSite." GROUP BY timeinterval ORDER BY timeinterval desc LIMIT 0,30";
+    $cache=new WKCache();
+    $result= $cache->getCacheData('PageView-'.$idSite,$sql);
     $xValues= array();
     $yValues= array();
     foreach($result as $values) {
       $xValues[]=$values['timeinterval'];
       $yValues[]=$values['hits'];
     }
-    return $this->renderTemplate('pageviewsTemplate', [
+    return $this->renderTemplate('PageviewsTemplate', [
       'xValues' => $xValues,
       'yValues' => $yValues,
     ]);

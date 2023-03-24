@@ -17,8 +17,8 @@ class Referer extends Widget {
 
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
-    $config->setName('Häufigste Verweise (30 Min)');
-    $config->setOrder(97);
+    $config->setName('Nutzergeräte (30 Min)');
+    $config->setOrder(96);
   }
 
   /**
@@ -32,13 +32,17 @@ class Referer extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-      $sql="SELECT referer_name, count(idvisit) as visits FROM matomo_log_visit WHERE idsite = ".$idSite." AND visit_last_action_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE)) AND referer_name is NOT NULL GROUP BY referer_name ORDER BY visits desc LIMIT 10";
-      $cache=new WKCache();
-      $result= $cache->getCacheData('Referer-'.$idSite,$sql);
-    return $this->renderTemplate('RefererTemplate', [
+    $sql = "SELECT CASE WHEN config_device_type = 1  THEN 'Smartphone' WHEN config_device_type = 0  THEN 'Tablet' WHEN config_device_type = 10 THEN 'Tablet' WHEN config_device_type = 2  THEN 'Desktop/Notebook' ELSE 'andere' END as devices, count(idvisit) as visits FROM matomo_log_visit WHERE idsite = ".$idSite." AND visit_last_action_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 5 MINUTE)) GROUP BY devices ORDER BY visits desc LIMIT 10";
+    $cache=new WKCache();
+    $result= $cache->getCacheData('Devices-'.$idSite,$sql);
+    $sum = 0;
+    foreach($result as $values) {
+      $sum += $values[ 'visits' ];
+    }
+    return $this->renderTemplate('DevicesTemplate', [
       'rows' => $result,
+      'sumResult' => $sum,
     ]);
-
 
   }
 
