@@ -38,9 +38,8 @@ class PagesGreatestActivity extends Widget {
     $idSite = $_GET['idSite'];
     $this->cache = Cache::getLazyCache();
     $cacheKey = 'PGA-'.$idSite;
-    $expire = 300;
+    $expire = 500;
     $result = $this->cache->fetch($cacheKey);
-    print_r($result);
     if (!$result) {
       echo "no cache";
       $db = \Piwik\Db::get();
