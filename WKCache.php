@@ -8,17 +8,15 @@ class WKCache {
    * @var Lazy
    */
   private $cache;
-  protected $name = null;
-  public function __construct($name)
+  public function __construct()
   {
-    $this->name = $name;
     $this->cache = Cache::getLazyCache();
   }
 
-  public function getData($id,$sql)
+  public function getData($name,$sql)
   {
     $expire = 24*60*60;
-    $cacheKey=$this->name.'_'.$id;
+    $cacheKey=$name;
     $result = $this->cache->fetch($cacheKey);
     if (!$result) {
       $db = \Piwik\Db::get();
