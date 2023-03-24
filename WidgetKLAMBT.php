@@ -7,15 +7,9 @@
  */
 
 namespace Piwik\Plugins\WidgetKLAMBT;
-use Piwik\Cache;
-use Matomo\Cache\Lazy;
+
 class WidgetKLAMBT extends \Piwik\Plugin
 {
-  /**
-   * @var Lazy
-   */
-  private $cache;
-
 
 
   /**
@@ -43,7 +37,5 @@ class WidgetKLAMBT extends \Piwik\Plugin
             $method = 'WidgetKLAMBT.getExampleArchivedMetric';
         }
     }
-
-
 
   }
