@@ -18,7 +18,7 @@ class Devices extends Widget {
 
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
-    $config->setName('Nutzergeräte (30 Min)');
+    $config->setName('Nutzergeräte (5 Min)');
     $config->setOrder(96);
   }
 
