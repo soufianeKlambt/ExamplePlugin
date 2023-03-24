@@ -34,7 +34,9 @@ class PagesGreatestActivity extends Widget {
    * @return string
    */
   public function render() {
+
     $idSite = $_GET['idSite'];
+    $this->cache = \Piwik\Container\StaticContainer::get('Piwik\Cache\Lazy');
     $cacheKey = \Piwik\CacheId::siteAware('WidgetKLAMBT-PGA', $idSite);
     $expire = 300;
     $result = json_decode($this->cache->fetch($cacheKey));
