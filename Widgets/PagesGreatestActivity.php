@@ -34,6 +34,8 @@ class PagesGreatestActivity extends Widget {
    * @return string
    */
   public function render() {
+    try {
+
 
     $idSite = $_GET['idSite'];
     $this->cache = \Piwik\Container\StaticContainer::get('Piwik\Cache\Lazy');
@@ -54,7 +56,9 @@ class PagesGreatestActivity extends Widget {
       'rows' => $result,
       'sum' => $sum,
     ]);
-
+    } catch (\Exception $e) {
+      echo $e->getMessage();
+    }
 
   }
 
