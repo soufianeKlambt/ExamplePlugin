@@ -14,10 +14,7 @@ use Piwik\Widget\WidgetConfig;
 use Piwik\Cache as PiwikCache;
 
 class PagesGreatestActivity extends Widget {
-  /**
-   * @var Lazy
-   */
-  private Lazy $cache;
+
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
     $config->setName('Seiten mit größter Aktivität (30 Min)');
@@ -38,15 +35,15 @@ class PagesGreatestActivity extends Widget {
 
 
     $idSite = $_GET['idSite'];
-    $this->cache = PiwikCache::getLazyCache();
+    $cache = PiwikCache::getLazyCache();
     $cacheKey = \Piwik\CacheId::siteAware('WidgetKLAMBT-PGA', $idSite);
     $expire = 300;
-    $result = json_decode($this->cache->fetch($cacheKey));
+    $result = json_decode($cache->fetch($cacheKey));
     print_r($result);
     if ($result === false) {
       $db = \Piwik\Db::get();
       $result = $db->fetchAll("SELECT concat('https://',pageimpressions.url) as full_url,REGEXP_REPLACE(pageimpressions.url,'^[a-zA-Z0-9\.\-]*','') as relative_url,pageimpressions.idsite,COUNT(pageimpressions.idvisit) as visits FROM (SELECT matomo_log_link_visit_action.server_time,REGEXP_REPLACE(action_url.name,'[\?|#].*$', '') as url,matomo_log_link_visit_action.idsite,matomo_log_link_visit_action.idvisit,matomo_log_link_visit_action.idpageview,matomo_log_link_visit_action.idaction_url,action_url.hash,action_url.type FROM matomo_log_link_visit_action INNER JOIN matomo_log_action as action_url ON matomo_log_link_visit_action.idaction_url = action_url.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE))  AND idsite = " . $idSite . " ORDER BY matomo_log_link_visit_action.idlink_va desc) as pageimpressions GROUP BY `url`, idsite ORDER BY visits desc LIMIT 40");
-      $this->cache->save($cacheKey, json_encode($result), $expire);
+      $cache->save($cacheKey, json_encode($result), $expire);
     }
     $sum = 0;
     foreach($result as $values) {
