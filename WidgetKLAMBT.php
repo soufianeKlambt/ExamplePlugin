@@ -16,11 +16,7 @@ class WidgetKLAMBT extends \Piwik\Plugin
    */
   private $cache;
 
-  public function __construct()
-  {
 
-    $this->cache = Cache::getLazyCache();
-  }
 
   /**
    * @see \Piwik\Plugin::registerEvents
@@ -48,17 +44,6 @@ class WidgetKLAMBT extends \Piwik\Plugin
         }
     }
 
-  public function get($name,$sql)
-  {
-    $expire = 24*60*60;
-    $cacheKey=$name;
-    $result = $this->cache->fetch($cacheKey);
-    if (!$result) {
-      $db = \Piwik\Db::get();
-      $result = $db->fetchAll($sql);
-      $this->cache->save($cacheKey,$result, $expire);
-    }
-    return $result;
-  }
+
 
   }
