@@ -35,7 +35,7 @@ class Referer extends Widget {
     $idSite = $_GET['idSite'];
       $sql="SELECT referer_name, count(idvisit) as visits FROM matomo_log_visit WHERE idsite = ".$idSite." AND visit_last_action_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE)) AND referer_name is NOT NULL GROUP BY referer_name ORDER BY visits desc LIMIT 10";
       $cache=new WKCache();
-      $result= $cache->getCacheData('Referer-'.$idSite,$sql);
+      $result= null;//$cache->getCacheData('Referer-'.$idSite,$sql);
     return $this->renderTemplate('RefererTemplate', [
       'rows' => $result,
     ]);
