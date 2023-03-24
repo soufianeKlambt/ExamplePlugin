@@ -15,10 +15,10 @@ class WidgetKLAMBT extends \Piwik\Plugin
    * @var Lazy
    */
   private $cache;
-  protected $name = null;
-  public function __construct($name)
+
+  public function __construct()
   {
-    $this->name = $name;
+
     $this->cache = Cache::getLazyCache();
   }
 
@@ -48,10 +48,10 @@ class WidgetKLAMBT extends \Piwik\Plugin
         }
     }
 
-  public function get($id,$sql)
+  public function get($name,$sql)
   {
     $expire = 24*60*60;
-    $cacheKey=$this->name.'_'.$id;
+    $cacheKey=$name;
     $result = $this->cache->fetch($cacheKey);
     if (!$result) {
       $db = \Piwik\Db::get();
