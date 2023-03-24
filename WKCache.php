@@ -16,12 +16,11 @@ class WKCache {
 
   public function getCacheData($name,$sql)
   {
-    $cacheKey=$name;
-    $result = $this->cache->fetch($cacheKey);
+    $result = $this->cache->fetch($name);
     if (!$result) {
       $db = \Piwik\Db::get();
       $result = $db->fetchAll($sql);
-      $this->cache->save($cacheKey,$result, $this->expire);
+      $this->cache->save($name,$result, $this->expire);
     }
     return $result;
 
