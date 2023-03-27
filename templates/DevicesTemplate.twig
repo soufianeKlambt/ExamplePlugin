@@ -7,7 +7,7 @@
 
     <div id="progress" style="width:100%;display: table;">
         {% for row in result %}
-            <div class="{{ row['devices'] }} {{ ((row['visits'] / sumResult) * 100) }}" style="width:{{ ((row['visits'] / sumResult) * 100) |round }}%;">{{ ((row['visits'] / sumResult) * 100) |round(0, 'ceil') }}%</div>
+            <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / sumResult) * 100) |round }}%;">{{ ((row['visits'] / sumResult) * 100) |round(0, 'ceil') }}%</div>
         {% endfor %}
     </div>
     <div id="reflect" style="width:100%;display: table;">
