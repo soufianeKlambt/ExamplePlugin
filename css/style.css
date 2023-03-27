@@ -23,6 +23,10 @@
     mask-image: var(--gradient);
 }
 
+#realtime-user-legend #legend {
+    margin: 10px auto auto;
+    width: 90%;
+}
 #realtime-user-legend #progress {
     width: 90%;
     margin: 10px auto auto;
