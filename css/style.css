@@ -1,16 +1,18 @@
-#realtime-user-legend #legend div{
+#realtime-user-legend #legend div {
     display: inline;
     line-height: 15px;
     text-transform: capitalize;
 }
-#realtime-user-legend #legend div span{
+
+#realtime-user-legend #legend div span {
     display: inline-block;
     width: 15px;
     height: 15px;
     margin: 0 5px;
     background: #b6b6b6;
 }
-#realtime-user-legend #reflect{
+
+#realtime-user-legend #reflect {
     margin-top: 15px;
     width: 100%;
     display: table;
@@ -20,22 +22,43 @@
     -webkit-mask-image: var(--gradient);
     mask-image: var(--gradient);
 }
-#realtime-user-legend #progress{
-    width:90%; margin-top:10px; font-size:10px
+
+#realtime-user-legend #progress {
+    width: 90%;
+    margin: 10px auto auto;
+    font-size: 10px;
+    display: table;
 }
-#realtime-user-legend #reflect{
-    width:90%; margin-top:15px; font-size:10px
+
+#realtime-user-legend #reflect {
+    width: 90%;
+    margin: 15px auto auto;
+    font-size: 10px;
+    display: table;
 }
-#realtime-user-legend #progress div,#reflect div{
+
+#realtime-user-legend #progress div, #reflect div {
     display: table-cell;
     height: 20px;
     line-height: 20px;
     text-align: center;
-    color:#fff;
+    color: #fff;
     border-left: 1px solid #fff;
     background: #b6b6b6;
 }
-#realtime-user-legend .Mobilgerät{background:#50b431 !important;}
-#realtime-user-legend .Tablet{background:#457ae9 !important;}
-#realtime-user-legend .Computer{background:#ff8a22 !important;}
-#realtime-user-legend .andere{ background:#ff1818 !important;}
+
+#realtime-user-legend .Mobilgerät {
+    background: #50b431 !important;
+}
+
+#realtime-user-legend .Tablet {
+    background: #457ae9 !important;
+}
+
+#realtime-user-legend .Computer {
+    background: #ff8a22 !important;
+}
+
+#realtime-user-legend .andere {
+    background: #ff1818 !important;
+}

@@ -5,12 +5,12 @@
         {% endfor %}
     </div>
 
-    <div id="progress" style="width:100%;display: table;">
+    <div id="progress">
         {% for row in result %}
             <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / sumResult) * 100) |round }}%;">{{ ((row['visits'] / sumResult) * 100) |round(0, 'ceil') }}%</div>
         {% endfor %}
     </div>
-    <div id="reflect" style="width:100%;display: table;">
+    <div id="reflect">
         {% for row in result %}
             <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / sumResult) * 100) |round }}%;">{{ ((row['visits'] / sumResult) * 100) |round(0, 'ceil') }}%</div>
         {% endfor %}
