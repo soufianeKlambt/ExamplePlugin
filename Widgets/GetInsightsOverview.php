@@ -17,7 +17,7 @@ class GetInsightsOverview extends \Piwik\Widget\Widget
 {
   public static function configure(WidgetConfig $config)
   {
-    $config->setCategoryId('Campaigns');
+    $config->setCategoryId('Verhalten');
     $config->setSubcategoryId('AdWords');
   }
   public function render()
