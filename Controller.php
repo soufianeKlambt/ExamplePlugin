@@ -30,4 +30,10 @@ class Controller extends \Piwik\Plugin\Controller
 
     return $view->render();
   }
+  public function index()
+  {
+    return $this->renderTemplate('TestTemplate', array(
+      'answerToLife' => 42
+    ));
+  }
 }
