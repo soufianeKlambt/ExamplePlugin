@@ -47,9 +47,10 @@
                                     </div>
                                     <div class="widgetContent ng-scope">
                                         {% for category in devices %}
-                                        {% for key,a in category %}
-                                            {{ key }} : {{ a }}<br>
-                                        {% endfor %}
+                                        {% for a in category %}
+                                        {% for key,b in a %}
+                                            {{ key }} : {{ b }}<br>
+                                        {% endfor %}  {% endfor %}
                                         {% endfor %}
 
 
