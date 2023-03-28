@@ -22,8 +22,9 @@ class GetInsightsOverview extends \Piwik\Widget\Widget
   }
   public function render()
   {
-    // it is not needed to check for permissions here again
-    return 'Hello world!';
+    return $this->renderTemplate('TestTemplate', array(
+      'answerToLife' => 42
+    ));
   }
 
 }
