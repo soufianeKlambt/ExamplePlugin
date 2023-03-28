@@ -1,19 +1,18 @@
-
 <div id="realtime-user-legend" style="width:100%;">
     <div id="legend">
-        {% for row in result.data %}
+        {% for row in result %}
             <div><span  class="{{ row['devices'] }}"></span>{{ row['devices'] }}</div>
         {% endfor %}
     </div>
 
     <div id="progress">
-        {% for row in result.data  %}
-            <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / result.sum) * 100) |round }}%;">{{ ((row['visits'] / result.sum) * 100) |round(0, 'ceil') }}%</div>
+        {% for row in result %}
+            <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / sumResult) * 100) |round }}%;">{{ ((row['visits'] / sumResult) * 100) |round(0, 'ceil') }}%</div>
         {% endfor %}
     </div>
     <div id="reflect">
-        {% for row in result.data  %}
-            <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / result.sum) * 100) |round }}%;">{{ ((row['visits'] / result.sum) * 100) |round(0, 'ceil') }}%</div>
+        {% for row in result %}
+            <div class="{{ row['devices'] }}" style="width:{{ ((row['visits'] / sumResult) * 100) |round }}%;">{{ ((row['visits'] / sumResult) * 100) |round(0, 'ceil') }}%</div>
         {% endfor %}
     </div>
 </div>

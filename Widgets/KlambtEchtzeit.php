@@ -79,7 +79,7 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
       $sum += $values[ 'visits' ];
     }
     return  array(
-      'data' => $result,
+      'result' => $result,
       'sum' => $sum,
     );
   }

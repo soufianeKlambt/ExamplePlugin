@@ -46,7 +46,7 @@
                                             <span>Nutzergeräte (5 Min)</span></h3>
                                     </div>
                                     <div class="widgetContent ng-scope">
-                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices } %}
+                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices.result,'sum':devices.sum } %}
 
                                     </div>
                                 </div>
