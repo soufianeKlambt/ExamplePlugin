@@ -7,8 +7,9 @@
  */
 
 namespace Piwik\Plugins\WidgetKLAMBT;
-
+use Piwik\Common;
 use Piwik\Menu\MenuTop;
+use Piwik\Piwik;
 
 class Menu extends \Piwik\Plugin\Menu
 {
@@ -20,10 +21,5 @@ class Menu extends \Piwik\Plugin\Menu
     $tooltip   = Piwik::translate('MultiSites_TopLinkTooltip');
 
     $menu->addItem('My top item', null, $urlParams, 3, $tooltip);
-  }
-
-  public function configureAdminMenu(MenuAdmin $menu)
-  {
-    // ...
   }
 }
