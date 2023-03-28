@@ -113,7 +113,7 @@
                                             <span>Seiten mit größter Aktivität (30 Min)</span></h3>
                                     </div>
                                     <div class="widgetContent ng-scope">
-                                        {% include '@WidgetKLAMBT/PGATemplate.twig' with {'rows':[] } %}
+                                        {% include '@WidgetKLAMBT/PGATemplate.twig' with {'rows':PGA.result,'sum':PGA.sum } %}
                                     </div>
                                 </div>
                             </div>
