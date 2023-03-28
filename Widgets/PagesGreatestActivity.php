@@ -18,7 +18,7 @@ class PagesGreatestActivity extends Widget {
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Besucher');
     $config->setName('Seiten mit größter Aktivität (30 Min)');
-    $config->setOrder(99);
+    $config->setOrder(13);
   }
 
   /**
