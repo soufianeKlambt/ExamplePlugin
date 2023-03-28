@@ -19,7 +19,7 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
   {
     $config->setCategoryId('Dashboard_Dashboard');
     $config->setSubcategoryId('Klambt Echtzeit');
-    $config->setOrder(1);
+
   }
   public function render()
   {
