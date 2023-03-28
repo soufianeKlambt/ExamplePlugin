@@ -23,6 +23,7 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
   }
   public function render()
   {
+    echo "ddddd";
     $idSite= $_GET['idSite'];
     print_r($this->getDevices($idSite));
     echo "<br>----<br>";
