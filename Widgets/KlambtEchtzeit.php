@@ -24,13 +24,9 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
   public function render()
   {
     $idSite= $_GET['idSite'];
+    print_r($this->getDevices($idSite));
+    echo "<br>----<br>";
 
-    return $this->renderTemplate('EchtzeitTemplate', array(
-      'referer' => $this->getReferer($idSite),
-      'pageViews' => $this->getPageViews($idSite),
-      'PGA' => $this->getPagesGreatestActivity($idSite),
-      'devices' => $this->getDevices($idSite),
-    ));
   }
 
   public  function getReferer($idSite){
