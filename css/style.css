@@ -25,12 +25,14 @@
 
 #realtime-user-legend #count {
     text-align: center;
+}#realtime-user-legend #count span:first-child {
+    font-size: 18px;
 }
 #realtime-user-legend #count div {
     text-align: center;
     font-size: 80px;
     display: block;
-    margin: 20px auto 45px;
+    margin: 30px auto;
     padding: 5px;
 }
 #realtime-user-legend #legend {
