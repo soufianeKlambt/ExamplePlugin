@@ -46,6 +46,9 @@
                                             <span>Nutzergeräte (5 Min)</span></h3>
                                     </div>
                                     <div class="widgetContent ng-scope">
+                                        {% for category in devices %}
+                                            {{ category }}
+                                        {% endfor %}
                                         {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices } %}
 
                                     </div>
