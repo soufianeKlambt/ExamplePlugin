@@ -18,82 +18,247 @@ use Piwik\Plugins\Live\Visualizations\VisitorLog;
 use Piwik\Url;
 use Piwik\View;
 
-
-
+/**
+ */
 class Controller extends \Piwik\Plugin\Controller
 {
-  /**
-   * @var Translator
-   */
-  private $translator;
+  const SIMPLE_VISIT_COUNT_WIDGET_LAST_MINUTES_CONFIG_KEY = 'live_widget_visitor_count_last_minutes';
 
-  public function __construct(Translator $translator)
+  private $profileSummaryProvider;
+
+  public function __construct(ProfileSummaryProvider $profileSummaryProvider)
   {
+    $this->profileSummaryProvider = $profileSummaryProvider;
     parent::__construct();
-
-    $this->translator = $translator;
   }
 
-  public function index()
+  function index()
   {
-    return $this->getSitesInfo($isWidgetized = false);
+    return $this->widget();
   }
 
-  public function standalone()
+  public function widget()
   {
-    return $this->getSitesInfo($isWidgetized = true);
+    Piwik::checkUserHasViewAccess($this->idSite);
+    Live::checkIsVisitorLogEnabled($this->idSite);
+
+    $view = new View('@Live/index');
+    $view->idSite = $this->idSite;
+    $view->isWidgetized = Common::getRequestVar('widget', 0, 'int');
+    $view = $this->setCounters($view);
+    $view->liveRefreshAfterMs = (int)Config::getInstance()->General['live_widget_refresh_after_seconds'] * 1000;
+    $view->visitors = $this->getLastVisitsStart();
+    $view->liveTokenAuth = Piwik::getCurrentUserTokenAuth();
+    return $this->render($view);
+  }
+
+  public function ajaxTotalVisitors()
+  {
+    Piwik::checkUserHasViewAccess($this->idSite);
+
+    $view = new View('@Live/ajaxTotalVisitors');
+    $view = $this->setCounters($view);
+    $view->idSite = $this->idSite;
+    return $this->render($view);
+  }
+
+  private function render(View $view)
+  {
+    $rendered = $view->render();
+
+    return $rendered;
+  }
+
+  public function indexVisitorLog()
+  {
+    Piwik::checkUserHasViewAccess($this->idSite);
+    Live::checkIsVisitorLogEnabled($this->idSite);
+
+    $view = new View('@Live/indexVisitorLog.twig');
+    $view->visitorLog = $this->renderReport('getLastVisitsDetails');
+    return $view->render();
   }
 
   /**
-   * @throws \Piwik\NoAccessException
+   * Widget
    */
-  public function getSitesInfo($isWidgetized = false)
+  public function getVisitorLog()
   {
-    Piwik::checkUserHasSomeViewAccess();
+    return $this->renderReport('getLastVisitsDetails');
+  }
 
-    $date = Piwik::getDate('today');
-    $period = Piwik::getPeriod('day');
+  public function getLastVisitsStart()
+  {
+    Piwik::checkUserHasViewAccess($this->idSite);
+    Live::checkIsVisitorLogEnabled($this->idSite);
 
-    $view = new View("@MultiSites/getSitesInfo");
+    // hack, ensure we load today's visits by default
+    $_GET['date'] = 'today';
+    \Piwik\Period\Factory::checkPeriodIsEnabled('day');
+    $_GET['period'] = 'day';
 
-    $view->isWidgetized         = $isWidgetized;
-    $view->displayRevenueColumn = Common::isGoalPluginEnabled();
-    $view->limit                = Config::getInstance()->General['all_websites_website_per_page'];
-    $view->show_sparklines      = Config::getInstance()->General['show_multisites_sparklines'];
-
-    $view->autoRefreshTodayReport = 0;
-    // if the current date is today, or yesterday,
-    // in case the website is set to UTC-12), or today in UTC+14, we refresh the page every 5min
-    if (in_array($date, array('today', date('Y-m-d'),
-      'yesterday', Date::factory('yesterday')->toString('Y-m-d'),
-      Date::factory('now', 'UTC+14')->toString('Y-m-d')))
-    ) {
-      $view->autoRefreshTodayReport = Config::getInstance()->General['multisites_refresh_after_seconds'];
+    $view = new View('@Live/getLastVisitsStart');
+    $view->isProfileEnabled = Live::isVisitorProfileEnabled();
+    $view->idSite = (int) $this->idSite;
+    $error = '';
+    $visitors = new DataTable();
+    try {
+      $api = new Request("method=Live.getLastVisitsDetails&idSite={$this->idSite}&filter_limit=10&format=original&serialize=0&disable_generic_filters=1");
+      $visitors = $api->process();
+    } catch (\Exception $e) {
+      $error = $e->getMessage();
     }
-    $paramsToSet = ['period' => $period, 'date' => $date];
-    $params = $this->getGraphParamsModified($paramsToSet);
-    $view->dateSparkline = $period == 'range' ? $date : $params['date'];
+    $view->error = $error;
+    $view->visitors = $visitors;
 
-    $this->setGeneralVariablesView($view);
+    return $this->render($view);
+  }
 
-    $view->siteName = $this->translator->translate('General_AllWebsitesDashboard');
+  private function setCounters($view)
+  {
+    $segment = Request::getRawSegmentFromRequest();
+    $executeTodayQuery = true;
+    $view->countErrorToday = '';
+    $view->countErrorHalfHour = '';
+    try {
+      $last30min = Request::processRequest('Live.getCounters', [
+        'idSite' => $this->idSite,
+        'lastMinutes' => 30,
+        'segment' => $segment,
+        'showColumns' => 'visits,actions',
+      ], $default = []);
+      $last30min = $last30min[0];
+    } catch (MaxExecutionTimeExceededException $e) {
+      $last30min = ['visits' => '-', 'actions' => '-'];
+      $today = ['visits' => '-', 'actions' => '-'];
+      $view->countErrorToday = $e->getMessage();
+      $view->countErrorHalfHour = $e->getMessage();
+      $executeTodayQuery = false; // if query for last 30 min failed, we also expect the 24 hour query to fail
+    }
+
+    try {
+      if ($executeTodayQuery) {
+        $today = Request::processRequest('Live.getCounters', [
+          'idSite' => $this->idSite,
+          'lastMinutes' => 24 * 60,
+          'segment' => $segment,
+          'showColumns' => 'visits,actions',
+        ], $default = []);
+        $today = $today[0];
+      }
+    } catch (MaxExecutionTimeExceededException $e) {
+      $today = ['visits' => '-', 'actions' => '-'];
+      $view->countErrorToday = $e->getMessage();
+    }
+
+    $view->visitorsCountHalfHour = $last30min['visits'];
+    $view->visitorsCountToday = $today['visits'];
+    $view->pisHalfhour = $last30min['actions'];
+    $view->pisToday = $today['actions'];
+    return $view;
+  }
+
+  /**
+   * Echo's HTML for visitor profile popup.
+   */
+  public function getVisitorProfilePopup()
+  {
+    Piwik::checkUserHasViewAccess($this->idSite);
+    Live::checkIsVisitorProfileEnabled($this->idSite);
+
+    $visitorData = Request::processRequest('Live.getVisitorProfile');
+
+    if (empty($visitorData)) {
+      throw new \Exception('Visitor could not be found'); // for example when URL parameter is not set
+    }
+
+    VisitorLog::groupActionsByPageviewId($visitorData['lastVisits']);
+
+    $view = new View('@Live/getVisitorProfilePopup.twig');
+    $view->idSite = $this->idSite;
+    $view->goals = Request::processRequest('Goals.getGoals', ['idSite' => $this->idSite, 'filter_limit' => '-1'], $default = []);
+    $view->visitorData = $visitorData;
+    $view->exportLink = $this->getVisitorProfileExportLink();
+
+    $this->setWidgetizedVisitorProfileUrl($view);
+
+    $summaryEntries = array();
+
+    $profileSummaries = $this->profileSummaryProvider->getAllInstances();
+    foreach ($profileSummaries as $profileSummary) {
+      $profileSummary->setProfile($view->visitorData);
+      $summaryEntries[] = [$profileSummary->getOrder(), $profileSummary->render()];
+    }
+
+    usort($summaryEntries, function($a, $b) {
+      return version_compare($a[0], $b[0]);
+    });
+
+    $summary = '';
+
+    foreach ($summaryEntries AS $summaryEntry) {
+      $summary .= $summaryEntry[1];
+    }
+
+    $view->profileSummary = $summary;
 
     return $view->render();
   }
 
-  public function getEvolutionGraph($columns = false)
+  public function getVisitList()
   {
-    if (empty($columns)) {
-      $columns = Common::getRequestVar('columns');
-    }
-    $api = "API.get";
+    $this->checkSitePermission();
+    Piwik::checkUserHasViewAccess($this->idSite);
 
-    if ($columns == 'revenue') {
-      $api = "Goals.get";
+    $filterLimit = Common::getRequestVar('filter_offset', 0, 'int');
+    $startCounter = Common::getRequestVar('start_number', 0, 'int');
+    $limit = Config::getInstance()->General['live_visitor_profile_max_visits_to_aggregate'];
+
+    if ($startCounter >= $limit) {
+      return ''; // do not return more visits than configured for profile
     }
-    $view = $this->getLastUnitGraph($this->pluginName, __FUNCTION__, $api);
-    $view->requestConfig->totals = 0;
-    return $this->renderView($view);
+
+    $nextVisits = Request::processRequest('Live.getLastVisitsDetails', array(
+      'segment'                 => Live::getSegmentWithVisitorId(),
+      'filter_limit'            => VisitorProfile::VISITOR_PROFILE_MAX_VISITS_TO_SHOW,
+      'filter_offset'           => $filterLimit,
+      'period'                  => false,
+      'date'                    => false
+    ));
+
+    if (empty($nextVisits)) {
+      return '';
+    }
+
+    VisitorLog::groupActionsByPageviewId($nextVisits);
+
+    $view = new View('@Live/getVisitList.twig');
+    $view->idSite = $this->idSite;
+    $view->startCounter = $startCounter < $nextVisits->getRowsCount() ? $nextVisits->getRowsCount() : $startCounter;
+    $view->visits = $nextVisits;
+    return $view->render();
+  }
+
+  private function getVisitorProfileExportLink()
+  {
+    return Url::getCurrentQueryStringWithParametersModified(array(
+      'module'   => 'API',
+      'action'   => 'index',
+      'method'   => 'Live.getVisitorProfile',
+      'format'   => 'XML',
+      'expanded' => 1
+    ));
+  }
+
+  private function setWidgetizedVisitorProfileUrl($view)
+  {
+    if (\Piwik\Plugin\Manager::getInstance()->isPluginLoaded('Widgetize')) {
+      $view->widgetizedLink = Url::getCurrentQueryStringWithParametersModified(array(
+        'module'            => 'Widgetize',
+        'action'            => 'iframe',
+        'moduleToWidgetize' => 'Live',
+        'actionToWidgetize' => 'getVisitorProfilePopup'
+      ));
+    }
   }
 }
-
