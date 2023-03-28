@@ -83,4 +83,21 @@ class API extends \Piwik\Plugin\API
         $segment = new Segment($segment, [(int) $idSite]);
         return $segment->getHash();
     }
+
+  public function getInsightsOverview($idSite, $period, $date, $segment = false)
+  {
+    Piwik::checkUserHasViewAccess($idSite);
+
+    $defaultParams = array(
+      'limitIncreaser' => 3,
+      'limitDecreaser' => 3,
+      'minImpactPercent' => 1,
+      'minGrowthPercent' => 25,
+    );
+
+    $map = $this->generateOverviewReport('getInsights', $idSite, $period, $date, $segment, $defaultParams);
+
+    return $map;
+  }
+
 }
