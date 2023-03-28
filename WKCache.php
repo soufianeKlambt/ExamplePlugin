@@ -14,13 +14,10 @@ class WKCache {
    $this->cache = Cache::getLazyCache();
   }
 
-  public function getCacheData($name,$sql,$msg=false)
+  public function getCacheData($name,$sql)
   {
     $result = $this->cache->fetch($name);
     if (!$result) {
-      if ($msg=true) {
-        echo "db sfn <br>";
-      }
       $db = \Piwik\Db::get();
       $result = $db->fetchAll($sql);
       $this->cache->save($name,$result, $this->expire);

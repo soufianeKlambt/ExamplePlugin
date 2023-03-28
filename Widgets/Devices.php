@@ -37,7 +37,7 @@ class Devices extends Widget {
     $sql1 = "select count(*) as total FROM matomo_log_visit WHERE idsite = ".$idSite."  AND visit_last_action_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 5 MINUTE))";
     $cache=new WKCache();
     $result= $cache->getCacheData('Devices-'.$idSite,$sql);
-    $count= $cache->getCacheData('Devices-count-'.$idSite,$sql1,TRUE);
+    $count= $cache->getCacheData('Devices-count-'.$idSite,$sql1);
 
     $sum = 0;
     foreach($result as $values) {
