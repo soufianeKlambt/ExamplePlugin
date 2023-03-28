@@ -18,24 +18,7 @@
                                             <span>Echtzeit-Besucherzähler</span></h3>
                                     </div>
                                     <div class="widgetContent ng-scope">
-                                        <div class="simple-realtime-visitor-widget">
-                                            <div class="simple-realtime-visitor-counter" title="12 Besucher">
-                                                <div>12</div>
-                                            </div>
-                                            <br>
 
-                                            <div class="simple-realtime-elaboration">
-                                                <span class="simple-realtime-metric"
-                                                      data-metric="visits">12 Besuche</span>
-                                                und <span class="simple-realtime-metric" data-metric="actions">32 Aktionen</span>
-                                                in den letzten <span class="simple-realtime-metric"
-                                                                     data-metric="minutes">5 Minuten</span>
-
-                                            </div>
-                                        </div>
-                                        <script type="text/javascript">$(document).ready(function () {
-                                                require('piwik/Live').initSimpleRealtimeVisitorWidget();
-                                            });</script>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +46,7 @@
                                             <span>Nutzergeräte (5 Min)</span></h3>
                                     </div>
                                     <div class="widgetContent ng-scope">
-                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':[] } %}
+                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices } %}
 
                                     </div>
                                 </div>
