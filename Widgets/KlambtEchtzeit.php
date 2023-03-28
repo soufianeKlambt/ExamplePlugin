@@ -25,9 +25,12 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
   public function render()
   {
     $idSite= $_GET['idSite'];
-    print_r($this->getDevices($idSite));
-    echo "<br>----<br>";
-
+    return $this->renderTemplate('EchtzeitTemplate', array(
+      'referer' => $this->getReferer($idSite),
+      'pageViews' => $this->getPageViews($idSite),
+      'PGA' => $this->getPagesGreatestActivity($idSite),
+      'devices' => $this->getDevices($idSite),
+    ));
   }
 
   public  function getReferer($idSite){
@@ -67,7 +70,7 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
     );
   }
 
-  public function getDevices($idSite){
+  public function  getDevices($idSite){
     $sql = "SELECT CASE WHEN config_device_type = 1  THEN 'Mobilgerät' WHEN config_device_type = 0  THEN 'Tablet' WHEN config_device_type = 10 THEN 'Tablet' WHEN config_device_type = 2  THEN 'Computer' ELSE 'andere' END as devices, count(idvisit) as visits FROM matomo_log_visit WHERE idsite = ".$idSite." AND visit_last_action_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 5 MINUTE)) GROUP BY devices ORDER BY visits desc LIMIT 10";
     $cache=new WKCache();
     $result= $cache->getCacheData('Devices-'.$idSite,$sql);
