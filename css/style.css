@@ -23,6 +23,13 @@
     mask-image: var(--gradient);
 }
 
+#realtime-user-legend #count {
+    text-align: center;
+    font-size: 80px;
+    display: block;
+    margin: 20px auto 45px;
+    padding: 5px;
+}
 #realtime-user-legend #legend {
     margin: 10px auto auto;
     width: 90%;
