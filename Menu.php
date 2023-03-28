@@ -8,10 +8,7 @@
 
 namespace Piwik\Plugins\WidgetKLAMBT;
 
-use Piwik\Archive;
-use Piwik\DataTable;
-use Piwik\Piwik;
-use Piwik\Segment;
+use Piwik\Menu\MenuTop;
 
 class Menu extends \Piwik\Plugin\Menu
 {
