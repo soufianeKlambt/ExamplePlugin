@@ -17,7 +17,14 @@ class GetInsightsOverview extends \Piwik\Widget\Widget
 {
   public static function configure(WidgetConfig $config)
   {
-    $config->setCategoryId('Insights_WidgetCategory');
-    $config->setName('Insights_OverviewWidgetTitle2');
+    $config->setCategoryId('General_Visitors');
+    $config->setSubcategoryId('DevicesDetection_Software');
+    $config->setOrder(10);
   }
+  public function render()
+  {
+    // it is not needed to check for permissions here again
+    return 'Hello world!';
+  }
+
 }
