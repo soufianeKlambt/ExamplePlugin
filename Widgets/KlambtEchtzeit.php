@@ -18,13 +18,19 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
 
   public static function configure(WidgetConfig $config)
   {
-    $config->setCategoryId('Dashboard_Dashboard');
-    $config->setSubcategoryId('Besuchers');
+    $config->setCategoryId('Echtzeit');
+    $config->setSubcategoryId('Besucher');
   }
   public function render()
   {
-    echo "ddddd";
+    $idSite= $_GET['idSite'];
 
+    return $this->renderTemplate('EchtzeitTemplate', array(
+      'referer' => $this->getReferer($idSite),
+      'pageViews' => $this->getPageViews($idSite),
+      'PGA' => $this->getPagesGreatestActivity($idSite),
+      'devices' => $this->getDevices($idSite),
+    ));
   }
 
   public  function getReferer($idSite){
