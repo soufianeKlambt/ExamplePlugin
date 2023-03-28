@@ -1,5 +1,5 @@
 <div id="realtime-user-legend" style="width:100%;">
-    <div id="count"></div>
+    <div id="count">{{ count.0.total }}</div>
     <div id="legend">
         {% for row in result %}
             <div><span  class="{{ row['devices'] }}"></span>{{ row['devices'] }}</div>
