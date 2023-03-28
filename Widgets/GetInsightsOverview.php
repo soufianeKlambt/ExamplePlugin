@@ -17,9 +17,8 @@ class GetInsightsOverview extends \Piwik\Widget\Widget
 {
   public static function configure(WidgetConfig $config)
   {
-    $config->setCategoryId('General_Visitors');
-    $config->setSubcategoryId('DevicesDetection_Software');
-    $config->setOrder(10);
+    $config->setCategoryId('Campaigns');
+    $config->setSubcategoryId('AdWords');
   }
   public function render()
   {
