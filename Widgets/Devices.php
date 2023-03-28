@@ -42,7 +42,7 @@ class Devices extends Widget {
     }
     return $this->renderTemplate('DevicesTemplate', [
       'result' => $result,
-      'sumResult' => $sum,
+      'sum' => $sum,
     ]);
 
   }
