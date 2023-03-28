@@ -17,9 +17,10 @@ use Piwik\Widget\WidgetConfig;
 class Devices extends Widget {
 
   public static function configure(WidgetConfig $config) {
-    $config->setCategoryId('Besucher');
+    $config->setCategoryId('General_Actions');
     $config->setName('Nutzergeräte (5 Min)');
     $config->setOrder(96);
+    $config->subcategoryId('Actions_SubmenuSitesearch');
   }
 
   /**
