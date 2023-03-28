@@ -13,12 +13,13 @@ use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
 
 
-class GetInsightsOverview extends \Piwik\Widget\Widget
+class KlambtEchtzeit extends \Piwik\Widget\Widget
 {
   public static function configure(WidgetConfig $config)
   {
     $config->setCategoryId('General_Actions');
-    $config->setSubcategoryId('Test');
+    $config->setSubcategoryId('Klambt Echtzeit');
+    $config->setOrder(1);
   }
   public function render()
   {
