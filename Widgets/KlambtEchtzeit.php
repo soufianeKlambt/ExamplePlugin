@@ -20,6 +20,7 @@ class KlambtEchtzeit extends \Piwik\Widget\Widget
   public static function configure(WidgetConfig $config)
   {
     $config->setCategoryId('Echtzeit');
+    $config->setSubcategoryId('Besucher');
   }
   public function render()
   {
