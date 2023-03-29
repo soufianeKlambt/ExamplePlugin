@@ -1,1 +1,4 @@
-$('#widgetWidgetKLAMBTdevices').dashboardWidget('reload', false, true);
+setInterval(function (){
+  $('#widgetWidgetKLAMBTdevices').dashboardWidget('reload', false, true);
+  console.log('refreshed');
+}, 500);
