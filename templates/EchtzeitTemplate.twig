@@ -3,7 +3,7 @@
          id="widgetDashboardembeddedIndexidDashboard1">
         <div>
             <div class="theWidgetContent">
-                <div id="dashboard" piwik-dashboard="" dashboardid="1" class="ng-scope ng-isolate-scope">
+                <div id="dashboard" piwik-dashboard="" dashboardid="1" class=" ng-isolate-scope">
 
                     <div id="dashboardWidgetsArea" class="row">
                         <div class="col s12 m4 ui-sortable">
@@ -16,7 +16,7 @@
                                             </div>
                                             <span>Nutzergeräte (5 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ng-scope">
+                                    <div class="widgetContent ">
                                         {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices.result,'sum':devices.sum } %}
 
                                     </div>
@@ -31,7 +31,7 @@
                                             </div>
                                             <span>Häufigste Verweise (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ng-scope">
+                                    <div class="widgetContent ">
                                         {% include '@WidgetKLAMBT/RefererTemplate.twig' with {'rows':referer } %}
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                             </div>
                                             <span>Seitenaufrufe (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ng-scope">
+                                    <div class="widgetContent ">
                                         <div class="chartjs-size-monitor">
                                             <div class="chartjs-size-monitor-expand">
                                                 <div class=""></div>
@@ -69,7 +69,7 @@
                                             </div>
                                             <span>Seiten mit größter Aktivität (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ng-scope">
+                                    <div class="widgetContent ">
                                         {% include '@WidgetKLAMBT/PGATemplate.twig' with {'rows':PGA.result,'sum':PGA.sum } %}
                                     </div>
                                 </div>
