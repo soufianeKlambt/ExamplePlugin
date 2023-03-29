@@ -34,7 +34,7 @@ class PageViews extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    $sql="SELECT TIMESTAMPDIFF(Minute,UTC_TIMESTAMP(),matomo_log_link_visit_action.server_time) as timeinterval, count(matomo_log_action.name) as hits FROM matomo_log_link_visit_action INNER JOIN matomo_log_action ON matomo_log_link_visit_action.idaction_url = matomo_log_action.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE)) AND matomo_log_link_visit_action.idsite = ".$idSite." GROUP BY timeinterval DESC LIMIT 0,31";
+    $sql="SELECT TIMESTAMPDIFF(Minute,UTC_TIMESTAMP(),matomo_log_link_visit_action.server_time) as timeinterval, count(matomo_log_action.name) as hits FROM matomo_log_link_visit_action INNER JOIN matomo_log_action ON matomo_log_link_visit_action.idaction_url = matomo_log_action.idaction WHERE matomo_log_link_visit_action.server_time >= (DATE_SUB(UTC_TIMESTAMP(),INTERVAL 30 MINUTE)) AND matomo_log_link_visit_action.idsite = ".$idSite." GROUP BY timeinterval DESC LIMIT 0,30";
     $cache=new WKCache();
     $result= $cache->getCacheData('PageView-'.$idSite,$sql);
     $xValues= array();
