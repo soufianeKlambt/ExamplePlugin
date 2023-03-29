@@ -8,7 +8,7 @@ class WKCache {
    * @var Lazy
    */
   private $cache;
-  private $expire = 500;
+  private int $expire = 300;
   public function __construct()
   {
    $this->cache = Cache::getLazyCache();

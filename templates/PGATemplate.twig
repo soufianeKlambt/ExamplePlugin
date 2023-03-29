@@ -1,23 +1,29 @@
-<table cellspacing="0" class="dataTable">
-    <thead>
-    <tr>
-        <th class="sortable label first">#</th>
-        <th class="sortable"><center>Aktive Seite</center></th>
-        <th class="sortable">
-            <div id="thDIV">Aktive Nutzer</div>
-        </th>
-        <th class="sortable"></th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for key,row in rows %}
-        <tr>
-            <td>{{ key+1 }}</td>
-            <td class="label first" style="max-width: 60%"><a style="font-size: 11px;" href="{{ row['full_url'] }}" target="_blank">{{ row['relative_url'] }}</a></td>
-            <td class="column">{{ row['visits'] }}</td>
-            <td>{{ ((row['visits'] / sum) * 100) |round }}%</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
+<div class="dataTableWrapper">
+    <div class="dataTableScroller">
+        <table cellspacing="0" class="dataTable">
+            <thead>
+            <tr>
+                <th class="sortable label first">#</th>
+                <th class="sortable">
+                    <center>Aktive Seite</center>
+                </th>
+                <th class="sortable">
+                    <div id="thDIV">Aktive Nutzer</div>
+                </th>
+                <th class="sortable"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key,row in rows %}
+                <tr>
+                    <td>{{ key+1 }}</td>
+                    <td class="label first"><a style="font-size: 11px;" href="{{ row['full_url'] }}"
+                                               target="_blank">{{ row['relative_url'] }}</a></td>
+                    <td class="column">{{ row['visits'] }}</td>
+                    <td>{{ ((row['visits'] / sum) * 100) |round }}%</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
