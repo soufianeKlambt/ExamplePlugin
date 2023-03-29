@@ -45,11 +45,11 @@
     font-size: 10px;
     display: table;
 }
-#realtime-user-legend #progress div:first-child {
+#realtime-user-legend #progress div:first-child,#realtime-user-legend #reflect div:first-child {
     border-radius: 5px 0 0 5px;
 }
 
-#realtime-user-legend #progress div:last-child {
+#realtime-user-legend #progress div:last-child,#realtime-user-legend #reflect div:last-child {
     border-radius: 0 5px 5px 0;
 }
 
