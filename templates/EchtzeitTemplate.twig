@@ -7,8 +7,7 @@
 
                     <div id="dashboardWidgetsArea" class="row">
                         <div class="col s12 m4 ui-sortable">
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTdevices">
-                                <div class="widget" id="widgetWidgetKLAMBTdevices">
+                            <div class="sortable" widgetid="widgetWidgetKLAMBTdevices"><div class="widget" id="widgetWidgetKLAMBTdevices">
                                     <div class="widgetTop">
                                         <div class="buttons">
                                             <div class="button" id="close">
@@ -24,18 +23,31 @@
                                                 <span class="icon-reload" title="Aktualisieren"></span>
                                             </div>
                                         </div>
-                                        <h3 class="widgetName">
-                                            <div class="widgetNameOffScreen">
+                                        <h3 class="widgetName">                <div class="widgetNameOffScreen">
                                                 Widget
                                             </div>
                                             <span>Nutzergeräte (5 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ng-scope">
-                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices.result,'sum':devices.sum } %}
+                                    <div class="widgetContent ng-scope loading"><div id="realtime-user-legend" style="width:100%;">
+                                            <div id="count">
+                                                <span>In den letzen 5 Minuten</span>
+                                                <div>7</div>
+                                                <span>auf Website aktive Nutzer</span>
+                                            </div>
+                                            <br>
+                                            <div id="legend">
+                                                <div><span class="Mobilgerät"></span>Mobilgerät</div>
+                                            </div>
 
+                                            <div id="progress">
+                                                <div class="Mobilgerät" style="width:100%;">100%</div>
+                                            </div>
+                                            <div id="reflect">
+                                                <div class="Mobilgerät" style="width:100%;">100%</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div></div>
                             <div class="sortable" widgetid="widgetWidgetKLAMBTreferer">
                                 <div class="widget" id="widgetWidgetKLAMBTreferer">
                                     <div class="widgetTop">
