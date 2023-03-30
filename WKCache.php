@@ -17,7 +17,7 @@ class WKCache {
   public function getCacheData($name,$sql)
   {
     $result = $this->cache->fetch($name);
-    if (!$result) {
+    if (TRUE) {
       $db = \Piwik\Db::get();
       $result = $db->fetchAll($sql);
       $this->cache->save($name,$result, $this->expire);
