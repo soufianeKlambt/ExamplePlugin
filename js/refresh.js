@@ -1,4 +1,4 @@
 setInterval(function (){
   console.log('refreshed');
-  $('#widgetWidgetKLAMBTklambtEchtzeit').bind('reload', false, true);
-}, 5800);
+  $('[widgetid=widgetWidgetKLAMBTdevices]').dashboardWidget('reload', false, true);
+}, 1800);
