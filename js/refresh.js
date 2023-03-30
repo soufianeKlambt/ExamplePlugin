@@ -1,4 +1,4 @@
 setInterval(function (){
   console.log('refreshed');
-  $('[widgetid=widgetWidgetKLAMBTdevices]').bind('reload', false, true);
+  $('[widgetid=widgetWidgetKLAMBTdevices]').dashboardWidget('reload', false, true);
 }, 1800);
