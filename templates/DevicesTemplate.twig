@@ -24,7 +24,6 @@
 </div>
 <script>
     setTimeout(function (){
-        console.log('refreshed');
-        $('[widgetid=widgetWidgetKLAMBTdevices]').dashboardWidget('reload', false, true);
+        $('#widgetWidgetKLAMBTdevices').liveWidget('start');
     }, 1800);
 </script>
