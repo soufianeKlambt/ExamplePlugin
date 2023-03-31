@@ -1,496 +1,947 @@
-<div id="dashboardWidgetsArea" class="row"><div class="col s12 m4 ui-sortable"> <div class="sortable" widgetid="widgetWidgetKLAMBTdevices"><div class="widget" id="widgetWidgetKLAMBTdevices">
-                <div class="widgetTop">
-                    <div class="buttons">
-                        <div class="button" id="close">
-                            <span class="icon-close" title="Schließen"></span>
-                        </div>
-                        <div class="button" id="maximise">
-                            <span class="icon-fullscreen" title="Vergrößern"></span>
-                        </div>
-                        <div class="button" id="minimise">
-                            <span class="icon-minimise" title="Minimieren"></span>
-                        </div>
-                        <div class="button" id="refresh">
-                            <span class="icon-reload" title="Aktualisieren"></span>
-                        </div>
-                    </div>
-                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
-                            Widget
-                        </div>
-                        <span>Nutzergeräte (5 Min)</span></h3>
+<body ng-app="app" class="" style="display: block;"><div piwik-feedback-question="" show-question-banner="0" class="ng-isolate-scope" data-v-app=""><div><!----><div class="ratefeature"><div style="display: none;"><div class="ui-confirm ratefeatureDialog"><h2>Was sind Ihre größten Probleme oder Pain Points (Schmerzpunkte) mit Matomo und warum?</h2><p>Hier ist Ihre Chance, darum zu bitten! Bitte beschreiben Sie so detailliert wie möglich. <br> Ihr Feedback wird uns dabei helfen, Matomo zu verbessern. <i class="icon-heart red-text"></i></p><br><div class="messageContainer"><!----><textarea id="message" class=""></textarea></div><br><p>Ihre Nachricht und ihre E-mail-Adresse werden an uns durch Abschicken dieses Formulars gesendet. Die Informationen werden nur genutzt, um unsere Produkte und Dienstleistungen zu verbessern. Ihre Daten werden von uns, unserem Hostinganbieter und unserem Supportticket-Anbieter verarbeitet. Für weitere Informationen, werfen Sie einen Blick in die <a href="https://matomo.org/privacy-policy/" rel="nofollow">Matomos Datenschutzerklärung</a>.</p><input type="button" role="validation" value="Feedback absenden"><input type="button" role="cancel" value="Abbrechen"></div></div><div style="display: none;"><div class="ui-confirm ratefeatureDialog"><h2>Danke für Ihre Unterstützung bei der Verbesserung von Matomo!</h2><p>Wir wissen Ihre Feedback zu schätzen! <i class="icon-heart red-text"></i> Wir werden Sie kontaktieren, falls wir mehr Informationen bezüglich Ihres Feedbacks brauchen.</p><input type="button" role="cancel" value="Schließen"></div></div></div></div></div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $('body').css("display", "none");
+        if (self == top) {
+            var theBody = document.getElementsByTagName('body')[0];
+            theBody.style.display = 'block';
+        } else { top.location = self.location; }
+    });
+</script>
+<noscript>
+    <div id="javascriptDisabled">JavaScript muss aktiviert sein, um die Standardansicht von Matomo zu benutzen.<br>Es scheint jedoch so, als wäre JavaScript bei Ihnen deaktiviert bzw. würde nicht von Ihrem Browser unterstützt.<br>Um die Standardansicht zu benutzen, aktivieren Sie JavaScript in Ihren Browseroptionen und <a href="">versuchen Sie es erneut</a>.<br></div>
+</noscript>
+
+<div id="root">
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#main" tabindex="1" class="accessibility-skip-to-content">Zum Inhalt wechseln</a>
+            <span id="logo" class="logo brand-logo ">
+        <a href="index.php" tabindex="-1" title="Betrieben mit Matomo">
+                <img src="https://analytics.klambt.services/misc/user/logo-header.png?matomo" alt="Betrieben mit Matomo">
+                </a>
+    </span>
+
+            <ul class="right hide-on-med-and-down">
+
+
+
+
+                <li role="menuitem" class="active"><a title="Zeige Webanalytik Berichte für Idee für mich." id="topmenu-corehome" href="index.php?module=CoreHome&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Dashboard
+                    </a></li><li role="menuitem" class=""><a title="Vergleichen Sie Web-Analyse-Statistiken für alle Ihre Webseiten." id="topmenu-multisites" href="index.php?module=MultiSites&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Alle Webseiten
+                    </a></li><li role="menuitem" class=""><a title="" id="topmenu-tagmanager" href="index.php?module=TagManager&amp;action=manageContainers&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Tag Manager
+                    </a></li><li role="menuitem" class=""><a title="Administration" id="topmenu-coreadminhome" href="index.php?module=CoreAdminHome&amp;action=home&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3"><span class="navbar-icon icon-settings" aria-label="Administration"></span></a></li><li role="menuitem" class=""><a title="Erfahren Sie, was es Neues in Matomo gibt" onclick="Piwik_Popover.createPopupAndLoadUrl('module=CoreAdminHome&amp;action=whatIsNew', 'Erfahren Sie, was es Neues in Matomo gibt','what-is-new-popup')" href="" rel="noreferrer noopener" target="_self" tabindex="3"><span class="navbar-icon icon-notifications_on" aria-label="Was ist neu"></span></a></li><li role="menuitem" class=""><a title="Hilfe" id="topmenu-feedback" href="index.php?module=Feedback&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3"><span class="navbar-icon icon-info2" aria-label="Hilfe"></span></a></li><li role="menuitem" class=""><a title="Abmelden" id="topmenu-login" href="index.php?module=Login&amp;action=logout&amp;period=day&amp;date=yesterday" target="_self" tabindex="3"><span class="navbar-icon icon-sign-out" aria-label="Abmelden"></span></a></li></ul>
+            <ul class="sidenav hide-on-large-only right-aligned" id="mobile-top-menu">
+                <li role="menuitem" class="active">                    <a title="Zeige Webanalytik Berichte für Idee für mich." id="topmenu-corehome" href="index.php?module=CoreHome&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Dashboard
+                    </a>
+                </li>
+                <li role="menuitem" class="">                    <a title="Vergleichen Sie Web-Analyse-Statistiken für alle Ihre Webseiten." id="topmenu-multisites" href="index.php?module=MultiSites&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Alle Webseiten
+                    </a>
+                </li>
+                <li role="menuitem" class="">                    <a title="" id="topmenu-tagmanager" href="index.php?module=TagManager&amp;action=manageContainers&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Tag Manager
+                    </a>
+                </li>
+                <li role="menuitem" class="">                    <a title="Administration" id="topmenu-coreadminhome" href="index.php?module=CoreAdminHome&amp;action=home&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Administration
+                    </a>
+                </li>
+                <li role="menuitem" class="">                    <a title="Erfahren Sie, was es Neues in Matomo gibt" onclick="Piwik_Popover.createPopupAndLoadUrl('module=CoreAdminHome&amp;action=whatIsNew', 'Erfahren Sie, was es Neues in Matomo gibt','what-is-new-popup')" href="" rel="noreferrer noopener" target="_self" tabindex="3">                    Was ist neu
+                    </a>
+                </li>
+                <li role="menuitem" class="">                    <a title="Hilfe" id="topmenu-feedback" href="index.php?module=Feedback&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Hilfe
+                    </a>
+                </li>
+                <li role="menuitem" class="">                    <a title="Abmelden" id="topmenu-login" href="index.php?module=Login&amp;action=logout&amp;period=day&amp;date=yesterday" target="_self" tabindex="3">                    Abmelden
+                    </a>
+                </li>
+            </ul>
+            <a href="javascript:;" data-target="mobile-left-menu" class="activateLeftMenu hide-on-large-only button-collapse sidenav-trigger" style="display: inline;"><span class="icon-menu-hamburger"></span></a>
+            <a href="javascript:;" data-target="mobile-top-menu" class="activateTopMenu hide-on-large-only button-collapse sidenav-trigger"><span class="icon-more-verti"></span></a>
+        </div>
+    </nav>
+    <div class="top_controls" style="visibility: visible; opacity: 1;">
+        <div piwik-quick-access="" class="piwikTopControl borderedControl ng-isolate-scope quick-access piwikSelector" data-v-app=""><div class="quickAccessInside"><span class="icon-search"></span><input class="s" type="text" tabindex="2" title="Suche nach 'Menüeinträge, Segmente und Webseiten'. Benutzen Sie die Pfeiltasten um durch die Ergebnisse zu navigieren. Tastenkürzel: Drücken Sie 'f' um zu suchen." placeholder="Suchen"><div class="dropdown" style="display: none;"><ul><li class="no-result">Keine Ergebnisse</li></ul><ul class="quickAccessMatomoSearch"><li class="quick-access-category websiteCategory" style="display: none;">Webseiten</li><li class="no-result" style="display: none;">Lade Webseiten</li></ul><ul><li class="quick-access-category helpCategory">Hilfequellen</li><li class="quick-access-help"><a href="https://matomo.org?mtm_campaign=App_Help&amp;mtm_source=Matomo_App&amp;mtm_keyword=QuickSearch&amp;s=" target="_blank">Suche '' auf Matomo.org</a></li></ul></div></div></div>
+        <div class="top_bar_sites_selector piwikTopControl">
+            <div piwik-siteselector="" show-selected-site="true" show-all-sites-item="true" class="sites_autocomplete ng-isolate-scope" data-v-app=""><div class="siteSelector piwikSelector borderedControl"><!----><a href="javascript:void(0)" class="title" tabindex="4" title="Wählen Sie eine Webseite, aktuell gewählte Webseite: Idee für mich"><span class="icon icon-arrow-bottom collapsed"></span><span><span>Idee für mich</span><!----></span></a><div class="dropdown" style="display: none;"><div class="custom_select_search" style=""><input type="text" tabindex="4" class="websiteSearch inp browser-default" placeholder="Suchen"><img title="Clear" class="reset" src="plugins/CoreHome/images/reset_search.png" style="display: none;"></div><!----><div class="custom_select_container"><ul class="custom_select_ul_list"><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=10&amp;period=day&amp;date=yesterday#?idSite=10&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="die2"><span class="autocompleteMatched"></span>die2</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=11&amp;period=day&amp;date=yesterday#?idSite=11&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="funkuhr"><span class="autocompleteMatched"></span>funkuhr</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=8&amp;period=day&amp;date=yesterday#?idSite=8&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="FürSie"><span class="autocompleteMatched"></span>FürSie</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=5&amp;period=day&amp;date=yesterday#?idSite=5&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="GRAZIA"><span class="autocompleteMatched"></span>GRAZIA</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="Idee für mich"><span class="autocompleteMatched"></span>Idee für mich</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=3&amp;period=day&amp;date=yesterday#?idSite=3&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="Jolie"><span class="autocompleteMatched"></span>Jolie</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=9&amp;period=day&amp;date=yesterday#?idSite=9&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="KLAMBT.de"><span class="autocompleteMatched"></span>KLAMBT.de</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=2&amp;period=day&amp;date=yesterday#?idSite=2&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="Mädchen"><span class="autocompleteMatched"></span>Mädchen</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=4&amp;period=day&amp;date=yesterday#?idSite=4&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="OK!"><span class="autocompleteMatched"></span>OK!</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=7&amp;period=day&amp;date=yesterday#?idSite=7&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="Petra"><span class="autocompleteMatched"></span>Petra</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=12&amp;period=day&amp;date=yesterday#?idSite=12&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="SuperTV"><span class="autocompleteMatched"></span>SuperTV</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=13&amp;period=day&amp;date=yesterday#?idSite=13&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="tv4wochen"><span class="autocompleteMatched"></span>tv4wochen</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=14&amp;period=day&amp;date=yesterday#?idSite=14&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="tv4x7"><span class="autocompleteMatched"></span>tv4x7</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=15&amp;period=day&amp;date=yesterday#?idSite=15&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="tvgenie"><span class="autocompleteMatched"></span>tvgenie</a></li><li><a tabindex="4" href="?module=CoreHome&amp;action=index&amp;idSite=6&amp;period=day&amp;date=yesterday#?idSite=6&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" title="Vital"><span class="autocompleteMatched"></span>Vital</a></li></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all
+                 siteSelect" style="display: none;"><li class="ui-menu-item"><a class="ui-corner-all" tabindex="-1">Keine Webseiten gefunden für </a></li></ul></div><div><div class="custom_select_all"><a tabindex="4" href="?module=MultiSites&amp;action=index&amp;idSite=1&amp;period=day&amp;date=yesterday">Alle Webseiten</a></div></div></div></div></div>
+        </div>
+        <div id="periodString" piwik-period-selector="" periods="[&quot;day&quot;,&quot;week&quot;,&quot;month&quot;,&quot;year&quot;,&quot;range&quot;]" class="borderedControl piwikTopControl ng-isolate-scope" data-v-app=""><div class="periodSelector piwikSelector"><a id="date" class="title" tabindex="-1" title="Wählen Sie ein Datum, aktuell gewähltes Datum ist: 2023-03-30"><span class="icon icon-calendar"></span> 2023-03-30</a><div id="periodMore" class="dropdown"><div class="flex"><div><div class="period-range" style="display: none;"><div id="calendarRangeFrom"><h6>Von <input type="text" id="inputCalendarFrom" name="inputCalendarFrom" class="browser-default"></h6><div id="calendarFrom" class="hasDatepicker"><div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: block;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="" href=""><span class="ui-icon ui-icon-circle-triangle-w"></span></a><a class="ui-datepicker-next ui-corner-all ui-state-disabled" title="" href=""><span class="ui-icon ui-icon-circle-triangle-e"></span></a><div class="ui-datepicker-title"><select class="ui-datepicker-month" aria-label="Select month" data-handler="selectMonth" data-event="change"><option value="0">Jan</option><option value="1">Feb</option><option value="2" selected="selected">Mär</option></select><select class="ui-datepicker-year" aria-label="Select year" data-handler="selectYear" data-event="change"><option value="2022">2022</option><option value="2023" selected="selected">2023</option></select></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col"><span title="Montag">Mo.</span></th><th scope="col"><span title="Dienstag">Di.</span></th><th scope="col"><span title="Mittwoch">Mi.</span></th><th scope="col"><span title="Donnerstag">Do.</span></th><th scope="col"><span title="Freitag">Fr.</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Samstag">Sa.</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Sonntag">So.</span></th></tr></thead><tbody><tr><td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="1">1</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="2">2</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="3">3</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="4">4</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="5">5</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="6">6</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="7">7</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="8">8</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="9">9</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="10">10</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="11">11</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="12">12</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="13">13</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="14">14</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="15">15</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="16">16</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="17">17</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="18">18</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="19">19</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="20">20</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="21">21</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="22">22</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="23">23</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="24">24</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="25">25</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="26">26</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="27">27</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="28">28</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="29">29</a></td><td class="ui-datepicker-current-period" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="30">30</a></td><td class="ui-datepicker-days-cell-over  ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default ui-state-highlight" href="#" aria-current="true" data-date="31">31</a></td><td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div></div></div><div id="calendarRangeTo"><h6>Bis <input type="text" id="inputCalendarTo" name="inputCalendarTo" class="browser-default"></h6><div id="calendarTo" class="hasDatepicker"><div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: block;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="" href=""><span class="ui-icon ui-icon-circle-triangle-w"></span></a><a class="ui-datepicker-next ui-corner-all ui-state-disabled" title="" href=""><span class="ui-icon ui-icon-circle-triangle-e"></span></a><div class="ui-datepicker-title"><select class="ui-datepicker-month" aria-label="Select month" data-handler="selectMonth" data-event="change"><option value="0">Jan</option><option value="1">Feb</option><option value="2" selected="selected">Mär</option></select><select class="ui-datepicker-year" aria-label="Select year" data-handler="selectYear" data-event="change"><option value="2022">2022</option><option value="2023" selected="selected">2023</option></select></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col"><span title="Montag">Mo.</span></th><th scope="col"><span title="Dienstag">Di.</span></th><th scope="col"><span title="Mittwoch">Mi.</span></th><th scope="col"><span title="Donnerstag">Do.</span></th><th scope="col"><span title="Freitag">Fr.</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Samstag">Sa.</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Sonntag">So.</span></th></tr></thead><tbody><tr><td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="1">1</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="2">2</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="3">3</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="4">4</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="5">5</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="6">6</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="7">7</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="8">8</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="9">9</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="10">10</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="11">11</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="12">12</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="13">13</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="14">14</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="15">15</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="16">16</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="17">17</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="18">18</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="19">19</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="20">20</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="21">21</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="22">22</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="23">23</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="24">24</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="25">25</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="26">26</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="27">27</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="28">28</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="29">29</a></td><td class="ui-datepicker-current-period" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="30">30</a></td><td class="ui-datepicker-days-cell-over  ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default ui-state-highlight" href="#" aria-current="true" data-date="31">31</a></td><td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div></div></div></div><div class="period-date"><div id="datepicker" class="hasDatepicker"><div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: block;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="" href=""><span class="ui-icon ui-icon-circle-triangle-w"></span></a><a class="ui-datepicker-next ui-corner-all ui-state-disabled" title="" href=""><span class="ui-icon ui-icon-circle-triangle-e"></span></a><div class="ui-datepicker-title"><select class="ui-datepicker-month" aria-label="Select month" data-handler="selectMonth" data-event="change"><option value="0">Jan</option><option value="1">Feb</option><option value="2" selected="selected">Mär</option></select><select class="ui-datepicker-year" aria-label="Select year" data-handler="selectYear" data-event="change"><option value="2022">2022</option><option value="2023" selected="selected">2023</option></select></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col"><span title="Montag">Mo.</span></th><th scope="col"><span title="Dienstag">Di.</span></th><th scope="col"><span title="Mittwoch">Mi.</span></th><th scope="col"><span title="Donnerstag">Do.</span></th><th scope="col"><span title="Freitag">Fr.</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Samstag">Sa.</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Sonntag">So.</span></th></tr></thead><tbody><tr><td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="1">1</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="2">2</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="3">3</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="4">4</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="5">5</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="6">6</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="7">7</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="8">8</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="9">9</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="10">10</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="11">11</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="12">12</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="13">13</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="14">14</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="15">15</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="16">16</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="17">17</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="18">18</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="19">19</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="20">20</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="21">21</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="22">22</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="23">23</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="24">24</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="25">25</a></td><td class="ui-datepicker-week-end" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="26">26</a></td></tr><tr><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="27">27</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="28">28</a></td><td class="" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="29">29</a></td><td class="ui-datepicker-current-period" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default" href="#" aria-current="false" data-date="30">30</a></td><td class="ui-datepicker-days-cell-over  ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="2" data-year="2023"><a class="ui-state-default ui-state-highlight" href="#" aria-current="true" data-date="31">31</a></td><td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div></div></div></div><div class="period-type"><h6>Zeitraum</h6><div id="otherPeriods"><p><label class="selected-period-label" title=""><input type="radio" name="period" id="period_id_day"><span>Tag</span></label></p><p><label class="" title="Doppelklick, um diesen Zeitraum zu wählen."><input type="radio" name="period" id="period_id_week"><span>Woche</span></label></p><p><label class="" title="Doppelklick, um diesen Zeitraum zu wählen."><input type="radio" name="period" id="period_id_month"><span>Monat</span></label></p><p><label class="" title="Doppelklick, um diesen Zeitraum zu wählen."><input type="radio" name="period" id="period_id_year"><span>Jahr</span></label></p><p><label class="" title="Doppelklick, um diesen Zeitraum zu wählen."><input type="radio" name="period" id="period_id_range"><span>Zeitspanne</span></label></p></div></div></div><div class="compare-checkbox"><label><input id="comparePeriodTo" type="checkbox"><span>Vergleichen mit:</span></label><div id="comparePeriodToDropdown"><div class="form-group row matomo-form-field" style="visibility: hidden;"><!----><div class="col s12 input-field"><!----><div class="matomo-field-select"><div class="select-wrapper disabled"><input class="select-dropdown dropdown-trigger" type="text" readonly="true" data-target="select-options-b25f26e9-879d-b210-1cec-842a8489809c" disabled=""><svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg><select class="ungrouped" name="comparePeriodToDropdown" disabled="" tabindex="-1"><option value="string:custom">Benutzerdefiniert</option><option value="string:previousPeriod">Vorheriger&nbsp;Zeitraum</option><option value="string:previousYear">vorheriges&nbsp;Jahr</option></select><ul id="select-options-b25f26e9-879d-b210-1cec-842a8489809c" class="dropdown-content select-dropdown"><li id="select-options-b25f26e9-879d-b210-1cec-842a8489809c0"><span>Benutzerdefiniert</span></li><li id="select-options-b25f26e9-879d-b210-1cec-842a8489809c1" class="selected"><span>Vorheriger&nbsp;Zeitraum</span></li><li id="select-options-b25f26e9-879d-b210-1cec-842a8489809c2"><span>vorheriges&nbsp;Jahr</span></li></ul></div><label for="comparePeriodToDropdown"></label></div></div><div class="col s12"><!----></div></div></div></div><!----><div class="apply-button-container"><input type="submit" id="calendarApply" class="btn" value="Anwenden"></div><!----></div></div></div>
+        <div class="segmentEditorPanel piwikTopControl borderedControl piwikSelector" data-props="{&quot;availableSegments&quot;:[{&quot;idsegment&quot;:&quot;18&quot;,&quot;name&quot;:&quot;Desktop&quot;,&quot;definition&quot;:&quot;deviceType==desktop&quot;,&quot;hash&quot;:&quot;d76d877ff534351de2c67df034f67070&quot;,&quot;login&quot;:&quot;andrej.scherer@klambt.de&quot;,&quot;enable_all_users&quot;:&quot;1&quot;,&quot;enable_only_idsite&quot;:&quot;1&quot;,&quot;auto_archive&quot;:&quot;1&quot;,&quot;ts_created&quot;:&quot;2023-02-16 14:08:35&quot;,&quot;ts_last_edit&quot;:null,&quot;deleted&quot;:&quot;0&quot;}],&quot;segmentTranslations&quot;:{&quot;General_OperationEquals&quot;:&quot;Entspricht&quot;,&quot;General_OperationNotEquals&quot;:&quot;Entspricht nicht&quot;,&quot;General_OperationAtMost&quot;:&quot;Maximal&quot;,&quot;General_OperationAtLeast&quot;:&quot;Mindestens&quot;,&quot;General_OperationLessThan&quot;:&quot;Weniger als&quot;,&quot;General_OperationGreaterThan&quot;:&quot;Mehr als&quot;,&quot;General_OperationContains&quot;:&quot;Enth\u00e4lt&quot;,&quot;General_OperationDoesNotContain&quot;:&quot;Enth\u00e4lt nicht&quot;,&quot;General_OperationStartsWith&quot;:&quot;Startet mit&quot;,&quot;General_OperationEndsWith&quot;:&quot;Endet mit&quot;,&quot;General_OperationIs&quot;:&quot;Entspricht&quot;,&quot;General_OperationIsNot&quot;:&quot;Entspricht nicht&quot;,&quot;SegmentEditor_DefaultAllVisits&quot;:&quot;Alle Besuche&quot;,&quot;General_DefaultAppended&quot;:&quot;(Standard)&quot;,&quot;SegmentEditor_AddNewSegment&quot;:&quot;Neues Segment hinzuf\u00fcgen&quot;,&quot;General_Edit&quot;:&quot;\u00c4ndern&quot;,&quot;General_Search&quot;:&quot;Suchen&quot;,&quot;General_SearchNoResults&quot;:&quot;Keine Ergebnisse&quot;},&quot;isSegmentNotAppliedBecauseBrowserArchivingIsDisabled&quot;:0,&quot;selectedSegment&quot;:&quot;&quot;,&quot;authorizedToCreateSegments&quot;:true}" data-params="[]" data-inited="1">
+
+            <div class="segmentListContainer">
+                <div class="ui-confirm" id="segment-delete-confirm">
+                    <h2>Möchten Sie dieses Segment wirklich löschen?</h2>
+                    <input role="yes" type="button" value="Ja">
+                    <input role="no" type="button" value="Nein">
                 </div>
-                <div class="widgetContent ng-scope"><div id="realtime-user-legend" style="width:100%;">
-                        <div id="count">
-                            <span>In den letzen 5 Minuten</span>
-                            <div>6</div>
-                            <span>auf Website aktive Nutzer</span>
-                        </div>
+                <div class="ui-confirm segment-definition-change-confirm" data-segment-processed-on-request="1" data-hide-message="">
+                    <h2>
+        <span class="process-on-request">
+            Sie sind dabei die Definition des Segments zu ändern. Die Berichte für dieses neue Segment werden berechnet, sobald Sie das nächste mal angefragt werden. Es könnte einige Minuten dauern bis die Berichte erscheinen. Möchten Sie trotzdem fortfahren?
+        </span>
+                        <span class="no-process-on-request">
+            Sie sind dabei die Definition des Segments zu ändern. Die Berichte für dieses neue Segment stehen erst zur Verfügung, sobald sie berechnet wurden. Es könnte einige Stunden dauern bis Daten für das Segment angezeigt werden. Möchten Sie trotzdem fortfahren?
+        </span>
+                    </h2>
+                    <p class="description">
+        <span>
+            <label>
+                <input type="checkbox" id="hideSegmentMessage" name="hideSegmentMessage">
+                <span>Diese Meldung nicht mehr anzeigen</span>
+            </label>
+        </span>
+                    </p>
+                    <input role="yes" type="button" value="Ja">
+                    <input role="no" type="button" value="Nein">
+                </div>
+                <div class="ui-confirm pleaseChangeBrowserAchivingDisabledSetting">
+                    <h2>Segment '' nicht angewendet</h2>
+                    <p class="description">
+                        Sie haben Daten für das benutzerdefinierte Segment '' angefordert, diese Matomo Konfiguration verhindert aktuell die Echtzeitverarbeitung der Berichte aus Performancegründen.
                         <br>
-                        <div id="legend">
-                            <div><span class="Tablet"></span>Tablet</div>
-                            <div><span class="Mobilgerät"></span>Mobilgerät</div>
-                        </div>
+                        Ihre segmentierten Analytik-Berichte stehen später zur Verfügung. Wir entschuldigen uns für die Unannehmlichkeit.
+                        <br> <br> Alternativ können Sie die Einstellung in der Konfigurationsdatei (browser_archiving_disabled_enforce) ändern, oder ändern Sie dieses Segment und wählen 'Segmentierte Berichte werden im Voraus verarbeitet (schneller, benötigt archive.php Cron)'.
+                    </p>
 
-                        <div id="progress">
-                            <div class="Tablet" style="width:50%;">50%</div>
-                            <div class="Mobilgerät" style="width:50%;">50%</div>
-                        </div>
-                        <div id="reflect">
-                            <div class="Tablet" style="width:50%;">50%</div>
-                            <div class="Mobilgerät" style="width:50%;">50%</div>
-                        </div>
-                    </div>
+                    <input role="yes" type="button" value="OK">
                 </div>
-            </div></div><div class="sortable" widgetid="widgetWidgetKLAMBTreferer"><div class="widget" id="widgetWidgetKLAMBTreferer">
-                <div class="widgetTop">
-                    <div class="buttons">
-                        <div class="button" id="close">
-                            <span class="icon-close" title="Schließen"></span>
+                <div class="segmentationContainer listHtml" title="Segment auswählen. Aktuell ausgewähltes Segment: Alle Besuche">
+                    <a class="title" tabindex="4"><span class="icon icon-segment"></span><span class="segmentationTitle">Alle Besuche</span></a>
+                    <div class="dropdown dropdown-body">
+                        <div class="segmentFilterContainer">
+                            <input class="segmentFilter browser-default" type="text" tabindex="4" value="Suchen">
+                            <span></span>
                         </div>
-                        <div class="button" id="maximise">
-                            <span class="icon-fullscreen" title="Vergrößern"></span>
-                        </div>
-                        <div class="button" id="minimise">
-                            <span class="icon-minimise" title="Minimieren"></span>
-                        </div>
-                        <div class="button" id="refresh">
-                            <span class="icon-reload" title="Aktualisieren"></span>
-                        </div>
-                    </div>
-                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
-                            Widget
-                        </div>
-                        <span>Häufigste Verweise (30 Min)</span></h3>
-                </div>
-                <div class="widgetContent ng-scope"><table cellspacing="0" class="dataTable">
-                        <thead>
-                        <tr>
-                            <th class="sortable label first">#</th>
-                            <th class="sortable"><center>Quelle</center></th>
-                            <th class="sortable">
-                                <div id="thDIV">Aktive Nutzer</div>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="label first">Google</td>
-                            <td>29</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="label first">com.pinterest</td>
-                            <td>9</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="label first">DuckDuckGo</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td class="label first">Bing</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td class="label first">Pinterest</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td class="label first">status.klambt.services</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td class="label first">redirect_service</td>
-                            <td>1</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <ul class="submenu">
+                            <li>Wählen Sie ein Segment an Besuchen aus:
+                                <div class="segmentList">
+                                    <ul>
+                                        <li data-idsegment="" class="segmentSelected comparedSegment" data-definition=""><span class="segname" tabindex="4">Alle Besuche (Standard)</span><span class="compareSegment allVisitsCompareSegment" title="Vergleiche dieses Segment mit ausgewähltem Segment und Zeitraum."></span></li><span class="segmentsSharedWithMeBySuperUser"><hr> Mit dir geteilt:<br><br><li data-idsegment="18" data-definition="deviceType==desktop" title="Desktop (Erstellt von andrej.scherer@klambt.de)"><span class="segname" tabindex="4">Desktop</span><span class="editSegment" title="ändern"></span><span class="compareSegment" title="Vergleiche dieses Segment mit ausgewähltem Segment und Zeitraum."></span></li></span></ul>
+                                </div>
+                            </li>
+                        </ul>
 
-                </div>
-            </div></div></div><div class="col s12 m8 ui-sortable"> <div class="sortable" widgetid="widgetWidgetKLAMBTpageViews"><div class="widget" id="widgetWidgetKLAMBTpageViews">
-                <div class="widgetTop">
-                    <div class="buttons">
-                        <div class="button" id="close">
-                            <span class="icon-close" title="Schließen"></span>
-                        </div>
-                        <div class="button" id="maximise">
-                            <span class="icon-fullscreen" title="Vergrößern"></span>
-                        </div>
-                        <div class="button" id="minimise">
-                            <span class="icon-minimise" title="Minimieren"></span>
-                        </div>
-                        <div class="button" id="refresh">
-                            <span class="icon-reload" title="Aktualisieren"></span>
-                        </div>
+                        <a tabindex="4" class="add_new_segment btn">Neues Segment hinzufügen</a>
                     </div>
-                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
-                            Widget
-                        </div>
-                        <span>Seitenaufrufe (30 Min)</span></h3>
-                </div>
-                <div class="widgetContent ng-scope"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div><canvas id="myChart" style="width: 100%; display: block;" width="1630" height="814" class="chartjs-render-monitor"></canvas>
-                    <script>
-                        const xValues = [
-                            0+' Min.',
-                            -1+' Min.',
-                            -5+' Min.',
-                            -6+' Min.',
-                            -7+' Min.',
-                            -9+' Min.',
-                            -10+' Min.',
-                            -11+' Min.',
-                            -12+' Min.',
-                            -13+' Min.',
-                            -14+' Min.',
-                            -15+' Min.',
-                            -16+' Min.',
-                            -17+' Min.',
-                            -18+' Min.',
-                            -19+' Min.',
-                            -21+' Min.',
-                            -22+' Min.',
-                            -23+' Min.',
-                            -24+' Min.',
-                            -25+' Min.',
-                            -26+' Min.',
-                            -27+' Min.',
-                            -28+' Min.',
-                            -29+' Min.',
-                            -30+' Min.',
-                        ];
-                        const yValues = [
-                            14,
-                            1,
-                            5,
-                            4,
-                            3,
-                            5,
-                            6,
-                            8,
-                            1,
-                            4,
-                            3,
-                            2,
-                            1,
-                            9,
-                            6,
-                            9,
-                            5,
-                            34,
-                            11,
-                            4,
-                            3,
-                            10,
-                            1,
-                            4,
-                            2,
-                            5,
-                        ];
+                </div></div>
+        </div>
+        <script>$(document).ready(function () { require('piwik/UI').SegmentSelectorControl.initElements(); });</script>
+        <div class="dashboard-manager piwikSelector borderedControl piwikTopControl dashboardSettings widgetpreview-base" piwik-expand-on-click="" data-props="[]" data-params="[]" data-inited="1" style="display: inline-block;">
+            <a class="title" title="Dashboard verwalten" tabindex="4"><span class="icon icon-arrow-bottom"></span>Dashboard </a>
+            <div class="dropdown positionInViewport">
+                <ul class="submenu">
+                    <li>
+                        <div class="addWidget">Ein Widget hinzufügen</div>
+                        <ul class="widgetpreview-categorylist"><li>KPI Metrik</li><li>Besucher</li><li>Besucher - Orte</li><li>Besucher - Geräte</li><li>Besucher - Software</li><li>Besucher - Zeiten</li><li>Verhalten</li><li>Verhalten - Interne Suche</li><li>Verhalten - Ereignisse</li><li>Verhalten - Engagements</li><li>Akquisition</li><li>Akquisition - Suchmaschinen und Suchbegriffe</li><li>Ziele</li><li>Benutzerdefinierte Berichte</li><li>Diagnose</li><li>About Matomo</li><li>Insights</li><li>SEO</li><li>Marketplace</li></ul>
+                    </li>
+                    <li>
+                        <div class="manageDashboard">Dashboard verwalten</div>
+                        <ul>
+                            <li data-action="resetDashboard">Dashboard zurücksetzen</li>
+                            <li data-action="showChangeDashboardLayoutDialog">Dashboardlayout verändern</li>
+                            <li data-action="renameDashboard">Dashboard umbenennen</li>
+                            <li data-action="removeDashboard">Dashboard entfernen</li>
+                            <li data-action="setAsDefaultWidgets">Als Standard Widgetauswahl speichern</li>
+                            <li data-action="copyDashboardToUser">Dashboard zu Benutzer kopieren</li>
+                        </ul>
+                    </li>
+                    <li class="generalAction" data-action="createDashboard">Neues Dashboard erstellen</li>
+                </ul>
+                <ul class="widgetpreview-widgetlist"></ul>
+                <div class="widgetpreview-preview"></div>
+            </div>
+        </div>
+        <script>$(document).ready(function () { require('piwik/UI').DashboardManagerControl.initElements(); });</script>
 
-                        new Chart("myChart", {
-                            type: "line",
-                            data: {
-                                labels: xValues,
-                                datasets: [{
-                                    fill: true,
-                                    lineTension: 0,
-                                    backgroundColor: "rgb(0 100 255 / 47%)",
-                                    borderColor: "#0a8eff",
-                                    data: yValues
-                                }]
-                            },
-                            options: {
-                                legend: {display: false},
-                                scales: {
-                                }
-                            }
-                        });
-                    </script>
+        <div piwik-expand-on-hover="" id="header_message" class="piwikSelector borderedControl  piwikTopControl update_available">
+
+            <a class="title" href="?module=CoreUpdater&amp;action=newVersionAvailable" style="cursor:pointer;">
+                Neue Version: Matomo 4.14.1
+                <span class="icon-warning"></span>
+            </a>
+
+            <div class="dropdown positionInViewport">
+                Matomo 4.14.1 ist verfügbar. <br><a href="index.php?module=CoreUpdater&amp;action=newVersionAvailable"> Bitte aktualisieren Sie jetzt!</a> (siehe <a target="_blank" rel="noreferrer noopener" href="https://matomo.org/changelog/"> Änderungen</a>).
+                <br>
+
+                Sie nutzen derzeit Matomo 4.13.3.
+            </div>
+        </div>
+
+        <span class="icon icon-arrowup" title="&quot;Zen mode&quot; aktivieren (Menü verstecken)"></span>
+        <div style="clear:right"></div>
+
+    </div>
+
+    <div class="ui-confirm" id="alert">
+        <h2></h2>
+        <input role="yes" type="button" value="OK">
+    </div>
+
+
+
+    <div class="page">
+
+        <div id="secondNavBar" class="Menu--dashboard z-depth-1">
+            <div piwik-reporting-menu="" class="ng-isolate-scope" data-v-app=""><div class="reportingMenu"><ul class="navbar hide-on-med-and-down" role="menu" aria-label="Hauptnavigation"><li class="menuTab active" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-reporting-dashboard"></span>Dashboard <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=1" class="item">Dashboard</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=2" class="item">Tim Dashboard</a><!----></li><li role="menuitem" class="active"><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3" class="item">Realtime</a><!----></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-reporting-visitors"></span>Besucher <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=General_Overview" class="item">Übersicht</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=Live_VisitorLog" class="item">Besucher-Log</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=General_RealTime" class="item">Echtzeit</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=UserCountryMap_RealTimeMap" class="item">Besucherkarte in Echtzeit</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=UserCountry_SubmenuLocations" class="item">Orte</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=DevicesDetection_Devices" class="item">Geräte</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=DevicesDetection_Software" class="item">Software</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=VisitTime_SubmenuTimes" class="item">Zeiten</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=UserId_UserReportTitle" class="item">Benutzer IDs</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-reporting-actions"></span>Verhalten <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=General_Pages" class="item">Seiten</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuPagesEntry" class="item">Einstiegsseiten</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuPagesExit" class="item">Ausstiegsseiten</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuPageTitles" class="item">Seitentitel</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuSitesearch" class="item">Interne Suche</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=General_Outlinks" class="item">Ausgehende Verweise</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=General_Downloads" class="item">Downloads</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Events_Events" class="item">Ereignisse</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Contents_Contents" class="item">Inhalte</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=VisitorInterest_Engagement" class="item">Engagements</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Transitions_Transitions" class="item">Transitionen</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=PagePerformance_Performance" class="item">Leistung</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension11" class="item">Author</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension8" class="item">Category</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension3" class="item">First Published</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension2" class="item">Full URL</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension4" class="item">Last Modified</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension10" class="item">Load Type</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension1" class="item">Node ID</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension7" class="item">Page Type</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension12" class="item">Published</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension9" class="item">Root Category</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension5" class="item">Tag</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=SearchEngineKeywordsPerformance_CrawlingErrors" class="item">Crawling-Fehler</a><!----></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-reporting-referer"></span>Akquisition <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=General_Overview" class="item">Übersicht</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_WidgetGetAll" class="item">Alle Kanäle</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_SubmenuSearchEngines" class="item">Suchmaschinen und Suchbegriffe</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_SubmenuWebsitesOnly" class="item">Webseiten</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_Socials" class="item">Soziale Netzwerke</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_Campaigns" class="item">Kampagnen</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=SEOWebVitals_SEOWebVitals" class="item">SEO Web Vitals</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_URLCampaignBuilder" class="item">Kampagnen URL Erzeuger</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=SearchEngineKeywordsPerformance_CrawlingStats" class="item">Crawling Übersicht</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-reporting-goal"></span>Ziele <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Goals_Goals&amp;subcategory=General_Overview" class="item">Übersicht</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Goals_Goals&amp;subcategory=Goals_AddNewGoal" class="item">Ein neues Ziel definieren</a><!----></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-business"></span>Benutzerdefinierte Berichte <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><div class="menuDropdown"><span class="title"><span>Wähle Benutzerdefinierte Berichte</span><span class="icon-arrow-bottom"></span></span><div class="items" style="display: none;"><!----><div><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=35" title="Artikel aus Direct (id = 35)">Artikel aus Direct</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=34" title="Artikel aus Upday (id = 35)">Artikel aus Upday</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=25" title="Desktop Traffic - Entwicklung (id = 35)">Desktop Traffic - Entwicklung</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=21" title="Facebook - Überblick (id = 35)">Facebook - Überblick</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=28" title="Facebook_Artikel (id = 35)">Facebook_Artikel</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=2" title="Gerätetyp (id = 35)">Gerätetyp</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=20" title="Instagram - Überblick (id = 35)">Instagram - Überblick</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=27" title="Instagram_Artikel (id = 35)">Instagram_Artikel</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=32" title="Kanal je Seiten-URL (id = 35)">Kanal je Seiten-URL</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=23" title="mobiler Traffic - Entwicklung (id = 35)">mobiler Traffic - Entwicklung</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=40" title="Newsletter (id = 35)">Newsletter</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=37" title="Outbrain (id = 35)">Outbrain</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=22" title="Pinterest - Überblick (id = 35)">Pinterest - Überblick</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=29" title="Pinterest_Artikel (id = 35)">Pinterest_Artikel</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=24" title="SEO - Entwicklung (id = 35)">SEO - Entwicklung</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=30" title="SEO_Artikel (id = 35)">SEO_Artikel</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=31" title="Social_Entwicklung (id = 35)">Social_Entwicklung</a><a class="item" tabindex="5" href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=1" title="Traffic allgemein (id = 35)">Traffic allgemein</a></div></div></div><!----><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=CustomReports_ManageReports" class="item">Benutzerdefinierte Berichte verwalten</a><a class="item-help-icon" tabindex="5" href="javascript:"><span class="icon-help"></span></a></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon icon-arrow-right"></span>Echtzeit <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Echtzeit&amp;subcategory=Besucher" class="item">Besucher</a><!----></li></ul></li><li class="menuTab" role="menuitem"><a class="item" tabindex="5" href=""><span class="menu-icon  icon-open-source"></span>Marketplace <span class="hidden">Menü</span></a><ul role="menu"><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Marketplace_Marketplace&amp;subcategory=Marketplace_Browse" class="item">Durchsuchen</a><!----></li><li role="menuitem" class=""><!----><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Marketplace_Marketplace&amp;subcategory=Marketplace_PaidPlugins" class="item">Premium Funktionen</a><!----></li></ul></li></ul><ul id="mobile-left-menu" class="sidenav hide-on-large-only"><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-reporting-dashboard"></i>Dashboard</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=1">Dashboard</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=2">Tim Dashboard</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=3">Realtime</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-reporting-visitors"></i>Besucher</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=General_Overview">Übersicht</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=Live_VisitorLog">Besucher-Log</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=General_RealTime">Echtzeit</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=UserCountryMap_RealTimeMap">Besucherkarte in Echtzeit</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=UserCountry_SubmenuLocations">Orte</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=DevicesDetection_Devices">Geräte</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=DevicesDetection_Software">Software</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=VisitTime_SubmenuTimes">Zeiten</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Visitors&amp;subcategory=UserId_UserReportTitle">Benutzer IDs</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-reporting-actions"></i>Verhalten</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=General_Pages">Seiten</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuPagesEntry">Einstiegsseiten</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuPagesExit">Ausstiegsseiten</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuPageTitles">Seitentitel</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Actions_SubmenuSitesearch">Interne Suche</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=General_Outlinks">Ausgehende Verweise</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=General_Downloads">Downloads</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Events_Events">Ereignisse</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Contents_Contents">Inhalte</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=VisitorInterest_Engagement">Engagements</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=Transitions_Transitions">Transitionen</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=PagePerformance_Performance">Leistung</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension11">Author</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension8">Category</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension3">First Published</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension2">Full URL</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension4">Last Modified</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension10">Load Type</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension1">Node ID</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension7">Page Type</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension12">Published</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension9">Root Category</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=customdimension5">Tag</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=General_Actions&amp;subcategory=SearchEngineKeywordsPerformance_CrawlingErrors">Crawling-Fehler</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-reporting-referer"></i>Akquisition</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=General_Overview">Übersicht</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_WidgetGetAll">Alle Kanäle</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_SubmenuSearchEngines">Suchmaschinen und Suchbegriffe</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_SubmenuWebsitesOnly">Webseiten</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_Socials">Soziale Netzwerke</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_Campaigns">Kampagnen</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=SEOWebVitals_SEOWebVitals">SEO Web Vitals</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=Referrers_URLCampaignBuilder">Kampagnen URL Erzeuger</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Referrers_Referrers&amp;subcategory=SearchEngineKeywordsPerformance_CrawlingStats">Crawling Übersicht</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-reporting-goal"></i>Ziele</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Goals_Goals&amp;subcategory=General_Overview">Übersicht</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Goals_Goals&amp;subcategory=Goals_AddNewGoal">Ein neues Ziel definieren</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-business"></i>Benutzerdefinierte Berichte</a><div class="collapsible-body"><ul><li><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=35">Artikel aus Direct</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=34">Artikel aus Upday</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=25">Desktop Traffic - Entwicklung</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=21">Facebook - Überblick</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=28">Facebook_Artikel</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=2">Gerätetyp</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=20">Instagram - Überblick</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=27">Instagram_Artikel</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=32">Kanal je Seiten-URL</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=23">mobiler Traffic - Entwicklung</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=40">Newsletter</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=37">Outbrain</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=22">Pinterest - Überblick</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=29">Pinterest_Artikel</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=24">SEO - Entwicklung</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=30">SEO_Artikel</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=31">Social_Entwicklung</a><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=1">Traffic allgemein</a></span><!----></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=CustomReports_CustomReports&amp;subcategory=CustomReports_ManageReports">Benutzerdefinierte Berichte verwalten</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-arrow-bottom"></i>Echtzeit</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Echtzeit&amp;subcategory=Besucher">Besucher</a></span></li></ul></div></li></ul></li><li class="no-padding"><ul class="collapsible collapsible-accordion"><li><a class="collapsible-header" tabindex="0"><i class="icon-open-source"></i>Marketplace</a><div class="collapsible-body"><ul><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Marketplace_Marketplace&amp;subcategory=Marketplace_Browse">Durchsuchen</a></span></li><li><!----><span><a href="#?idSite=1&amp;period=day&amp;date=yesterday&amp;category=Marketplace_Marketplace&amp;subcategory=Marketplace_PaidPlugins">Premium Funktionen</a></span></li></ul></div></li></ul></li></ul></div></div>
+        </div>
+
+        <div class="pageWrap">
+
+            <a name="main"></a>
+            <div id="notificationContainer">
+            </div>
+
+            <div piwik-popover=""></div>
+
+            <piwik-comparisons class="ng-isolate-scope" data-v-app=""><!----></piwik-comparisons>
+
+            <div id="loadingError" style="display: none;">
+                <div class="alert alert-danger">
+                    Oops… während der Anfrage ist ein Problem aufgetreten. Möglicherweise war der Server temporär überlastet, oder eventuell haben Sie einen Bericht mit zu vielen Daten angefordert. Bitte noch einmal versuchen. Wenn dieser Fehler wiederholt auftritt <a href="mailto:tim.weyand%40grazia-magazin.de%2Csusanne.frenkler%40klambt.de%2Candrej.scherer%40klambt.de%2Ctim.weyand%40klambt.de%2Ckai.kromat%40klambt.de">kontaktieren Sie bitte Ihren Matomo Administrator</a>, um Unterstützung zu erhalten.
+
+                    <br><br>
+                    Benötigen Sie weitere Hilfe?
+
+                    <a rel="noreferrer noopener" target="_blank" href="https://matomo.org/faq/troubleshooting/faq_19489/">FAQ</a> –
+                    <a rel="noreferrer noopener" target="_blank" href="https://forum.matomo.org/">Hilfe aus der Community</a>                –
+                    <a rel="noreferrer noopener" target="_blank" href="https://matomo.org/support-plans/?pk_campaign=Help&amp;pk_medium=AjaxError&amp;pk_content=CoreHome&amp;pk_source=Matomo_App">Professionelle Hilfe</a>.
                 </div>
-            </div></div><div class="sortable" widgetid="widgetWidgetKLAMBTpagesGreatestActivity"><div class="widget" id="widgetWidgetKLAMBTpagesGreatestActivity">
-                <div class="widgetTop">
-                    <div class="buttons">
-                        <div class="button" id="close">
-                            <span class="icon-close" title="Schließen"></span>
-                        </div>
-                        <div class="button" id="maximise">
-                            <span class="icon-fullscreen" title="Vergrößern"></span>
-                        </div>
-                        <div class="button" id="minimise">
-                            <span class="icon-minimise" title="Minimieren"></span>
-                        </div>
-                        <div class="button" id="refresh">
-                            <span class="icon-reload" title="Aktualisieren"></span>
-                        </div>
-                    </div>
-                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
-                            Widget
-                        </div>
-                        <span>Seiten mit größter Aktivität (30 Min)</span></h3>
+            </div>
+            <div id="loadingRateLimitError" style="display: none">
+                <div class="alert alert-danger">
+                    Ups... zu viele Anfragen. Dies geschieht, wenn Sie die Anzahl der zulässigen Anfragen an die API in einem bestimmten Zeitraum überschreiten.
+
+                    <br><br>
+                    Benötigen Sie weitere Hilfe?
+
+                    <a rel="noreferrer noopener" target="_blank" href="https://forum.matomo.org/">Hilfe aus der Community</a>            –
+                    <a rel="noreferrer noopener" target="_blank" href="https://matomo.org/support-plans/?pk_campaign=Help&amp;pk_medium=AjaxError&amp;pk_content=CoreHome&amp;pk_source=Matomo_App">Professionelle Hilfe</a>.
                 </div>
-                <div class="widgetContent ng-scope"><div class="dataTableWrapper">
-                        <div class="dataTableScroller">
-                            <table cellspacing="0" class="dataTable">
-                                <thead>
-                                <tr>
-                                    <th class="sortable label first">#</th>
-                                    <th class="sortable">
-                                        <center>Aktive Seite</center>
-                                    </th>
-                                    <th class="sortable">
-                                        <div id="thDIV">Aktive Nutzer</div>
-                                    </th>
-                                    <th class="sortable"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/thema/erotische-geschichten" target="_blank">/thema/erotische-geschichten</a></td>
-                                    <td class="column">54</td>
-                                    <td>38%</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/" target="_blank">/</a></td>
-                                    <td class="column">10</td>
-                                    <td>7%</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/haus-garten/einbrecher-abschrecken-mit-ganz-einfachen-tricks-8625.html" target="_blank">/leben/haus-garten/einbrecher-abschrecken-mit-ganz-einfachen-tricks-8625.html</a></td>
-                                    <td class="column">9</td>
-                                    <td>6%</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/schaden-pornos-der-beziehung-6412.html" target="_blank">/leben/liebe-erotik/schaden-pornos-der-beziehung-6412.html</a></td>
-                                    <td class="column">7</td>
-                                    <td>5%</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/symptom-anzeiger-zunge-krankheiten-auf-einen-blick-erkennen-4109" target="_blank">/gesundheit/beschwerden-krankheiten/symptom-anzeiger-zunge-krankheiten-auf-einen-blick-erkennen-4109</a></td>
-                                    <td class="column">4</td>
-                                    <td>3%</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/klebriger-stuhl-warum-man-ihm-auf-den-grund-gehen-sollte-9697" target="_blank">/gesundheit/beschwerden-krankheiten/klebriger-stuhl-warum-man-ihm-auf-den-grund-gehen-sollte-9697</a></td>
-                                    <td class="column">4</td>
-                                    <td>3%</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/glueck/seele/handlesen-anleitung-das-sind-die-wichtigsten-linien-und-ihre-bedeutungen-2394.html" target="_blank">/glueck/seele/handlesen-anleitung-das-sind-die-wichtigsten-linien-und-ihre-bedeutungen-2394.html</a></td>
-                                    <td class="column">4</td>
-                                    <td>3%</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/26-hanse-sail-schiffe-und-live-programm-erleben-vom-11-14-august-in-rostock-1433.html" target="_blank">/26-hanse-sail-schiffe-und-live-programm-erleben-vom-11-14-august-in-rostock-1433.html</a></td>
-                                    <td class="column">4</td>
-                                    <td>3%</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ein-nachbar-zum-verlieben-9626.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ein-nachbar-zum-verlieben-9626.html</a></td>
-                                    <td class="column">3</td>
-                                    <td>2%</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/selbstbefriedigung-fuer-frauen-die-heissesten-tipps-und-tricks-5704.html" target="_blank">/leben/liebe-erotik/selbstbefriedigung-fuer-frauen-die-heissesten-tipps-und-tricks-5704.html</a></td>
-                                    <td class="column">3</td>
-                                    <td>2%</td>
-                                </tr>
-                                <tr>
-                                    <td>11</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/back-rezepte-ganz-einfach-umrechnen-929.html" target="_blank">/back-rezepte-ganz-einfach-umrechnen-929.html</a></td>
-                                    <td class="column">3</td>
-                                    <td>2%</td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-besten-alternativen-zum-gleitgel-9458.html" target="_blank">/leben/liebe-erotik/die-besten-alternativen-zum-gleitgel-9458.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/unterhaltung/tv-prominente/tieraerztin-dr-mertens-grosse-entscheidungen-in-der-letzten-staffel-9650" target="_blank">/unterhaltung/tv-prominente/tieraerztin-dr-mertens-grosse-entscheidungen-in-der-letzten-staffel-9650</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/thema/erotische-geschichten-seite-2.html" target="_blank">/thema/erotische-geschichten-seite-2.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>15</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-fantasien-verregneter-sonntag-2099.html" target="_blank">/leben/liebe-erotik/erotische-fantasien-verregneter-sonntag-2099.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>16</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/osterhasenkuchen-mit-kakaoglasur-1021.html" target="_blank">/osterhasenkuchen-mit-kakaoglasur-1021.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>17</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/schoenheit-mode/pflege-beautytipps/intimbereich-lasern-das-sind-die-risiken-9826.html" target="_blank">/schoenheit-mode/pflege-beautytipps/intimbereich-lasern-das-sind-die-risiken-9826.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>18</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/backrezepte-umrechnen-von-rund-in-eckig-und-umgekehrt-1388.html" target="_blank">/backrezepte-umrechnen-von-rund-in-eckig-und-umgekehrt-1388.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>19</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/aus-dem-leben/schwanger-mit-48-baby-statt-wechseljahre-6622.html" target="_blank">/leben/aus-dem-leben/schwanger-mit-48-baby-statt-wechseljahre-6622.html</a></td>
-                                    <td class="column">2</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>20</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/ferienhaus-3141.html" target="_blank">/leben/liebe-erotik/ferienhaus-3141.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>21</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/lust-auf-der-almenhuette-9592.html" target="_blank">/leben/liebe-erotik/lust-auf-der-almenhuette-9592.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>22</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/sex-im-alter-intime-gestaendnisse-6964.html" target="_blank">/leben/liebe-erotik/sex-im-alter-intime-gestaendnisse-6964.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>23</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gar-nicht-so-einfach-lernen-sie-komplimente-anzunehmen-1952.html" target="_blank">/gar-nicht-so-einfach-lernen-sie-komplimente-anzunehmen-1952.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>24</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/zysten-operieren-wann-ist-die-op-sinnvoll-4372.html" target="_blank">/gesundheit/beschwerden-krankheiten/zysten-operieren-wann-ist-die-op-sinnvoll-4372.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>25</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ueberstunden-im-buero-mal-ein-echter-lustgewinn-9981.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ueberstunden-im-buero-mal-ein-echter-lustgewinn-9981.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>26</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-sex-im-chefbuero-9849.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-sex-im-chefbuero-9849.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>27</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-heisse-nummer-im-regen-6148.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-heisse-nummer-im-regen-6148.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>28</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-quickie-zum-fruehstueck-9676.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-quickie-zum-fruehstueck-9676.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>29</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-anonymer-quickie-1075.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-anonymer-quickie-1075.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>30</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-heisses-liebesspiel-in-der-scheune-9856.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-heisses-liebesspiel-in-der-scheune-9856.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>31</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-handjob-am-see-9659.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-handjob-am-see-9659.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>32</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/aus-dem-leben/nach-der-trennung-wenn-kinder-sich-fuer-papa-entscheiden-2312.html" target="_blank">/leben/aus-dem-leben/nach-der-trennung-wenn-kinder-sich-fuer-papa-entscheiden-2312.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>33</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/schoenheit-mode" target="_blank">/schoenheit-mode</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>34</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ab-geht-die-post-9289.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ab-geht-die-post-9289.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>35</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-eine-vollmondnacht-der-liebe-9963.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-eine-vollmondnacht-der-liebe-9963.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>36</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/ratgeber/waesche-richtig-waschen-die-besten-pflegetipps-fuer-viskose-seide-wolle-co-3237.html" target="_blank">/leben/ratgeber/waesche-richtig-waschen-die-besten-pflegetipps-fuer-viskose-seide-wolle-co-3237.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>37</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-der-nikolaus-3977.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-der-nikolaus-3977.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>38</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-quicky-mit-dem-handwerker-6010.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-quicky-mit-dem-handwerker-6010.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>39</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/bachblueten-wirkung-uebersicht-und-einnahme-der-natuerlichen-helfer-1226.html" target="_blank">/bachblueten-wirkung-uebersicht-und-einnahme-der-natuerlichen-helfer-1226.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
-                                    <td>40</td>
-                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/weizenunvertraeglichkeit-5-alternativen-fuer-allergiker-1998.html" target="_blank">/weizenunvertraeglichkeit-5-alternativen-fuer-allergiker-1998.html</a></td>
-                                    <td class="column">1</td>
-                                    <td>1%</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div></div>
-            </div></div></div><div class="menuClear"> </div></div>
+            </div>
+
+            <div id="ajaxLoadingDiv" style="display:none;">
+                <div class="loadingPiwik">
+                    <img src="plugins/Morpheus/images/loading-blue.gif" alt="Lade Daten ...">Lade Daten ...
+                </div>
+                <div class="loadingSegment" style="display: none;">
+                    Die Verarbeitung der segmentierten Besucherdaten kann einige Minuten dauern...
+                </div>
+            </div>
+
+
+            <div id="content" class="home">
+                <div piwik-reporting-page="" class="ng-isolate-scope" data-v-app=""><div class="reporting-page"><div class="loadingPiwik" style="display: none;"><img src="plugins/Morpheus/images/loading-blue.gif" alt=""><span>Lade Daten ...</span></div><div style="display: none;">Diese Seite existiert nicht</div><div class="row"><div class="matomo-widget isFirstWidgetInPage col s12 fullWidgetColumn" id="widgetDashboardembeddedIndexidDashboard3"><div><div class="loadingPiwik" style="display: none;"><img src="plugins/Morpheus/images/loading-blue.gif" alt=""><span>Lade Daten ...</span></div><div style="display: none;"><!----><div class="notification system notification-error">Oops… während der Anfrage ist ein Problem aufgetreten. Möglicherweise war der Server temporär überlastet, oder eventuell haben Sie einen Bericht mit zu vielen Daten angefordert. Bitte noch einmal versuchen. Wenn dieser Fehler wiederholt auftritt kontaktieren Sie bitte Ihren Matomo Administrator, um Unterstützung zu erhalten. <a rel="noreferrer noopener" target="_blank" href="https://matomo.org/faq/troubleshooting/faq_19489/">Sehen Sie sich die Schritte zur Behebung dieses Problems in den FAQ an.</a></div></div><div class="theWidgetContent"><div id="dashboard" piwik-dashboard="" dashboardid="3" class="ng-scope ng-isolate-scope">
+                                            <div class="ui-confirm" id="confirm">
+                                                <h2>Wollen Sie wirklich dieses Widget vom Dashboard entfernen?</h2>
+                                                <input role="yes" type="button" value="Ja">
+                                                <input role="no" type="button" value="Nein">
+                                            </div>
+
+                                            <div class="ui-confirm" id="setAsDefaultWidgetsConfirm">
+                                                <h2>Sind Sie sicher, dass Sie die aktuelle Widgetauswahl und das Layout als das Standard Dashboardvorlage speichern möchten?</h2>
+                                                <div class="popoverSubMessage">Diese Widgetauswahl und das aktuelle Spaltenlayout werden verwendet, wenn ein neues Dashboard erstellt wird oder wenn "Dashboard zurücksetzen" verwendet wird.</div>
+                                                <input role="yes" type="button" value="Ja">
+                                                <input role="no" type="button" value="Nein">
+                                            </div>
+
+                                            <div class="ui-confirm" id="resetDashboardConfirm">
+                                                <h2>Wollen Sie wirklich das Dashboardlayout auf die Standardeinstellungen zurücksetzen?</h2>
+                                                <input role="yes" type="button" value="Ja">
+                                                <input role="no" type="button" value="Nein">
+                                            </div>
+
+                                            <div class="ui-confirm" id="dashboardEmptyNotification">
+                                                <h2>Ihr Dashboard enthält keine Widgets. Sie können jetzt Widgets hinzufügen oder das Dashboard auf die Standard Widgetauswahl zurücksetzen.</h2>
+                                                <input role="addWidget" type="button" value="Ein Widget hinzufügen">
+                                                <input role="resetDashboard" type="button" value="Dashboard zurücksetzen">
+                                            </div>
+
+                                            <div class="ui-confirm" id="changeDashboardLayout">
+                                                <h2>Bitte wählen Sie ein neues Dashboardlayout</h2>
+
+                                                <div id="columnPreview">
+                                                    <div layout="100">
+                                                        <div class="width-100"><span></span></div>
+                                                    </div>
+                                                    <div layout="50-50">
+                                                        <div class="width-50"><span></span></div>
+                                                        <div class="width-50"><span></span></div>
+                                                    </div>
+                                                    <div layout="67-33">
+                                                        <div class="width-67"><span></span></div>
+                                                        <div class="width-33"><span></span></div>
+                                                    </div>
+                                                    <div layout="33-67">
+                                                        <div class="width-33"><span></span></div>
+                                                        <div class="width-67"><span></span></div>
+                                                    </div>
+                                                    <div layout="33-33-33">
+                                                        <div class="width-33"><span></span></div>
+                                                        <div class="width-33"><span></span></div>
+                                                        <div class="width-33"><span></span></div>
+                                                    </div>
+                                                    <div layout="40-30-30">
+                                                        <div class="width-40"><span></span></div>
+                                                        <div class="width-30"><span></span></div>
+                                                        <div class="width-30"><span></span></div>
+                                                    </div>
+                                                    <div layout="30-40-30">
+                                                        <div class="width-30"><span></span></div>
+                                                        <div class="width-40"><span></span></div>
+                                                        <div class="width-30"><span></span></div>
+                                                    </div>
+                                                    <div layout="30-30-40">
+                                                        <div class="width-30"><span></span></div>
+                                                        <div class="width-30"><span></span></div>
+                                                        <div class="width-40"><span></span></div>
+                                                    </div>
+                                                    <div layout="25-25-25-25">
+                                                        <div class="width-25"><span></span></div>
+                                                        <div class="width-25"><span></span></div>
+                                                        <div class="width-25"><span></span></div>
+                                                        <div class="width-25"><span></span></div>
+                                                    </div>
+                                                    <br class="clearfix">
+                                                </div>
+                                                <input role="yes" type="button" value="Speichern">
+                                                <input role="cancel" type="button" value="Abbrechen">
+                                            </div>
+
+                                            <div class="ui-confirm" id="renameDashboardConfirm">
+                                                <h2>Dashboard umbenennen</h2>
+
+                                                <div id="newDashboardNameInput">
+                                                    <label for="newDashboardName">Dashboard Name: </label>
+                                                    <input type="text" name="newDashboardName" id="newDashboardName" value="">
+                                                </div>
+                                                <input role="yes" type="button" value="Speichern">
+                                                <input role="cancel" type="button" value="Abbrechen">
+                                            </div>
+
+                                            <div class="ui-confirm" id="copyDashboardToUserConfirm">
+                                                <h2>Dashboard zu Benutzer kopieren</h2>
+
+                                                <div class="inputs">
+                                                    <div class="row">
+                                                        <div class="col s12 m6"><label for="copyDashboardName">Dashboard Name: </label></div>
+                                                        <div class="col s12 m6"><input type="text" name="copyDashboardName" id="copyDashboardName" value=""></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col s12 m6"><label for="copyDashboardUser">Benutzername </label></div>
+                                                        <div class="col s12 m6"><select class="browser-default" name="copyDashboardUser" id="copyDashboardUser">
+                                                                <option value="Lade Daten ...">Lade Daten ...</option></select></div>
+                                                    </div>
+                                                </div>
+
+                                                <input role="yes" type="button" value="OK">
+                                                <input role="cancel" type="button" value="Abbrechen">
+                                            </div>
+
+                                            <div class="ui-confirm" id="createDashboardConfirm">
+                                                <h2>Neues Dashboard erstellen</h2>
+
+                                                <div id="createDashboardNameInput">
+                                                    <p>
+                                                        <label>Dashboard Name: </label>
+                                                        <input type="text" name="newDashboardName" id="createDashboardName" value="">
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input type="radio" checked="checked" name="type" value="default" id="dashboard_type_default">
+                                                            <span>Standard Dashboard - Verwendet Standardwidgets und Spaltenlayout</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input type="radio" name="type" value="empty" id="dashboard_type_empty">
+                                                            <span>Leeres Dashboard - Wählen Sie Ihre bevorzugten Widgets</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                                <input role="yes" type="button" value="OK">
+                                                <input role="no" type="button" value="Abbrechen">
+                                            </div>
+
+                                            <div class="ui-confirm" id="removeDashboardConfirm">
+                                                <h2>Sind Sie sicher, dass Sie das Dashboard "<span></span>" löschen möchten?</h2>
+
+                                                <div class="popoverSubMessage">Sie können diese Aktion nicht rückgängig machen.</div>
+                                                <input role="yes" type="button" value="Ja">
+                                                <input role="no" type="button" value="Nein">
+                                            </div>
+
+                                            <div id="widgetTemplate" style="display:none;">
+
+                                            </div>
+
+                                            <div id="dashboardWidgetsArea" class="row"><div class="col s12 m4 ui-sortable"> <div class="sortable" widgetid="widgetWidgetKLAMBTdevices"><div class="widget" id="widgetWidgetKLAMBTdevices">
+                                                            <div class="widgetTop">
+                                                                <div class="buttons">
+                                                                    <div class="button" id="close">
+                                                                        <span class="icon-close" title="Schließen"></span>
+                                                                    </div>
+                                                                    <div class="button" id="maximise">
+                                                                        <span class="icon-fullscreen" title="Vergrößern"></span>
+                                                                    </div>
+                                                                    <div class="button" id="minimise">
+                                                                        <span class="icon-minimise" title="Minimieren"></span>
+                                                                    </div>
+                                                                    <div class="button" id="refresh">
+                                                                        <span class="icon-reload" title="Aktualisieren"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                                                                        Widget
+                                                                    </div>
+                                                                    <span>Nutzergeräte (5 Min)</span></h3>
+                                                            </div>
+                                                            <div class="widgetContent ng-scope"><div id="realtime-user-legend" style="width:100%;">
+                                                                    <div id="count">
+                                                                        <span>In den letzen 5 Minuten</span>
+                                                                        <div>6</div>
+                                                                        <span>auf Website aktive Nutzer</span>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div id="legend">
+                                                                        <div><span class="Tablet"></span>Tablet</div>
+                                                                        <div><span class="Mobilgerät"></span>Mobilgerät</div>
+                                                                    </div>
+
+                                                                    <div id="progress">
+                                                                        <div class="Tablet" style="width:50%;">50%</div>
+                                                                        <div class="Mobilgerät" style="width:50%;">50%</div>
+                                                                    </div>
+                                                                    <div id="reflect">
+                                                                        <div class="Tablet" style="width:50%;">50%</div>
+                                                                        <div class="Mobilgerät" style="width:50%;">50%</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div></div><div class="sortable" widgetid="widgetWidgetKLAMBTreferer"><div class="widget" id="widgetWidgetKLAMBTreferer">
+                                                            <div class="widgetTop">
+                                                                <div class="buttons">
+                                                                    <div class="button" id="close">
+                                                                        <span class="icon-close" title="Schließen"></span>
+                                                                    </div>
+                                                                    <div class="button" id="maximise">
+                                                                        <span class="icon-fullscreen" title="Vergrößern"></span>
+                                                                    </div>
+                                                                    <div class="button" id="minimise">
+                                                                        <span class="icon-minimise" title="Minimieren"></span>
+                                                                    </div>
+                                                                    <div class="button" id="refresh">
+                                                                        <span class="icon-reload" title="Aktualisieren"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                                                                        Widget
+                                                                    </div>
+                                                                    <span>Häufigste Verweise (30 Min)</span></h3>
+                                                            </div>
+                                                            <div class="widgetContent ng-scope"><table cellspacing="0" class="dataTable">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th class="sortable label first">#</th>
+                                                                        <th class="sortable"><center>Quelle</center></th>
+                                                                        <th class="sortable">
+                                                                            <div id="thDIV">Aktive Nutzer</div>
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td class="label first">Google</td>
+                                                                        <td>29</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2</td>
+                                                                        <td class="label first">com.pinterest</td>
+                                                                        <td>9</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3</td>
+                                                                        <td class="label first">DuckDuckGo</td>
+                                                                        <td>4</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4</td>
+                                                                        <td class="label first">Bing</td>
+                                                                        <td>2</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>5</td>
+                                                                        <td class="label first">Pinterest</td>
+                                                                        <td>1</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>6</td>
+                                                                        <td class="label first">status.klambt.services</td>
+                                                                        <td>1</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>7</td>
+                                                                        <td class="label first">redirect_service</td>
+                                                                        <td>1</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div></div></div><div class="col s12 m8 ui-sortable"> <div class="sortable" widgetid="widgetWidgetKLAMBTpageViews"><div class="widget" id="widgetWidgetKLAMBTpageViews">
+                                                            <div class="widgetTop">
+                                                                <div class="buttons">
+                                                                    <div class="button" id="close">
+                                                                        <span class="icon-close" title="Schließen"></span>
+                                                                    </div>
+                                                                    <div class="button" id="maximise">
+                                                                        <span class="icon-fullscreen" title="Vergrößern"></span>
+                                                                    </div>
+                                                                    <div class="button" id="minimise">
+                                                                        <span class="icon-minimise" title="Minimieren"></span>
+                                                                    </div>
+                                                                    <div class="button" id="refresh">
+                                                                        <span class="icon-reload" title="Aktualisieren"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                                                                        Widget
+                                                                    </div>
+                                                                    <span>Seitenaufrufe (30 Min)</span></h3>
+                                                            </div>
+                                                            <div class="widgetContent ng-scope"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div><canvas id="myChart" style="width: 100%; display: block;" width="1630" height="814" class="chartjs-render-monitor"></canvas>
+                                                                <script>
+                                                                    const xValues = [
+                                                                        0+' Min.',
+                                                                        -1+' Min.',
+                                                                        -5+' Min.',
+                                                                        -6+' Min.',
+                                                                        -7+' Min.',
+                                                                        -9+' Min.',
+                                                                        -10+' Min.',
+                                                                        -11+' Min.',
+                                                                        -12+' Min.',
+                                                                        -13+' Min.',
+                                                                        -14+' Min.',
+                                                                        -15+' Min.',
+                                                                        -16+' Min.',
+                                                                        -17+' Min.',
+                                                                        -18+' Min.',
+                                                                        -19+' Min.',
+                                                                        -21+' Min.',
+                                                                        -22+' Min.',
+                                                                        -23+' Min.',
+                                                                        -24+' Min.',
+                                                                        -25+' Min.',
+                                                                        -26+' Min.',
+                                                                        -27+' Min.',
+                                                                        -28+' Min.',
+                                                                        -29+' Min.',
+                                                                        -30+' Min.',
+                                                                    ];
+                                                                    const yValues = [
+                                                                        14,
+                                                                        1,
+                                                                        5,
+                                                                        4,
+                                                                        3,
+                                                                        5,
+                                                                        6,
+                                                                        8,
+                                                                        1,
+                                                                        4,
+                                                                        3,
+                                                                        2,
+                                                                        1,
+                                                                        9,
+                                                                        6,
+                                                                        9,
+                                                                        5,
+                                                                        34,
+                                                                        11,
+                                                                        4,
+                                                                        3,
+                                                                        10,
+                                                                        1,
+                                                                        4,
+                                                                        2,
+                                                                        5,
+                                                                    ];
+
+                                                                    new Chart("myChart", {
+                                                                        type: "line",
+                                                                        data: {
+                                                                            labels: xValues,
+                                                                            datasets: [{
+                                                                                fill: true,
+                                                                                lineTension: 0,
+                                                                                backgroundColor: "rgb(0 100 255 / 47%)",
+                                                                                borderColor: "#0a8eff",
+                                                                                data: yValues
+                                                                            }]
+                                                                        },
+                                                                        options: {
+                                                                            legend: {display: false},
+                                                                            scales: {
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                </script>
+                                                            </div>
+                                                        </div></div><div class="sortable" widgetid="widgetWidgetKLAMBTpagesGreatestActivity"><div class="widget" id="widgetWidgetKLAMBTpagesGreatestActivity">
+                                                            <div class="widgetTop">
+                                                                <div class="buttons">
+                                                                    <div class="button" id="close">
+                                                                        <span class="icon-close" title="Schließen"></span>
+                                                                    </div>
+                                                                    <div class="button" id="maximise">
+                                                                        <span class="icon-fullscreen" title="Vergrößern"></span>
+                                                                    </div>
+                                                                    <div class="button" id="minimise">
+                                                                        <span class="icon-minimise" title="Minimieren"></span>
+                                                                    </div>
+                                                                    <div class="button" id="refresh">
+                                                                        <span class="icon-reload" title="Aktualisieren"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                                                                        Widget
+                                                                    </div>
+                                                                    <span>Seiten mit größter Aktivität (30 Min)</span></h3>
+                                                            </div>
+                                                            <div class="widgetContent ng-scope"><div class="dataTableWrapper">
+                                                                    <div class="dataTableScroller">
+                                                                        <table cellspacing="0" class="dataTable">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th class="sortable label first">#</th>
+                                                                                <th class="sortable">
+                                                                                    <center>Aktive Seite</center>
+                                                                                </th>
+                                                                                <th class="sortable">
+                                                                                    <div id="thDIV">Aktive Nutzer</div>
+                                                                                </th>
+                                                                                <th class="sortable"></th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td>1</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/thema/erotische-geschichten" target="_blank">/thema/erotische-geschichten</a></td>
+                                                                                <td class="column">54</td>
+                                                                                <td>38%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>2</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/" target="_blank">/</a></td>
+                                                                                <td class="column">10</td>
+                                                                                <td>7%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>3</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/haus-garten/einbrecher-abschrecken-mit-ganz-einfachen-tricks-8625.html" target="_blank">/leben/haus-garten/einbrecher-abschrecken-mit-ganz-einfachen-tricks-8625.html</a></td>
+                                                                                <td class="column">9</td>
+                                                                                <td>6%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>4</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/schaden-pornos-der-beziehung-6412.html" target="_blank">/leben/liebe-erotik/schaden-pornos-der-beziehung-6412.html</a></td>
+                                                                                <td class="column">7</td>
+                                                                                <td>5%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>5</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/symptom-anzeiger-zunge-krankheiten-auf-einen-blick-erkennen-4109" target="_blank">/gesundheit/beschwerden-krankheiten/symptom-anzeiger-zunge-krankheiten-auf-einen-blick-erkennen-4109</a></td>
+                                                                                <td class="column">4</td>
+                                                                                <td>3%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>6</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/klebriger-stuhl-warum-man-ihm-auf-den-grund-gehen-sollte-9697" target="_blank">/gesundheit/beschwerden-krankheiten/klebriger-stuhl-warum-man-ihm-auf-den-grund-gehen-sollte-9697</a></td>
+                                                                                <td class="column">4</td>
+                                                                                <td>3%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>7</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/glueck/seele/handlesen-anleitung-das-sind-die-wichtigsten-linien-und-ihre-bedeutungen-2394.html" target="_blank">/glueck/seele/handlesen-anleitung-das-sind-die-wichtigsten-linien-und-ihre-bedeutungen-2394.html</a></td>
+                                                                                <td class="column">4</td>
+                                                                                <td>3%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>8</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/26-hanse-sail-schiffe-und-live-programm-erleben-vom-11-14-august-in-rostock-1433.html" target="_blank">/26-hanse-sail-schiffe-und-live-programm-erleben-vom-11-14-august-in-rostock-1433.html</a></td>
+                                                                                <td class="column">4</td>
+                                                                                <td>3%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>9</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ein-nachbar-zum-verlieben-9626.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ein-nachbar-zum-verlieben-9626.html</a></td>
+                                                                                <td class="column">3</td>
+                                                                                <td>2%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>10</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/selbstbefriedigung-fuer-frauen-die-heissesten-tipps-und-tricks-5704.html" target="_blank">/leben/liebe-erotik/selbstbefriedigung-fuer-frauen-die-heissesten-tipps-und-tricks-5704.html</a></td>
+                                                                                <td class="column">3</td>
+                                                                                <td>2%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>11</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/back-rezepte-ganz-einfach-umrechnen-929.html" target="_blank">/back-rezepte-ganz-einfach-umrechnen-929.html</a></td>
+                                                                                <td class="column">3</td>
+                                                                                <td>2%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>12</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-besten-alternativen-zum-gleitgel-9458.html" target="_blank">/leben/liebe-erotik/die-besten-alternativen-zum-gleitgel-9458.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>13</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/unterhaltung/tv-prominente/tieraerztin-dr-mertens-grosse-entscheidungen-in-der-letzten-staffel-9650" target="_blank">/unterhaltung/tv-prominente/tieraerztin-dr-mertens-grosse-entscheidungen-in-der-letzten-staffel-9650</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>14</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/thema/erotische-geschichten-seite-2.html" target="_blank">/thema/erotische-geschichten-seite-2.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>15</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-fantasien-verregneter-sonntag-2099.html" target="_blank">/leben/liebe-erotik/erotische-fantasien-verregneter-sonntag-2099.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>16</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/osterhasenkuchen-mit-kakaoglasur-1021.html" target="_blank">/osterhasenkuchen-mit-kakaoglasur-1021.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>17</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/schoenheit-mode/pflege-beautytipps/intimbereich-lasern-das-sind-die-risiken-9826.html" target="_blank">/schoenheit-mode/pflege-beautytipps/intimbereich-lasern-das-sind-die-risiken-9826.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>18</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/backrezepte-umrechnen-von-rund-in-eckig-und-umgekehrt-1388.html" target="_blank">/backrezepte-umrechnen-von-rund-in-eckig-und-umgekehrt-1388.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>19</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/aus-dem-leben/schwanger-mit-48-baby-statt-wechseljahre-6622.html" target="_blank">/leben/aus-dem-leben/schwanger-mit-48-baby-statt-wechseljahre-6622.html</a></td>
+                                                                                <td class="column">2</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>20</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/ferienhaus-3141.html" target="_blank">/leben/liebe-erotik/ferienhaus-3141.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>21</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/lust-auf-der-almenhuette-9592.html" target="_blank">/leben/liebe-erotik/lust-auf-der-almenhuette-9592.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>22</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/sex-im-alter-intime-gestaendnisse-6964.html" target="_blank">/leben/liebe-erotik/sex-im-alter-intime-gestaendnisse-6964.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>23</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gar-nicht-so-einfach-lernen-sie-komplimente-anzunehmen-1952.html" target="_blank">/gar-nicht-so-einfach-lernen-sie-komplimente-anzunehmen-1952.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>24</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/zysten-operieren-wann-ist-die-op-sinnvoll-4372.html" target="_blank">/gesundheit/beschwerden-krankheiten/zysten-operieren-wann-ist-die-op-sinnvoll-4372.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>25</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ueberstunden-im-buero-mal-ein-echter-lustgewinn-9981.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ueberstunden-im-buero-mal-ein-echter-lustgewinn-9981.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>26</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-sex-im-chefbuero-9849.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-sex-im-chefbuero-9849.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>27</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-heisse-nummer-im-regen-6148.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-heisse-nummer-im-regen-6148.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>28</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-quickie-zum-fruehstueck-9676.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-quickie-zum-fruehstueck-9676.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>29</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-anonymer-quickie-1075.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-anonymer-quickie-1075.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>30</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-heisses-liebesspiel-in-der-scheune-9856.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-heisses-liebesspiel-in-der-scheune-9856.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>31</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-handjob-am-see-9659.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-handjob-am-see-9659.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>32</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/aus-dem-leben/nach-der-trennung-wenn-kinder-sich-fuer-papa-entscheiden-2312.html" target="_blank">/leben/aus-dem-leben/nach-der-trennung-wenn-kinder-sich-fuer-papa-entscheiden-2312.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>33</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/schoenheit-mode" target="_blank">/schoenheit-mode</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>34</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ab-geht-die-post-9289.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ab-geht-die-post-9289.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>35</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-eine-vollmondnacht-der-liebe-9963.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-eine-vollmondnacht-der-liebe-9963.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>36</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/ratgeber/waesche-richtig-waschen-die-besten-pflegetipps-fuer-viskose-seide-wolle-co-3237.html" target="_blank">/leben/ratgeber/waesche-richtig-waschen-die-besten-pflegetipps-fuer-viskose-seide-wolle-co-3237.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>37</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-der-nikolaus-3977.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-der-nikolaus-3977.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>38</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-quicky-mit-dem-handwerker-6010.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-quicky-mit-dem-handwerker-6010.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>39</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/bachblueten-wirkung-uebersicht-und-einnahme-der-natuerlichen-helfer-1226.html" target="_blank">/bachblueten-wirkung-uebersicht-und-einnahme-der-natuerlichen-helfer-1226.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>40</td>
+                                                                                <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/weizenunvertraeglichkeit-5-alternativen-fuer-allergiker-1998.html" target="_blank">/weizenunvertraeglichkeit-5-alternativen-fuer-allergiker-1998.html</a></td>
+                                                                                <td class="column">1</td>
+                                                                                <td>1%</td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div></div>
+                                                        </div></div></div><div class="menuClear"> </div></div>
+                                        </div>
+                                    </div></div><!----><!----></div><!----><!----></div></div></div>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>
+
+<div piwik-popover-handler=""></div>
+
+<div class="ui-confirm" id="shortcuthelp">
+    <h2>Verfügbare Tastaturkürzel</h2>
+    <dl></dl>
+</div>
+
+
+
+<div id="pageFooter">
+
+</div>
+
+<div id="bottomAd" style="font-size: 2px;">&nbsp;</div>
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function () {
+        if ('undefined' === (typeof hasBlockedContent) || hasBlockedContent !== false) {
+            (function () {
+                var body = document.getElementsByTagName('body');
+
+                if (!body || !body[0]) {
+                    return;
+                }
+
+                var bottomAd = document.getElementById('bottomAd');
+                var wasMostLikelyCausedByAdblock = false;
+
+                if (!bottomAd) {
+                    wasMostLikelyCausedByAdblock = true;
+                } else if (bottomAd.style && bottomAd.style.display === 'none') {
+                    wasMostLikelyCausedByAdblock = true;
+                } else if ('undefined' !== (typeof bottomAd.clientHeight) && bottomAd.clientHeight === 0) {
+                    wasMostLikelyCausedByAdblock = true;
+                }
+
+                if (wasMostLikelyCausedByAdblock) {
+                    var shouldGetHiddenElement = document.getElementById("should-get-hidden");
+                    var warning = document.createElement('p');
+                    warning.innerText = 'F\u00FCr\u0020den\u0020Fall,\u0020dass\u0020Sie\u0020einen\u0020Ad\u002DBlocker\u0020verwenden,\u0020deaktivieren\u0020Sie\u0020diesen\u0020bitte\u0020f\u00FCr\u0020diese\u0020Seite,\u0020um\u0020sicherzustellen,\u0020dass\u0020Matomo\u0020problemlos\u0020l\u00E4uft.';
+
+                    if (shouldGetHiddenElement) {
+                        shouldGetHiddenElement.appendChild(warning);
+                    } else {
+                        body[0].insertBefore(warning, body[0].firstChild);
+                        warning.style.color = 'red';
+                        warning.style.fontWeight = 'bold';
+                        warning.style.marginLeft = '16px';
+                        warning.style.marginBottom = '16px';
+                        warning.style.fontSize = '20px';
+                    }
+                }
+            })();
+        }
+    });
+</script>
+
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div><div class="sidenav-overlay"></div><div class="drag-target right-aligned"></div><div id="color-manager" class="color-manager comparison-series-color" data-name="series7-shade2"></div><div style="color:transparent;display:none;"></div><div class="sidenav-overlay"></div><div class="drag-target"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body>
