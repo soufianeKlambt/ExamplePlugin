@@ -1,84 +1,496 @@
-<div class="row">
-    <div class="matomo-widget isFirstWidgetInPage col s12 fullWidgetColumn"
-         id="widgetDashboardembeddedIndexidDashboard1">
-        <div>
-            <div class="theWidgetContent">
-                <div id="dashboard" piwik-dashboard="" dashboardid="1" class=" ng-isolate-scope">
-
-                    <div id="dashboardWidgetsArea" class="row">
-                        <div class="col s12 m4 ui-sortable">
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTdevices">
-                                <div class="widget" id="widgetWidgetKLAMBTdevices">
-                                    <div class="widgetTop">
-                                        <h3 class="widgetName">
-                                            <div class="widgetNameOffScreen">
-                                                Widget
-                                            </div>
-                                            <span>Nutzergeräte (5 Min)</span></h3>
-                                    </div>
-                                    <div class="widgetContent ">
-                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices.result,'sum':devices.sum } %}
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTreferer">
-                                <div class="widget" id="widgetWidgetKLAMBTreferer">
-                                    <div class="widgetTop">
-                                        <h3 class="widgetName">
-                                            <div class="widgetNameOffScreen">
-                                                Widget
-                                            </div>
-                                            <span>Häufigste Verweise (30 Min)</span></h3>
-                                    </div>
-                                    <div class="widgetContent ">
-                                        {% include '@WidgetKLAMBT/RefererTemplate.twig' with {'rows':referer } %}
-                                    </div>
-                                </div>
-                            </div>
+<div id="dashboardWidgetsArea" class="row"><div class="col s12 m4 ui-sortable"> <div class="sortable" widgetid="widgetWidgetKLAMBTdevices"><div class="widget" id="widgetWidgetKLAMBTdevices">
+                <div class="widgetTop">
+                    <div class="buttons">
+                        <div class="button" id="close">
+                            <span class="icon-close" title="Schließen"></span>
                         </div>
-                        <div class="col s12 m8 ui-sortable">
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTpageViews">
-                                <div class="widget" id="widgetWidgetKLAMBTpageViews">
-                                    <div class="widgetTop">
-                                        <h3 class="widgetName">
-                                            <div class="widgetNameOffScreen">
-                                                Widget
-                                            </div>
-                                            <span>Seitenaufrufe (30 Min)</span></h3>
-                                    </div>
-                                    <div class="widgetContent ">
-                                        <div class="chartjs-size-monitor">
-                                            <div class="chartjs-size-monitor-expand">
-                                                <div class=""></div>
-                                            </div>
-                                            <div class="chartjs-size-monitor-shrink">
-                                                <div class=""></div>
-                                            </div>
-                                        </div>
-                                        {% include '@WidgetKLAMBT/PageviewsTemplate.twig' with {'xValues':pageViews.xValues,'yValues':pageViews.yValues } %}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTpagesGreatestActivity">
-                                <div class="widget" id="widgetWidgetKLAMBTpagesGreatestActivity">
-                                    <div class="widgetTop">
-                                        <h3 class="widgetName">
-                                            <div class="widgetNameOffScreen">
-                                                Widget
-                                            </div>
-                                            <span>Seiten mit größter Aktivität (30 Min)</span></h3>
-                                    </div>
-                                    <div class="widgetContent ">
-                                        {% include '@WidgetKLAMBT/PGATemplate.twig' with {'rows':PGA.result,'sum':PGA.sum } %}
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="button" id="maximise">
+                            <span class="icon-fullscreen" title="Vergrößern"></span>
                         </div>
-                        <div class="menuClear"></div>
+                        <div class="button" id="minimise">
+                            <span class="icon-minimise" title="Minimieren"></span>
+                        </div>
+                        <div class="button" id="refresh">
+                            <span class="icon-reload" title="Aktualisieren"></span>
+                        </div>
+                    </div>
+                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                            Widget
+                        </div>
+                        <span>Nutzergeräte (5 Min)</span></h3>
+                </div>
+                <div class="widgetContent ng-scope"><div id="realtime-user-legend" style="width:100%;">
+                        <div id="count">
+                            <span>In den letzen 5 Minuten</span>
+                            <div>6</div>
+                            <span>auf Website aktive Nutzer</span>
+                        </div>
+                        <br>
+                        <div id="legend">
+                            <div><span class="Tablet"></span>Tablet</div>
+                            <div><span class="Mobilgerät"></span>Mobilgerät</div>
+                        </div>
+
+                        <div id="progress">
+                            <div class="Tablet" style="width:50%;">50%</div>
+                            <div class="Mobilgerät" style="width:50%;">50%</div>
+                        </div>
+                        <div id="reflect">
+                            <div class="Tablet" style="width:50%;">50%</div>
+                            <div class="Mobilgerät" style="width:50%;">50%</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </div></div><div class="sortable" widgetid="widgetWidgetKLAMBTreferer"><div class="widget" id="widgetWidgetKLAMBTreferer">
+                <div class="widgetTop">
+                    <div class="buttons">
+                        <div class="button" id="close">
+                            <span class="icon-close" title="Schließen"></span>
+                        </div>
+                        <div class="button" id="maximise">
+                            <span class="icon-fullscreen" title="Vergrößern"></span>
+                        </div>
+                        <div class="button" id="minimise">
+                            <span class="icon-minimise" title="Minimieren"></span>
+                        </div>
+                        <div class="button" id="refresh">
+                            <span class="icon-reload" title="Aktualisieren"></span>
+                        </div>
+                    </div>
+                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                            Widget
+                        </div>
+                        <span>Häufigste Verweise (30 Min)</span></h3>
+                </div>
+                <div class="widgetContent ng-scope"><table cellspacing="0" class="dataTable">
+                        <thead>
+                        <tr>
+                            <th class="sortable label first">#</th>
+                            <th class="sortable"><center>Quelle</center></th>
+                            <th class="sortable">
+                                <div id="thDIV">Aktive Nutzer</div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="label first">Google</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="label first">com.pinterest</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="label first">DuckDuckGo</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="label first">Bing</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="label first">Pinterest</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="label first">status.klambt.services</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="label first">redirect_service</td>
+                            <td>1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div></div></div><div class="col s12 m8 ui-sortable"> <div class="sortable" widgetid="widgetWidgetKLAMBTpageViews"><div class="widget" id="widgetWidgetKLAMBTpageViews">
+                <div class="widgetTop">
+                    <div class="buttons">
+                        <div class="button" id="close">
+                            <span class="icon-close" title="Schließen"></span>
+                        </div>
+                        <div class="button" id="maximise">
+                            <span class="icon-fullscreen" title="Vergrößern"></span>
+                        </div>
+                        <div class="button" id="minimise">
+                            <span class="icon-minimise" title="Minimieren"></span>
+                        </div>
+                        <div class="button" id="refresh">
+                            <span class="icon-reload" title="Aktualisieren"></span>
+                        </div>
+                    </div>
+                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                            Widget
+                        </div>
+                        <span>Seitenaufrufe (30 Min)</span></h3>
+                </div>
+                <div class="widgetContent ng-scope"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div><canvas id="myChart" style="width: 100%; display: block;" width="1630" height="814" class="chartjs-render-monitor"></canvas>
+                    <script>
+                        const xValues = [
+                            0+' Min.',
+                            -1+' Min.',
+                            -5+' Min.',
+                            -6+' Min.',
+                            -7+' Min.',
+                            -9+' Min.',
+                            -10+' Min.',
+                            -11+' Min.',
+                            -12+' Min.',
+                            -13+' Min.',
+                            -14+' Min.',
+                            -15+' Min.',
+                            -16+' Min.',
+                            -17+' Min.',
+                            -18+' Min.',
+                            -19+' Min.',
+                            -21+' Min.',
+                            -22+' Min.',
+                            -23+' Min.',
+                            -24+' Min.',
+                            -25+' Min.',
+                            -26+' Min.',
+                            -27+' Min.',
+                            -28+' Min.',
+                            -29+' Min.',
+                            -30+' Min.',
+                        ];
+                        const yValues = [
+                            14,
+                            1,
+                            5,
+                            4,
+                            3,
+                            5,
+                            6,
+                            8,
+                            1,
+                            4,
+                            3,
+                            2,
+                            1,
+                            9,
+                            6,
+                            9,
+                            5,
+                            34,
+                            11,
+                            4,
+                            3,
+                            10,
+                            1,
+                            4,
+                            2,
+                            5,
+                        ];
+
+                        new Chart("myChart", {
+                            type: "line",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    fill: true,
+                                    lineTension: 0,
+                                    backgroundColor: "rgb(0 100 255 / 47%)",
+                                    borderColor: "#0a8eff",
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                legend: {display: false},
+                                scales: {
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div></div><div class="sortable" widgetid="widgetWidgetKLAMBTpagesGreatestActivity"><div class="widget" id="widgetWidgetKLAMBTpagesGreatestActivity">
+                <div class="widgetTop">
+                    <div class="buttons">
+                        <div class="button" id="close">
+                            <span class="icon-close" title="Schließen"></span>
+                        </div>
+                        <div class="button" id="maximise">
+                            <span class="icon-fullscreen" title="Vergrößern"></span>
+                        </div>
+                        <div class="button" id="minimise">
+                            <span class="icon-minimise" title="Minimieren"></span>
+                        </div>
+                        <div class="button" id="refresh">
+                            <span class="icon-reload" title="Aktualisieren"></span>
+                        </div>
+                    </div>
+                    <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                            Widget
+                        </div>
+                        <span>Seiten mit größter Aktivität (30 Min)</span></h3>
+                </div>
+                <div class="widgetContent ng-scope"><div class="dataTableWrapper">
+                        <div class="dataTableScroller">
+                            <table cellspacing="0" class="dataTable">
+                                <thead>
+                                <tr>
+                                    <th class="sortable label first">#</th>
+                                    <th class="sortable">
+                                        <center>Aktive Seite</center>
+                                    </th>
+                                    <th class="sortable">
+                                        <div id="thDIV">Aktive Nutzer</div>
+                                    </th>
+                                    <th class="sortable"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/thema/erotische-geschichten" target="_blank">/thema/erotische-geschichten</a></td>
+                                    <td class="column">54</td>
+                                    <td>38%</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/" target="_blank">/</a></td>
+                                    <td class="column">10</td>
+                                    <td>7%</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/haus-garten/einbrecher-abschrecken-mit-ganz-einfachen-tricks-8625.html" target="_blank">/leben/haus-garten/einbrecher-abschrecken-mit-ganz-einfachen-tricks-8625.html</a></td>
+                                    <td class="column">9</td>
+                                    <td>6%</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/schaden-pornos-der-beziehung-6412.html" target="_blank">/leben/liebe-erotik/schaden-pornos-der-beziehung-6412.html</a></td>
+                                    <td class="column">7</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/symptom-anzeiger-zunge-krankheiten-auf-einen-blick-erkennen-4109" target="_blank">/gesundheit/beschwerden-krankheiten/symptom-anzeiger-zunge-krankheiten-auf-einen-blick-erkennen-4109</a></td>
+                                    <td class="column">4</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/klebriger-stuhl-warum-man-ihm-auf-den-grund-gehen-sollte-9697" target="_blank">/gesundheit/beschwerden-krankheiten/klebriger-stuhl-warum-man-ihm-auf-den-grund-gehen-sollte-9697</a></td>
+                                    <td class="column">4</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/glueck/seele/handlesen-anleitung-das-sind-die-wichtigsten-linien-und-ihre-bedeutungen-2394.html" target="_blank">/glueck/seele/handlesen-anleitung-das-sind-die-wichtigsten-linien-und-ihre-bedeutungen-2394.html</a></td>
+                                    <td class="column">4</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/26-hanse-sail-schiffe-und-live-programm-erleben-vom-11-14-august-in-rostock-1433.html" target="_blank">/26-hanse-sail-schiffe-und-live-programm-erleben-vom-11-14-august-in-rostock-1433.html</a></td>
+                                    <td class="column">4</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ein-nachbar-zum-verlieben-9626.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ein-nachbar-zum-verlieben-9626.html</a></td>
+                                    <td class="column">3</td>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/selbstbefriedigung-fuer-frauen-die-heissesten-tipps-und-tricks-5704.html" target="_blank">/leben/liebe-erotik/selbstbefriedigung-fuer-frauen-die-heissesten-tipps-und-tricks-5704.html</a></td>
+                                    <td class="column">3</td>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/back-rezepte-ganz-einfach-umrechnen-929.html" target="_blank">/back-rezepte-ganz-einfach-umrechnen-929.html</a></td>
+                                    <td class="column">3</td>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-besten-alternativen-zum-gleitgel-9458.html" target="_blank">/leben/liebe-erotik/die-besten-alternativen-zum-gleitgel-9458.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/unterhaltung/tv-prominente/tieraerztin-dr-mertens-grosse-entscheidungen-in-der-letzten-staffel-9650" target="_blank">/unterhaltung/tv-prominente/tieraerztin-dr-mertens-grosse-entscheidungen-in-der-letzten-staffel-9650</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/thema/erotische-geschichten-seite-2.html" target="_blank">/thema/erotische-geschichten-seite-2.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-fantasien-verregneter-sonntag-2099.html" target="_blank">/leben/liebe-erotik/erotische-fantasien-verregneter-sonntag-2099.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/osterhasenkuchen-mit-kakaoglasur-1021.html" target="_blank">/osterhasenkuchen-mit-kakaoglasur-1021.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/schoenheit-mode/pflege-beautytipps/intimbereich-lasern-das-sind-die-risiken-9826.html" target="_blank">/schoenheit-mode/pflege-beautytipps/intimbereich-lasern-das-sind-die-risiken-9826.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/backrezepte-umrechnen-von-rund-in-eckig-und-umgekehrt-1388.html" target="_blank">/backrezepte-umrechnen-von-rund-in-eckig-und-umgekehrt-1388.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/aus-dem-leben/schwanger-mit-48-baby-statt-wechseljahre-6622.html" target="_blank">/leben/aus-dem-leben/schwanger-mit-48-baby-statt-wechseljahre-6622.html</a></td>
+                                    <td class="column">2</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/ferienhaus-3141.html" target="_blank">/leben/liebe-erotik/ferienhaus-3141.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/lust-auf-der-almenhuette-9592.html" target="_blank">/leben/liebe-erotik/lust-auf-der-almenhuette-9592.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/sex-im-alter-intime-gestaendnisse-6964.html" target="_blank">/leben/liebe-erotik/sex-im-alter-intime-gestaendnisse-6964.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gar-nicht-so-einfach-lernen-sie-komplimente-anzunehmen-1952.html" target="_blank">/gar-nicht-so-einfach-lernen-sie-komplimente-anzunehmen-1952.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/gesundheit/beschwerden-krankheiten/zysten-operieren-wann-ist-die-op-sinnvoll-4372.html" target="_blank">/gesundheit/beschwerden-krankheiten/zysten-operieren-wann-ist-die-op-sinnvoll-4372.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ueberstunden-im-buero-mal-ein-echter-lustgewinn-9981.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ueberstunden-im-buero-mal-ein-echter-lustgewinn-9981.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-sex-im-chefbuero-9849.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-sex-im-chefbuero-9849.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-heisse-nummer-im-regen-6148.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-heisse-nummer-im-regen-6148.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-quickie-zum-fruehstueck-9676.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-quickie-zum-fruehstueck-9676.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-anonymer-quickie-1075.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-anonymer-quickie-1075.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>30</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-heisses-liebesspiel-in-der-scheune-9856.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-heisses-liebesspiel-in-der-scheune-9856.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>31</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-handjob-am-see-9659.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-handjob-am-see-9659.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>32</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/aus-dem-leben/nach-der-trennung-wenn-kinder-sich-fuer-papa-entscheiden-2312.html" target="_blank">/leben/aus-dem-leben/nach-der-trennung-wenn-kinder-sich-fuer-papa-entscheiden-2312.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>33</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/schoenheit-mode" target="_blank">/schoenheit-mode</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>34</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-ab-geht-die-post-9289.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-ab-geht-die-post-9289.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>35</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/erotische-geschichte-eine-vollmondnacht-der-liebe-9963.html" target="_blank">/leben/liebe-erotik/erotische-geschichte-eine-vollmondnacht-der-liebe-9963.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>36</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/ratgeber/waesche-richtig-waschen-die-besten-pflegetipps-fuer-viskose-seide-wolle-co-3237.html" target="_blank">/leben/ratgeber/waesche-richtig-waschen-die-besten-pflegetipps-fuer-viskose-seide-wolle-co-3237.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>37</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-der-nikolaus-3977.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-der-nikolaus-3977.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>38</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/leben/liebe-erotik/die-erotische-geschichte-quicky-mit-dem-handwerker-6010.html" target="_blank">/leben/liebe-erotik/die-erotische-geschichte-quicky-mit-dem-handwerker-6010.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>39</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/bachblueten-wirkung-uebersicht-und-einnahme-der-natuerlichen-helfer-1226.html" target="_blank">/bachblueten-wirkung-uebersicht-und-einnahme-der-natuerlichen-helfer-1226.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>40</td>
+                                    <td class="label first"><a style="font-size: 11px;" href="https://idee-fuer-mich.de/weizenunvertraeglichkeit-5-alternativen-fuer-allergiker-1998.html" target="_blank">/weizenunvertraeglichkeit-5-alternativen-fuer-allergiker-1998.html</a></td>
+                                    <td class="column">1</td>
+                                    <td>1%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div></div>
+            </div></div></div><div class="menuClear"> </div></div>
