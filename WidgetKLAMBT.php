@@ -31,12 +31,5 @@ class WidgetKLAMBT extends \Piwik\Plugin
     $jsFiles[] = 'plugins/WidgetKLAMBT/js/refresh.js';
   }
 
-    // support archiving just this plugin via core:archive
-    public function getArchivingAPIMethodForPlugin(&$method, $plugin)
-    {
-        if ($plugin == 'WidgetKLAMBT') {
-            $method = 'WidgetKLAMBT.getExampleArchivedMetric';
-        }
-    }
 
   }
