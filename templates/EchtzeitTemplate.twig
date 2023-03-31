@@ -1,1 +1,168 @@
-{% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices.result,'sum':devices.sum } %}
+<div id="dashboard" piwik-dashboard="" dashboardid="3" class="ng-scope ng-isolate-scope">
+    <div class="ui-confirm" id="confirm">
+        <h2>Wollen Sie wirklich dieses Widget vom Dashboard entfernen?</h2>
+        <input role="yes" type="button" value="Ja">
+        <input role="no" type="button" value="Nein">
+    </div>
+
+    <div class="ui-confirm" id="setAsDefaultWidgetsConfirm">
+        <h2>Sind Sie sicher, dass Sie die aktuelle Widgetauswahl und das Layout als das Standard Dashboardvorlage speichern möchten?</h2>
+        <div class="popoverSubMessage">Diese Widgetauswahl und das aktuelle Spaltenlayout werden verwendet, wenn ein neues Dashboard erstellt wird oder wenn "Dashboard zurücksetzen" verwendet wird.</div>
+        <input role="yes" type="button" value="Ja">
+        <input role="no" type="button" value="Nein">
+    </div>
+
+    <div class="ui-confirm" id="resetDashboardConfirm">
+        <h2>Wollen Sie wirklich das Dashboardlayout auf die Standardeinstellungen zurücksetzen?</h2>
+        <input role="yes" type="button" value="Ja">
+        <input role="no" type="button" value="Nein">
+    </div>
+
+
+
+    <div class="ui-confirm" id="changeDashboardLayout">
+        <h2>Bitte wählen Sie ein neues Dashboardlayout</h2>
+
+        <div id="columnPreview">
+            <div layout="100">
+                <div class="width-100"><span></span></div>
+            </div>
+            <div layout="50-50">
+                <div class="width-50"><span></span></div>
+                <div class="width-50"><span></span></div>
+            </div>
+            <div layout="67-33">
+                <div class="width-67"><span></span></div>
+                <div class="width-33"><span></span></div>
+            </div>
+            <div layout="33-67">
+                <div class="width-33"><span></span></div>
+                <div class="width-67"><span></span></div>
+            </div>
+            <div layout="33-33-33">
+                <div class="width-33"><span></span></div>
+                <div class="width-33"><span></span></div>
+                <div class="width-33"><span></span></div>
+            </div>
+            <div layout="40-30-30">
+                <div class="width-40"><span></span></div>
+                <div class="width-30"><span></span></div>
+                <div class="width-30"><span></span></div>
+            </div>
+            <div layout="30-40-30">
+                <div class="width-30"><span></span></div>
+                <div class="width-40"><span></span></div>
+                <div class="width-30"><span></span></div>
+            </div>
+            <div layout="30-30-40">
+                <div class="width-30"><span></span></div>
+                <div class="width-30"><span></span></div>
+                <div class="width-40"><span></span></div>
+            </div>
+            <div layout="25-25-25-25">
+                <div class="width-25"><span></span></div>
+                <div class="width-25"><span></span></div>
+                <div class="width-25"><span></span></div>
+                <div class="width-25"><span></span></div>
+            </div>
+            <br class="clearfix">
+        </div>
+        <input role="yes" type="button" value="Speichern">
+        <input role="cancel" type="button" value="Abbrechen">
+    </div>
+
+    <div class="ui-confirm" id="renameDashboardConfirm">
+        <h2>Dashboard umbenennen</h2>
+
+        <div id="newDashboardNameInput">
+            <label for="newDashboardName">Dashboard Name: </label>
+            <input type="text" name="newDashboardName" id="newDashboardName" value="">
+        </div>
+        <input role="yes" type="button" value="Speichern">
+        <input role="cancel" type="button" value="Abbrechen">
+    </div>
+
+    <div class="ui-confirm" id="copyDashboardToUserConfirm">
+        <h2>Dashboard zu Benutzer kopieren</h2>
+
+        <div class="inputs">
+            <div class="row">
+                <div class="col s12 m6"><label for="copyDashboardName">Dashboard Name: </label></div>
+                <div class="col s12 m6"><input type="text" name="copyDashboardName" id="copyDashboardName" value=""></div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6"><label for="copyDashboardUser">Benutzername </label></div>
+                <div class="col s12 m6"><select class="browser-default" name="copyDashboardUser" id="copyDashboardUser">
+                        <option value="Lade Daten ...">Lade Daten ...</option></select></div>
+            </div>
+        </div>
+
+        <input role="yes" type="button" value="OK">
+        <input role="cancel" type="button" value="Abbrechen">
+    </div>
+
+
+
+    <div class="ui-confirm" id="removeDashboardConfirm">
+        <h2>Sind Sie sicher, dass Sie das Dashboard "<span></span>" löschen möchten?</h2>
+
+        <div class="popoverSubMessage">Sie können diese Aktion nicht rückgängig machen.</div>
+        <input role="yes" type="button" value="Ja">
+        <input role="no" type="button" value="Nein">
+    </div>
+
+    <div id="widgetTemplate" style="display:none;">
+
+    </div>
+
+    <div id="dashboardWidgetsArea" class="row"><div class="col s12 m4 ui-sortable"><div class="sortable" widgetid="widgetWidgetKLAMBTdevices"><div class="widget" id="widgetWidgetKLAMBTdevices">
+                    <div class="widgetTop">
+                        <div class="buttons">
+                            <div class="button" id="close">
+                                <span class="icon-close" title="Schließen"></span>
+                            </div>
+                            <div class="button" id="maximise">
+                                <span class="icon-fullscreen" title="Vergrößern"></span>
+                            </div>
+                            <div class="button" id="minimise">
+                                <span class="icon-minimise" title="Minimieren"></span>
+                            </div>
+                            <div class="button" id="refresh">
+                                <span class="icon-reload" title="Aktualisieren"></span>
+                            </div>
+                        </div>
+                        <h3 class="widgetName">                <div class="widgetNameOffScreen">
+                                Widget
+                            </div>
+                            <span>Nutzergeräte (5 Min)</span></h3>
+                    </div>
+                    <div class="widgetContent ng-scope"><div id="realtime-user-legend" style="width:100%;">
+                            <div id="count">
+                                <span>In den letzen 5 Minuten</span>
+                                <div>13</div>
+                                <span>auf Website aktive Nutzer</span>
+                            </div>
+                            <br>
+                            <div id="legend">
+                                <div><span class="Mobilgerät"></span>Mobilgerät</div>
+                                <div><span class="Tablet"></span>Tablet</div>
+                            </div>
+
+                            <div id="progress">
+                                <div class="Mobilgerät" style="width:69%;">70%</div>
+                                <div class="Tablet" style="width:31%;">31%</div>
+                            </div>
+                            <div id="reflect">
+                                <div class="Mobilgerät" style="width:69%;">70%</div>
+                                <div class="Tablet" style="width:31%;">31%</div>
+                            </div>
+                        </div>
+                        <script>
+                            setTimeout(function (){
+                                console.log('refreshed');
+                                $('[widgetid=widgetWidgetKLAMBTdevices]').dashboardWidget('reload', false, true);
+                            }, 1800);
+                        </script>
+                    </div>
+                </div></div> </div><div class="col s12 m4 ui-sortable"> </div><div class="col s12 m4 ui-sortable"> </div><div class="menuClear"> </div></div>
+</div>
