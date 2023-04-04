@@ -72,7 +72,7 @@
 </div>
 <script>
     var url="index.php?module=WidgetKLAMBT&action=devices&idSite=4";
-    $.get("local_templates/template1.html").success(function(data){
+    $.get(url).success(function(data){
         console.log(data);
         $('#devicesWidget').html(data);
     });
