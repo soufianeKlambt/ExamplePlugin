@@ -71,6 +71,9 @@
     </div>
 </div>
 <script>
-    var url="https://analytics.klambt.services/index.php?module=WidgetKLAMBT&action=devices&idSite=4";
-    $('#devicesWidget').load(url);
+    var url="index.php?module=WidgetKLAMBT&action=devices&idSite=4";
+    $.get("local_templates/template1.html").success(function(data){
+        console.log(data);
+        $('#devicesWidget').html(data);
+    });
 </script>
