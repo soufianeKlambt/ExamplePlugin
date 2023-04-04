@@ -30,7 +30,7 @@
                                             </div>
                                             <span>Häufigste Verweise (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent" id="refererWidget">
+                                    <div class="widgetContent" id="referer-widget">
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                             </div>
                                             <span>Seitenaufrufe (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent" id="pageviewsWidget">
+                                    <div class="widgetContent" id="pageviews-widget">
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                                             </div>
                                             <span>Seiten mit größter Aktivität (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent" id="PGAWidget">
+                                    <div class="widgetContent" id="pga-widget">
                                     </div>
                                 </div>
                             </div>
@@ -71,9 +71,24 @@
     </div>
 </div>
 <script>
-    var url="index.php?module=WidgetKLAMBT&action=devices&idSite=4";
-    $.get(url).success(function(data){
+    // devices widget
+    $.get('index.php?module=WidgetKLAMBT&action=devices&idSite=4').success(function(data){
         console.log(data);
         $('#devices-widget').html(data);
+    });
+    // referer widget
+    $.get('index.php?module=WidgetKLAMBT&action=referer&idSite=4').success(function(data){
+        console.log(data);
+        $('#referer-widget').html(data);
+    });
+    // devices widget
+    $.get('index.php?module=WidgetKLAMBT&action=pageViews&idSite=4').success(function(data){
+        console.log(data);
+        $('#pageviews-widget').html(data);
+    });
+    // devices widget
+    $.get('index.php?module=WidgetKLAMBT&action=pagesGreatestActivity&idSite=4').success(function(data){
+        console.log(data);
+        $('#pga').html(data);
     });
 </script>
