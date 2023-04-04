@@ -7,8 +7,8 @@
 
                     <div id="dashboardWidgetsArea" class="row">
                         <div class="col s12 m4 ui-sortable">
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTdevices">
-                                <div class="widget" id="widgetWidgetKLAMBTdevices">
+                            <div class="sortable">
+                                <div class="widget" >
                                     <div class="widgetTop">
                                         <h3 class="widgetName">
                                             <div class="widgetNameOffScreen">
@@ -16,14 +16,13 @@
                                             </div>
                                             <span>Nutzergeräte (5 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ">
-                                        {% include '@WidgetKLAMBT/DevicesTemplate.twig' with {'result':devices.result,'sum':devices.sum } %}
+                                    <div class="widgetContent" id="devicesWidget">
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTreferer">
-                                <div class="widget" id="widgetWidgetKLAMBTreferer">
+                            <div class="sortable" >
+                                <div class="widget">
                                     <div class="widgetTop">
                                         <h3 class="widgetName">
                                             <div class="widgetNameOffScreen">
@@ -31,15 +30,14 @@
                                             </div>
                                             <span>Häufigste Verweise (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ">
-                                        {% include '@WidgetKLAMBT/RefererTemplate.twig' with {'rows':referer } %}
+                                    <div class="widgetContent" id="refererWidget">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col s12 m8 ui-sortable">
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTpageViews">
-                                <div class="widget" id="widgetWidgetKLAMBTpageViews">
+                            <div class="sortable">
+                                <div class="widget">
                                     <div class="widgetTop">
                                         <h3 class="widgetName">
                                             <div class="widgetNameOffScreen">
@@ -47,21 +45,12 @@
                                             </div>
                                             <span>Seitenaufrufe (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ">
-                                        <div class="chartjs-size-monitor">
-                                            <div class="chartjs-size-monitor-expand">
-                                                <div class=""></div>
-                                            </div>
-                                            <div class="chartjs-size-monitor-shrink">
-                                                <div class=""></div>
-                                            </div>
-                                        </div>
-                                        {% include '@WidgetKLAMBT/PageviewsTemplate.twig' with {'xValues':pageViews.xValues,'yValues':pageViews.yValues } %}
+                                    <div class="widgetContent" id="pageviewsWidget">
                                     </div>
                                 </div>
                             </div>
-                            <div class="sortable" widgetid="widgetWidgetKLAMBTpagesGreatestActivity">
-                                <div class="widget" id="widgetWidgetKLAMBTpagesGreatestActivity">
+                            <div class="sortable" >
+                                <div class="widget">
                                     <div class="widgetTop">
                                         <h3 class="widgetName">
                                             <div class="widgetNameOffScreen">
@@ -69,8 +58,7 @@
                                             </div>
                                             <span>Seiten mit größter Aktivität (30 Min)</span></h3>
                                     </div>
-                                    <div class="widgetContent ">
-                                        {% include '@WidgetKLAMBT/PGATemplate.twig' with {'rows':PGA.result,'sum':PGA.sum } %}
+                                    <div class="widgetContent" id="PGAWidget">
                                     </div>
                                 </div>
                             </div>
@@ -82,3 +70,7 @@
         </div>
     </div>
 </div>
+<script>
+    var url="https://analytics.klambt.services/";
+    $('#devicesWidget').load(url+"index.php?module=WidgetKLAMBT&action=devices&idSite=4");
+</script>
