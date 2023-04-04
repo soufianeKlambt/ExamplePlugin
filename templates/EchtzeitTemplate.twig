@@ -71,6 +71,28 @@
     </div>
 </div>
 <script>
+    setInterval(function(){
+        // devices widget
+        $.get('index.php?module=WidgetKLAMBT&action=devices&idSite=4').success(function(data){
+            console.log(data);
+            $('#devices-widget').html(data);
+        });
+        // referer widget
+        $.get('index.php?module=WidgetKLAMBT&action=referer&idSite=4').success(function(data){
+            console.log(data);
+            $('#referer-widget').html(data);
+        });
+        // devices widget
+        $.get('index.php?module=WidgetKLAMBT&action=pageViews&idSite=4').success(function(data){
+            console.log(data);
+            $('#pageviews-widget').html(data);
+        });
+        // devices widget
+        $.get('index.php?module=WidgetKLAMBT&action=pagesGreatestActivity&idSite=4').success(function(data){
+            console.log(data);
+            $('#pga-widget').html(data);
+        });
+
     // devices widget
     $.get('index.php?module=WidgetKLAMBT&action=devices&idSite=4').success(function(data){
         console.log(data);
@@ -91,4 +113,5 @@
         console.log(data);
         $('#pga-widget').html(data);
     });
+    }, 30000);
 </script>
