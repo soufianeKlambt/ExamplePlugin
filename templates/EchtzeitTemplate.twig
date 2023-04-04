@@ -1,7 +1,75 @@
-<div class="widgetContent" id="devices-widget">
+<div class="row">
+    <div class="matomo-widget isFirstWidgetInPage col s12 fullWidgetColumn"
+         id="widgetDashboardembeddedIndexidDashboard1">
+        <div>
+            <div class="theWidgetContent">
+                <div id="dashboard" piwik-dashboard="" dashboardid="1" class=" ng-isolate-scope">
 
+                    <div id="dashboardWidgetsArea" class="row">
+                        <div class="col s12 m4 ui-sortable">
+                            <div class="sortable">
+                                <div class="widget" >
+                                    <div class="widgetTop">
+                                        <h3 class="widgetName">
+                                            <div class="widgetNameOffScreen">
+                                                Widget
+                                            </div>
+                                            <span>Nutzergeräte (5 Min)</span></h3>
+                                    </div>
+                                    <div class="widgetContent" id="devices-widget">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sortable" >
+                                <div class="widget">
+                                    <div class="widgetTop">
+                                        <h3 class="widgetName">
+                                            <div class="widgetNameOffScreen">
+                                                Widget
+                                            </div>
+                                            <span>Häufigste Verweise (30 Min)</span></h3>
+                                    </div>
+                                    <div class="widgetContent" id="refererWidget">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m8 ui-sortable">
+                            <div class="sortable">
+                                <div class="widget">
+                                    <div class="widgetTop">
+                                        <h3 class="widgetName">
+                                            <div class="widgetNameOffScreen">
+                                                Widget
+                                            </div>
+                                            <span>Seitenaufrufe (30 Min)</span></h3>
+                                    </div>
+                                    <div class="widgetContent" id="pageviewsWidget">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sortable" >
+                                <div class="widget">
+                                    <div class="widgetTop">
+                                        <h3 class="widgetName">
+                                            <div class="widgetNameOffScreen">
+                                                Widget
+                                            </div>
+                                            <span>Seiten mit größter Aktivität (30 Min)</span></h3>
+                                    </div>
+                                    <div class="widgetContent" id="PGAWidget">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menuClear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 <script>
     var url="index.php?module=WidgetKLAMBT&action=devices&idSite=4";
     $.get(url).success(function(data){
