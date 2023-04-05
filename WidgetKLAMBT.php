@@ -28,10 +28,6 @@ class WidgetKLAMBT extends \Piwik\Plugin
   public function getJsFiles(&$jsFiles)
   {
     $jsFiles[] = 'plugins/WidgetKLAMBT/js/Chart.js';
-    $jsFiles[] = 'plugins/Dashboard/javascripts/dashboard.js';
-    $jsFiles[] = 'plugins/Dashboard/javascripts/dashboardObject.js';
-    $jsFiles[] = 'plugins/Dashboard/javascripts/dashboardWidget.js';
-    $jsFiles[] = 'plugins/WidgetKLAMBT/js/refresh.js';
   }
 
     // support archiving just this plugin via core:archive
