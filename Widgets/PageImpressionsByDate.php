@@ -33,7 +33,7 @@ class PageImpressionsByDate extends Widget {
   public function render() {
     $idSite = $_GET['idSite'];
     $datum = $_GET['date'];
-    $sql = "select url,datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  where";
+    $sql = "select url,datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
     switch ($_GET['period']) {
       case 'day':
         $sql .= "datum ='".$_GET['date']."'";
@@ -51,7 +51,7 @@ class PageImpressionsByDate extends Widget {
         $sql = "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
         break;
     }
-    $sql .= "group by datum";
+    $sql .= " group by datum";
 
     echo $sql;
 
