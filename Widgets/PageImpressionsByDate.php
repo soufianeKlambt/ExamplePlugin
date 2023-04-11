@@ -56,9 +56,7 @@ class PageImpressionsByDate extends Widget {
     echo $sql;
     $cache=new WKCache();
     $result= $cache->getCacheData('Devices-'.$idSite,$sql);
-    return $this->renderTemplate('PageImpressionsByDate', [
-      'result' => $result,
-    ]);
+
 
   }
 
