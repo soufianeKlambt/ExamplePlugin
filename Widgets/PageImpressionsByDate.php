@@ -56,10 +56,6 @@ class PageImpressionsByDate extends Widget {
     echo $sql;
     $cache=new WKCache();
     $result= $cache->getCacheData('Devices-'.$idSite,$sql);
-    $sum = 0;
-    foreach($result as $values) {
-      $sum += $values[ 'visits' ];
-    }
     return $this->renderTemplate('PageImpressionsByDate', [
       'result' => $result,
     ]);
