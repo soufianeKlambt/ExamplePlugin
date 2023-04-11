@@ -53,7 +53,12 @@ class PageImpressionsByDate extends Widget {
     }
     $sql .= " group by datum";
 
-    echo $sql;
+    $db = \Piwik\Db::get();
+    $result = $db->fetchAll($sql);
+    return $this->renderTemplate('PageImpressionsByDate', array(
+      'result' => $result,
+
+    ));
 
 
 
