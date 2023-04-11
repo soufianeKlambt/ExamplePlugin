@@ -54,8 +54,7 @@ class PageImpressionsByDate extends Widget {
     $sql .= "group by datum";
 
     echo $sql;
-    $cache=new WKCache();
-    $result= $cache->getCacheData('Devices-'.$idSite,$sql);
+
 
 
   }
