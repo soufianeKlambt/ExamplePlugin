@@ -39,16 +39,16 @@ class PageImpressionsByDate extends Widget {
         $sql .= "datum ='".$_GET['date']."'";
         break;
       case 'week':
-        $sql .= "datum between '".$datum."' and '".strtotime("+7 day", $datum)."'";
+        $sql .= "datum between '".$datum."' and '".date($datum, strtotime('+7 days'))."'";
         break;
       case 'month':
-        $sql .= "datum between '".strtotime("Y-m",$datum)."-01' and '".strtotime("Y-m",$datum).'-'.cal_days_in_month(CAL_GREGORIAN,date("t",strtotime("m",$datum)),date("t",strtotime("Y",$datum)))."'";
+        $sql .= "datum between '".date('Y-m', strtotime($datum))."-01' and '".date('Y-m', strtotime($datum)).'-'.cal_days_in_month(CAL_GREGORIAN,date("t",strtotime("m",$datum)),date("t",strtotime("Y",$datum)))."'";
         break;
       case 'year':
         $sql .= "select url,datum,sum(pageimpressions) as pageimpressions from klambt_year_data where site_id=".$idSite." group by datum";
         break;
       case 'range':
-        $sql = "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
+        $sql .= "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
         break;
     }
     $sql .= " group by datum";
