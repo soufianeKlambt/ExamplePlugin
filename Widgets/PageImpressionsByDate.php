@@ -36,10 +36,10 @@ class PageImpressionsByDate extends Widget {
     $sql = "select datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
     switch ($_GET['period']) {
       case 'day':
-        $sql .= "datum ='".$_GET['date']."'";
+        $sql .= "datum ='".date("Y-m-d", strtotime($datum))."'";
         break;
       case 'week':
-        $sql .= "datum between '".$datum."' and '".date($datum, strtotime('+7 days'))."'";
+        $sql .= "datum between '".$datum."' and '".date('Y-m-d', strtotime($datum.' +7 days'))."'";
         break;
       case 'month':
         $sql .= "datum between '".date('Y-m', strtotime($datum))."-01' and '".date('Y-m', strtotime($datum)).'-'.cal_days_in_month(CAL_GREGORIAN,date("m",strtotime($datum)),date("Y",strtotime($datum)))."'";
