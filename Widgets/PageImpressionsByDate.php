@@ -33,7 +33,7 @@ class PageImpressionsByDate extends Widget {
   public function render() {
     $idSite = $_GET['idSite'];
     $datum = $_GET['date'];
-    $sql = "select datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
+    $sql = "select url,datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
     switch ($_GET['period']) {
       case 'day':
         $sql .= "datum ='".date("Y-m-d", strtotime($datum))."'";
