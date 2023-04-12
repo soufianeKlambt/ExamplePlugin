@@ -1,4 +1,4 @@
-<div id="exportCsv">Click</div>
+<img src="plugins/WidgetKLAMBT/images/csv.png" title="CSV herunterladen" style="width: 40px;cursor: pointer;" id="exportCsv" />
 <table cellspacing="0" class="dataTable">
     <thead>
     <tr>
@@ -64,6 +64,7 @@
             var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
             var download_link = document.createElement('a');
             download_link.href = uri;
+            var currentDate = new Date();
             var month = currentDate.getMonth();
             if (month < 10) month = "0" + month;
             var dateOfMonth = currentDate.getDate();
