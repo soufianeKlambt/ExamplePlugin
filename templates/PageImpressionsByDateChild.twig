@@ -27,36 +27,55 @@
 </table>
 
 <script>
-    $('#exportCsv').click(function() {
+    $("#exportCsv").click(function(){
+        $(".dataTable").kb_table_csv();
+    });
+    $.prototype.kb_table_csv = function() {
 
-        var titles = [];
-        var data = [];
+        var kb_tidy_content = function(text){
+            text = text.replace(/"/g, '""');
+            return '"'+text+'"';
+        };
 
-        $('.dataTable tr').each(function() {
-            data.push($(this));
-        });
+        $(this).each(function(){
+            var table = $(this);
+            var caption = $(this).find('caption').text();
+            var title = [];
+            var rows = [];
 
-        csv_data = []
+            $(this).find('tr').each(function(){
+                var data = [];
+                $(this).find('th').each(function(){
+                    var text = kb_tidy_content($(this).text());
+                    title.push(text);
+                });
 
-        data.forEach(function(item,index){
-            td = item[0].children
-            for(i=0;i<td.length;i++){
+                $(this).find('td').each(function(){
+                    var text = kb_tidy_content($(this).text());
+                    data.push(text);
+                });
 
-                csv_data.push(td[i].innerText)
+                data = data.join(",");
+                rows.push(data);
+            });
+
+            title = title.join(",");
+            rows = rows.join("\n");
+
+            var csv = title + rows;
+            var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+            var download_link = document.createElement('a');
+            download_link.href = uri;
+            var ts = new Date().getTime();
+            if(caption==""){
+                download_link.download = ts+".csv";
+            } else {
+                download_link.download = caption+"-"+ts+".csv";
             }
-
-            csv_data.push('\r\n')
-        })
-
-        var downloadLink = document.createElement("a");
-        var blob = new Blob(["\ufeff", csv_data]);
-        var url = URL.createObjectURL(blob);
-        downloadLink.href = url;
-        downloadLink.download = "minicrawl.csv";
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-
-    })
+            document.body.appendChild(download_link);
+            download_link.click();
+            document.body.removeChild(download_link);
+        });
+    };
 </script>
 
