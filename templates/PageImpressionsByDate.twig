@@ -1,6 +1,6 @@
 <div action="" class="dropdown-button dataTableAction searchAction searchActive forceActionVisible">
     <span class="icon-search"></span>
-    <input id="" type="text" class="dataTableSearchInput" value="">
+    <input id="keyword" type="text" class="dataTableSearchInput" value="" onclick="getData()">
 </div>
 <div id="data-widget">
 
@@ -8,7 +8,8 @@
 <script>
     getData();
     function getData() {
-        $.get('index.php?module=WidgetKLAMBT&action=pageImpressionsByDateChild&idSite={{ idSite }}&period={{ period }}&date={{ date }}').success(function (data) {
+        var keyword = $('#keyword').val();
+        $.get('index.php?module=WidgetKLAMBT&action=pageImpressionsByDateChild&idSite={{ idSite }}&period={{ period }}&date={{ date }}&keyword='+keyword).success(function (data) {
             $('#data-widget').html(data);
         });
 };
