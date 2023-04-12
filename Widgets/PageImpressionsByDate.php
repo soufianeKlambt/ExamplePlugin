@@ -18,7 +18,7 @@ class PageImpressionsByDate extends Widget {
 
   public static function configure(WidgetConfig $config) {
     $config->setCategoryId('Echtzeit');
-    $config->setSubcategoryId('Seitenaufrufe URL');
+    $config->setSubcategoryId('Seitenaufrufe');
   }
 
   /**
@@ -31,33 +31,10 @@ class PageImpressionsByDate extends Widget {
    * @return string
    */
   public function render() {
-    $idSite = $_GET['idSite'];
-    $datum = $_GET['date'];
-    $sql = "select url,datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
-    switch ($_GET['period']) {
-      case 'day':
-        $sql .= "datum ='".date("Y-m-d", strtotime($datum))."'";
-        break;
-      case 'week':
-        $sql .= "datum between '".$datum."' and '".date('Y-m-d', strtotime($datum.' +7 days'))."'";
-        break;
-      case 'month':
-        $sql .= "datum between '".date('Y-m', strtotime($datum))."-01' and '".date('Y-m', strtotime($datum)).'-'.cal_days_in_month(CAL_GREGORIAN,date("m",strtotime($datum)),date("Y",strtotime($datum)))."'";
-        break;
-      case 'year':
-        $sql .= "datum between '".date('Y', strtotime($datum))."-01-01' and '".date('Y', strtotime($datum))."-12-31'";
-        break;
-      case 'range':
-        $sql .= "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
-        break;
-    }
-    $sql .= " group by datum";
-
-    $db = \Piwik\Db::get();
-    $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDate', array(
-      'result' => $result,
-      'suche' => $_POST['suche'] ?? null,
+      'idSite' => $_GET['idSite'],
+      'period' => $_GET['period'],
+      'date' => $_GET['date'],
 
     ));
 
