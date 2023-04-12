@@ -2,16 +2,16 @@
 <table cellspacing="0" class="dataTable">
     <thead>
     <tr>
-        <td class="sortable label first">#</td>
-        <td class="sortable">
+        <th class="sortable label first">#</th>
+        <th class="sortable">
             <center>url</center>
-        </td>
-        <td class="sortable">
+        </th>
+        <th class="sortable">
             <center>datum</center>
-        </td>
-        <td class="sortable">
+        </th>
+        <th class="sortable">
             <center>Seitenaufrufe</center>
-        </td>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -38,8 +38,6 @@
         };
 
         $(this).each(function(){
-            var table = $(this);
-            var caption = $(this).find('caption').text();
             var title = [];
             var rows = [];
 
