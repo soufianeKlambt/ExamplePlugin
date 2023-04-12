@@ -10,6 +10,7 @@
 <script>
     getData();
     function getData() {
+        $('#data-widget').html("loading ...");
         var keyword = $('#keyword').val();
         $.get('index.php?module=WidgetKLAMBT&action=pageImpressionsByDateChild&idSite={{ idSite }}&period={{ period }}&date={{ date }}&keyword=' + keyword).success(function (data) {
             $('#data-widget').html(data);
