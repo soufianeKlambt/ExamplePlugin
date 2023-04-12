@@ -1,13 +1,20 @@
-<form method="get" action="">
-    <input type="text" name="suche" value="{{ suche }}"/> <input type="submit" value="Suchen"/>
+<form method="get" action="" class="dropdown-button dataTableAction searchAction searchActive forceActionVisible">
+    <span class="icon-search"></span>
+    <input id="" type="text" class="dataTableSearchInput" value="{{ suche }}">
 </form>
 <table cellspacing="0" class="dataTable">
     <thead>
     <tr>
         <th class="sortable label first">#</th>
-        <th class="sortable"><center>url</center></th>
-        <th class="sortable"><center>datum</center></th>
-        <th class="sortable"><center>Seitenaufrufe</center></th>
+        <th class="sortable">
+            <center>url</center>
+        </th>
+        <th class="sortable">
+            <center>datum</center>
+        </th>
+        <th class="sortable">
+            <center>Seitenaufrufe</center>
+        </th>
         <th class="sortable">
             <div id="thDIV"></div>
         </th>
@@ -19,7 +26,7 @@
             <td>{{ key+1 }}</td>
             <td class="label first">{{ row['url'] }}</td>
             <td class="label first">{{ row['datum'] }}</td>
-            <td>{{ row['pageimpressions']  }}</td>
+            <td>{{ row['pageimpressions'] }}</td>
         </tr>
     {% endfor %}
     </tbody>
