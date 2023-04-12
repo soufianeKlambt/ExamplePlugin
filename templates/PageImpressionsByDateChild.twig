@@ -1,3 +1,4 @@
+<div id="exportCsv">Click</div>
 <table cellspacing="0" class="dataTable">
     <thead>
     <tr>
@@ -21,10 +22,44 @@
         <tr>
             <td>{{ key+1 }}</td>
             <td class="label first"><a href="https://{{ row['url'] }}" target="_blank">{{ row['url'] }}</a></td>
-            <td class="label first">{{ row['datum'] }}</td>
+            <td class="label first">{{ row['datum']|date("m.d.Y") }}</td>
             <td>{{ row['pageimpressions'] }}</td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+
+<script>
+    $('#export').click(function() {
+
+        var titles = [];
+        var data = [];
+
+        $('.dataTable tr').each(function() {
+            data.push($(this));
+        });
+
+        csv_data = []
+
+        data.forEach(function(item,index){
+            td = item[0].children
+            for(i=0;i<td.length;i++){
+
+                csv_data.push(td[i].innerText)
+            }
+
+            csv_data.push('\r\n')
+        })
+
+        var downloadLink = document.createElement("a");
+        var blob = new Blob(["\ufeff", csv_data]);
+        var url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = "minicrawl.csv";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+    })
+</script>
 
