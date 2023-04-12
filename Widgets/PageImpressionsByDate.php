@@ -57,7 +57,7 @@ class PageImpressionsByDate extends Widget {
     $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDate', array(
       'result' => $result,
-      'suche' => $_GET['suche'] ?? null,
+      'suche' => $_POST['suche'] ?? null,
 
     ));
 
