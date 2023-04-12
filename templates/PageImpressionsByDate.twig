@@ -2,8 +2,14 @@
     <span class="icon-search"></span>
     <input id="" type="text" class="dataTableSearchInput" value="">
 </div>
+<div id="data-widget">
+
+</div>
 <script>
+    getData();
+    function getData() {
         $.get('index.php?module=WidgetKLAMBT&action=pageImpressionsByDateChild&idSite={{ idSite }}&period={{ period }}&date={{ date }}').success(function (data) {
-            $('#devices-widget').html(data);
+            $('#data-widget').html(data);
         });
+};
 </script>
