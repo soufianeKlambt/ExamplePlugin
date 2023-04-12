@@ -1,10 +1,10 @@
-<div class="dropdown-button dataTableAction searchAction searchActive forceActionVisible" style="margin: 0 auto; display: table;">
+<form onsubmit="getData()" class="dropdown-button dataTableAction searchAction searchActive forceActionVisible" style="margin: 0 auto; display: table;">
     <div style="width: 600px;display: inline-block;">
         <span class="icon-search"></span>
         <input id="keyword" type="text" class="dataTableSearchInput" placeholder="geben Sie ein Stichwort ein">
     </div>
-    <input type="button" value="Suchen"  class="btn" onclick="getData()">
-</div>
+    <input type="submit" value="Suchen" class="btn">
+</form>
 <div id="data-widget">
 </div>
 <script>
@@ -15,5 +15,6 @@
         $.get('index.php?module=WidgetKLAMBT&action=pageImpressionsByDateChild&idSite={{ idSite }}&period={{ period }}&date={{ date }}&keyword=' + keyword).success(function (data) {
             $('#data-widget').html(data);
         });
+        return false;
     };
 </script>
