@@ -1,4 +1,4 @@
-<div id="exportCsv"><img src="plugins/WidgetKLAMBT/images/csv.png" title="CSV herunterladen" style="width: 40px;cursor: pointer;"></div>
+<div id="exportCsv"><img src="plugins/WidgetKLAMBT/images/csv.png" title="CSV herunterladen" style="width: 40px;cursor: pointer;" /> ok</div>
 <table cellspacing="0" class="dataTable">
     <thead>
     <tr>
@@ -70,7 +70,7 @@
             if (dateOfMonth < 10) dateOfMonth = "0" + dateOfMonth;
             var year = currentDate.getFullYear();
             var ts = dateOfMonth + "." + month + "." + year;
-            download_link.download = "xxx.csv";
+            download_link.download = ts+".csv";
             document.body.appendChild(download_link);
             download_link.click();
             document.body.removeChild(download_link);
