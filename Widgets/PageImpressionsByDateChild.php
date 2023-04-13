@@ -17,9 +17,8 @@ use Piwik\Widget\WidgetConfig;
 class PageImpressionsByDateChild extends Widget {
 
   public static function configure(WidgetConfig $config) {
-    $config->setCategoryId('Besucher');
-    $config->setName('Seitenaufrufe - Zeitraum');
-    $config->setOrder(96);
+    $config->setCategoryId('Echtzeit');
+    $config->setSubcategoryId('Seitenaufrufe');
   }
 
   /**
