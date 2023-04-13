@@ -62,6 +62,7 @@
                 rows.push(data);
             });
             title = title.join(",");
+            title = title.replace("\n", '');
             rows = rows.join("\n");
 
             var csv = title + rows;
