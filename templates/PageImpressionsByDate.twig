@@ -3,11 +3,11 @@
         <span class="icon-search"></span>
         <input id="keyword" type="text" class="dataTableSearchInput" placeholder="geben Sie ein Stichwort ein">
     </div>
+    <input type="submit" value="Suchen" class="btn">
 </form>
 <div id="data-widget">
 </div>
 <script>
-    getData();
     function getData() {
         $('#data-widget').html('<img src="plugins/Morpheus/images/loading-blue.gif"/> Lade Daten ...');
         var keyword = $('#keyword').val();
