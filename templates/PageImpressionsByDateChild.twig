@@ -12,6 +12,9 @@
         <th class="sortable">
             <center>Seitenaufrufe</center>
         </th>
+        <th class="sortable">
+            <center>Eindeutige Seitenaufrufe</center>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +24,7 @@
             <td class="label first"><a href="https://{{ row['url'] }}" target="_blank">{{ row['url'] }}</a></td>
             <td class="label first">{{ row['datum']|date("m.d.Y") }}</td>
             <td>{{ row['pageimpressions'] }}</td>
+            <td>{{ row['unique_pageimpressions'] }}</td>
         </tr>
     {% endfor %}
     </tbody>
@@ -30,6 +34,7 @@
     $("#exportCsv").click(function(){
         $(".dataTable").kb_table_csv();
     });
+
     $.prototype.kb_table_csv = function() {
 
         var kb_tidy_content = function(text){
@@ -38,6 +43,8 @@
         };
 
         $(this).each(function(){
+            var table = $(this);
+            var caption = $(this).find('caption').text();
             var title = [];
             var rows = [];
 
@@ -47,16 +54,13 @@
                     var text = kb_tidy_content($(this).text());
                     title.push(text);
                 });
-
                 $(this).find('td').each(function(){
                     var text = kb_tidy_content($(this).text());
                     data.push(text);
                 });
-
                 data = data.join(",");
                 rows.push(data);
             });
-
             title = title.join(",");
             rows = rows.join("\n");
 
@@ -70,8 +74,13 @@
             var dateOfMonth = currentDate.getDate();
             if (dateOfMonth < 10) dateOfMonth = "0" + dateOfMonth;
             var year = currentDate.getFullYear();
-            var ts = dateOfMonth + "." + month + "." + year;
-            download_link.download = ts+".csv";
+            var formattedDate = dateOfMonth + "." + month + "." + year;
+            var ts = formattedDate;
+            if(caption==""){
+                download_link.download = ts+".csv";
+            } else {
+                download_link.download = caption+"-"+ts+".csv";
+            }
             document.body.appendChild(download_link);
             download_link.click();
             document.body.removeChild(download_link);

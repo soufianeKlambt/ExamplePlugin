@@ -34,7 +34,7 @@ class PageImpressionsByDateChild extends Widget {
     $idSite = $_GET['idSite'];
     $datum = $_GET['date'];
     $keyword=$_GET['keyword'] ?? null;
-    $sql = "select url,datum,sum(pageimpressions) as pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
+    $sql = "select url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
     switch ($_GET['period']) {
       case 'day':
         $sql .= "datum ='".date("Y-m-d", strtotime($datum))."'";
