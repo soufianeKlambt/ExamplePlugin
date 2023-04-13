@@ -53,7 +53,7 @@ class PageImpressionsByDateChild extends Widget {
         $sql .= "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
         break;
     }*/
-    $sql .= "and url like '%".$keyword."%' group by datum limit 120";
+    $sql .= " url like '%".$keyword."%' group by datum limit 120";
     $db = \Piwik\Db::get();
     $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDateChild', array(
