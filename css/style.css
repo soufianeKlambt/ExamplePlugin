@@ -25,9 +25,12 @@
 
 #realtime-user-legend #count {
     text-align: center;
-}#realtime-user-legend #count span:first-child {
+}
+
+#realtime-user-legend #count span:first-child {
     font-size: 18px;
 }
+
 #realtime-user-legend #count div {
     text-align: center;
     font-size: 80px;
@@ -35,21 +38,24 @@
     margin: 30px auto;
     padding: 5px;
 }
+
 #realtime-user-legend #legend {
     margin: 10px auto auto;
     width: 90%;
 }
+
 #realtime-user-legend #progress {
     width: 90%;
     margin: 10px auto auto;
     font-size: 10px;
     display: table;
 }
-#realtime-user-legend #progress div:first-child,#realtime-user-legend #reflect div:first-child {
+
+#realtime-user-legend #progress div:first-child, #realtime-user-legend #reflect div:first-child {
     border-radius: 5px 0 0 5px;
 }
 
-#realtime-user-legend #progress div:last-child,#realtime-user-legend #reflect div:last-child {
+#realtime-user-legend #progress div:last-child, #realtime-user-legend #reflect div:last-child {
     border-radius: 0 5px 5px 0;
 }
 
@@ -84,4 +90,8 @@
 
 #realtime-user-legend .andere {
     background: #ff1818 !important;
+}
+
+.text-center {
+    text-align: center;
 }
