@@ -14,7 +14,7 @@
         <tr>
             <td>{{ key+1 }}</td>
             <td class="label first"><a href="https://{{ row['url'] }}" target="_blank">{{ row['url'] }}</a></td>
-            <td class="label first">{{ row['datum']|date("m.d.Y") }}</td>
+            <td class="label first">{{ row['datum']|date("d.m.Y") }}</td>
             <td>{{ row['pageimpressions'] }}</td>
             <td>{{ row['unique_pageimpressions'] }}</td>
         </tr>

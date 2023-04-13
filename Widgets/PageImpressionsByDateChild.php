@@ -54,7 +54,6 @@ class PageImpressionsByDateChild extends Widget {
         break;
     }
     $sql .= "and url like '%".$keyword."%' group by datum";
-    echo $sql;
     $db = \Piwik\Db::get();
     $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDateChild', array(
