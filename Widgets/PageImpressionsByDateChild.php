@@ -36,7 +36,7 @@ class PageImpressionsByDateChild extends Widget {
     $datum = $_GET['date'];
     $keyword=$_GET['keyword'] ?? null;
     $sql = "select url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
-    switch ($_GET['period']) {
+   /* switch ($_GET['period']) {
       case 'day':
         $sql .= "datum ='".date("Y-m-d", strtotime($datum))."'";
         break;
@@ -52,8 +52,8 @@ class PageImpressionsByDateChild extends Widget {
       case 'range':
         $sql .= "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
         break;
-    }
-    $sql .= "and url like '%".$keyword."%' group by datum";
+    }*/
+    $sql .= "and url like '%".$keyword."%' group by datum limit 120";
     $db = \Piwik\Db::get();
     $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDateChild', array(
