@@ -15,7 +15,13 @@ use Piwik\Widget\WidgetConfig;
 use Piwik\API\Request;
 
 class TopDayData extends Widget {
-
+  public static function configure(WidgetConfig $config)
+  {
+    $config->setParameters(array('embed' => '1'));
+    $config->setIsNotWidgetizable();
+    $config->setOrder(19);
+    $config->setIsEnabled(!Piwik::isUserIsAnonymous());
+  }
 
 
   /**
