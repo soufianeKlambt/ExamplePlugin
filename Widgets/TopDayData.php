@@ -34,7 +34,6 @@ class TopDayData extends Widget {
       Request::checkTokenAuthIsNotLimited('WidgetKLAMBT', 'topDayData');
     }
 
-    $this->init();
 
     $idSite = $_GET['idSite'];
     $date = $_GET['date'];
