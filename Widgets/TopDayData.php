@@ -28,6 +28,14 @@ class TopDayData extends Widget {
    * @return string
    */
   public function render() {
+    $module = Piwik::getModule();
+    $action = Piwik::getAction();
+    if (Common::getRequestVar('token_auth', '', 'string') !== ''
+      && Request::shouldReloadAuthUsingTokenAuth(null)
+    ) {
+      Request::reloadAuthUsingTokenAuth();
+      Request::checkTokenAuthIsNotLimited($module, $action);
+    }
     $idSite = $_GET['idSite'];
     $date = $_GET['date'];
     $sql = "select id,datum,url,pageimpressions as nb_visits,unique_pageimpressions as nb_uniq_visitors from klambt_day_data where site_id=".$idSite." and datum = '".$date."' group by url order by pageimpressions desc limit 20";
