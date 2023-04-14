@@ -28,7 +28,13 @@ class TopDayData extends Widget {
    * @return string
    */
   public function render() {
-    Request::reloadAuthUsingTokenAuth();
+    $token_auth = Common::getRequestVar('token_auth', '', 'string');
+    if (!empty($token_auth)) {
+      Request::checkTokenAuthIsNotLimited('WidgetKLAMBT', 'topDayData');
+    }
+
+    $this->init();
+
     $idSite = $_GET['idSite'];
     $date = $_GET['date'];
     $sql = "select id,datum,url,pageimpressions as nb_visits,unique_pageimpressions as nb_uniq_visitors from klambt_day_data where site_id=".$idSite." and datum = '".$date."' group by url order by pageimpressions desc limit 20";
