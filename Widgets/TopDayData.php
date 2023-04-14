@@ -13,7 +13,8 @@ use Piwik\Plugins\WidgetKLAMBT\WKCache;
 use Piwik\Widget\Widget;
 use Piwik\Widget\WidgetConfig;
 use Piwik\API\Request;
-
+use Piwik\Common;
+use Piwik\Piwik;
 class TopDayData extends Widget {
   public static function configure(WidgetConfig $config)
   {
