@@ -33,27 +33,8 @@ class PageImpressionsByDateChild extends Widget {
    */
   public function render() {
     $idSite = $_GET['idSite'];
-    $datum = $_GET['date'];
     $keyword=$_GET['keyword'] ?? null;
-    $sql = "select url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions from klambt_day_data where site_id=".$idSite."  and ";
-   /* switch ($_GET['period']) {
-      case 'day':
-        $sql .= "datum ='".date("Y-m-d", strtotime($datum))."'";
-        break;
-      case 'week':
-        $sql .= "datum between '".$datum."' and '".date('Y-m-d', strtotime($datum.' +7 days'))."'";
-        break;
-      case 'month':
-        $sql .= "datum between '".date('Y-m', strtotime($datum))."-01' and '".date('Y-m', strtotime($datum)).'-'.cal_days_in_month(CAL_GREGORIAN,date("m",strtotime($datum)),date("Y",strtotime($datum)))."'";
-        break;
-      case 'year':
-        $sql .= "datum between '".date('Y', strtotime($datum))."-01-01' and '".date('Y', strtotime($datum))."-12-31'";
-        break;
-      case 'range':
-        $sql .= "datum between '".explode(",",$datum)[0]."' and '".explode(",",$datum)[1]."'";
-        break;
-    }*/
-    $sql .= " url like '%".$keyword."%' group by datum limit 120";
+    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query ORDER BY datum asc";
     $db = \Piwik\Db::get();
     $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDateChild', array(
