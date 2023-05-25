@@ -4,6 +4,7 @@
      $t = round($seconds);
      return sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
     };
+    echo "<h2>Seitenaufrufe soufiane</h2>";
 ?>
 <img src="plugins/WidgetKLAMBT/images/csv.png" title="CSV herunterladen" style="width: 40px;cursor: pointer;" id="exportCsv" />
 <table cellspacing="0" class="dataTable">
@@ -25,7 +26,7 @@
             <td class="label first">{{ row['datum']|date("d.m.Y") }}</td>
             <td class="text-center">{{ row['pageimpressions'] }}</td>
             <td class="text-center">{{ row['unique_pageimpressions'] }}</td>
-            <td class="text-center">{{  second2date(row['time_on_site']) }}</td>
+            <td class="text-center">{{ row['time_on_site'] }}</td>
         </tr>
     {% endfor %}
     </tbody>
