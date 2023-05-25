@@ -40,14 +40,6 @@ class PageImpressionsByDateChild extends Widget {
     return $this->renderTemplate('PageImpressionsByDateChild', array(
       'result' => $result,
     ));
-
-
-
   }
-
-  public  function second2date($seconds): string {
-  $t = round($seconds);
-  return sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
-}
 
 }
