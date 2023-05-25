@@ -18,7 +18,7 @@
             <td class="label first">{{ row['datum']|date("d.m.Y") }}</td>
             <td class="text-center">{{ row['pageimpressions'] }}</td>
             <td class="text-center">{{ row['unique_pageimpressions'] }}</td>
-            <td class="text-center">{{ row['time_on_site']|number_format(2, '.', ',') }}</td>
+            <td class="text-center">{{ row['time_on_site']|number_format(2, '.', ',') }} Sek.</td>
         </tr>
     {% endfor %}
     </tbody>
