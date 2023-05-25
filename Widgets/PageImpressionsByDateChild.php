@@ -34,7 +34,7 @@ class PageImpressionsByDateChild extends Widget {
   public function render() {
     $idSite = $_GET['idSite'];
     $keyword=$_GET['keyword'] ?? null;
-    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query ORDER BY datum asc";
+    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions,time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query ORDER BY datum asc";
     $db = \Piwik\Db::get();
     $result = $db->fetchAll($sql);
     return $this->renderTemplate('PageImpressionsByDateChild', array(

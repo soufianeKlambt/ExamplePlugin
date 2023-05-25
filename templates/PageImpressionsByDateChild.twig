@@ -6,7 +6,7 @@
         <th class="sortable text-center">url</th>
         <th class="sortable text-center">datum</th>
         <th class="sortable text-center">Seitenaufrufe</th>
-        <th class="sortable text-center">Visits</th>
+        <th class="sortable text-center">Durchschnittszeit pro Seite</th>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +17,7 @@
             <td class="label first">{{ row['datum']|date("d.m.Y") }}</td>
             <td class="text-center">{{ row['pageimpressions'] }}</td>
             <td class="text-center">{{ row['unique_pageimpressions'] }}</td>
+            <td class="text-center">{{ row['time_on_site'] }}</td>
         </tr>
     {% endfor %}
     </tbody>
