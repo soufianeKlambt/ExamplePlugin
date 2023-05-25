@@ -18,7 +18,7 @@
             <td class="label first">{{ row['datum']|date("d.m.Y") }}</td>
             <td class="text-center">{{ row['pageimpressions'] }}</td>
             <td class="text-center">{{ row['unique_pageimpressions'] }}</td>
-            <td class="text-center">{{ "%02d:%02d:%02d"|format((row['time_on_site']/3600),(row['time_on_site']/60%60), row['time_on_site']%60) }}</td>
+            <td class="text-center">{{ row['time_on_site'] ? "%02d:%02d:%02d"|format((row['time_on_site']/3600),(row['time_on_site']/60%60), row['time_on_site']%60) : '' }}</td>
         </tr>
     {% endfor %}
     </tbody>
