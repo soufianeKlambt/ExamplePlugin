@@ -1,11 +1,3 @@
-
-<?php
-    function second2date($seconds) {
-     $t = round($seconds);
-     return sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
-    };
-    echo "<h1>sss".second2date(232323232323)."</h1>";
-
 <img src="plugins/WidgetKLAMBT/images/csv.png" title="CSV herunterladen" style="width: 40px;cursor: pointer;" id="exportCsv" />
 <table cellspacing="0" class="dataTable">
     <thead>
@@ -26,7 +18,7 @@
             <td class="label first">{{ row['datum']|date("d.m.Y") }}</td>
             <td class="text-center">{{ row['pageimpressions'] }}</td>
             <td class="text-center">{{ row['unique_pageimpressions'] }}</td>
-            <td class="text-center">{{ row['time_on_site'] }}</td>
+            <td class="text-center">{{ "%02d:%02d:%02d"|format((row['time_on_site']/3600),(row['time_on_site']/60%60), row['time_on_site']%60) }}</td>
         </tr>
     {% endfor %}
     </tbody>
