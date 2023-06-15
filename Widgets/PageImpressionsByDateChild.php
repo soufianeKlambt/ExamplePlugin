@@ -65,13 +65,12 @@ $sqlDate="";
         break;
     }
     $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions,time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query where ".$sqlDate." ORDER BY datum asc";
-    echo $sql;
-    /* $db = \Piwik\Db::get();
+     $db = \Piwik\Db::get();
      $result = $db->fetchAll($sql);
 
      return $this->renderTemplate('PageImpressionsByDateChild', array(
        'result' => $result,
-     ));*/
+     ));
   }
 
 }
