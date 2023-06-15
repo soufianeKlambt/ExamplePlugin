@@ -42,11 +42,11 @@ $sqlDate="";
         break;
       case 'week':
         $date=$_GET['date'];
-        $sqlDate="datum between '".$date."' and '".date('Y-m-d', strtotime($date .'+7 day'))."' ";
+        $sqlDate="datum between '".$date."' and '".date('Y-m-d', strtotime($date .'+6 day'))."' ";
         break;
       case 'month':
         $date=$_GET['date'];
-        $monthLastDay=date("m", strtotime($date));
+        $monthLastDay=cal_days_in_month(CAL_GREGORIAN,date("m", strtotime($date)),date("Y", strtotime($date)));
         $yearMonth=date("Y-m", strtotime($date));
         $sqlDate="datum between '".$yearMonth."-01' and '".$yearMonth."-".$monthLastDay."' ";
         break;
@@ -64,7 +64,7 @@ $sqlDate="";
       default:
         break;
     }
-    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions,time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query ".$sqlDate." ORDER BY datum asc";
+    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions,time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query where ".$sqlDate." ORDER BY datum asc";
     echo $sql;
     /* $db = \Piwik\Db::get();
      $result = $db->fetchAll($sql);
