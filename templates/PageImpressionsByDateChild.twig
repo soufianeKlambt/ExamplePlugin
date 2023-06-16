@@ -13,9 +13,9 @@
     <tbody>
     <tr>
         <td colspan="3">Gesamtsumme:</td>
-        <td class="text-center">{{ sumData[0]['pageimpressions'] }}</td>
-        <td class="text-center">{{ sumData[0]['unique_pageimpressions'] }}</td>
-        <td class="text-center">{{ sumData[0]['time_on_site'] ? "%02d:%02d:%02d"|format((sumData[0]['time_on_site']/3600),(sumData[0]['time_on_site']/60%60), sumData[0]['time_on_site']%60) : '' }}</td>
+        <td class="text-center"><b>{{ sumData[0]['pageimpressions'] }}</b></td>
+        <td class="text-center"><b>{{ sumData[0]['unique_pageimpressions'] }}</b></td>
+        <td class="text-center"><b>{{ sumData[0]['time_on_site'] ? "%02d:%02d:%02d"|format((sumData[0]['time_on_site']/3600),(sumData[0]['time_on_site']/60%60), sumData[0]['time_on_site']%60) : '' }}</b></td>
     </tr>
     {% for key,row in result %}
         <tr>
