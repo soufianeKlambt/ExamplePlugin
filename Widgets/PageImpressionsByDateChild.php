@@ -34,7 +34,7 @@ class PageImpressionsByDateChild extends Widget {
   public function render() {
     $idSite = $_GET['idSite'];
     $keyword=$_GET['keyword'] ?? null;
-$sqlDate="";
+    $sqlDate="";
     switch ($_GET['period']) {
       case 'day':
         $date=$_GET['date'];
@@ -64,13 +64,24 @@ $sqlDate="";
       default:
         break;
     }
-    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions,time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query where ".$sqlDate." ORDER BY datum asc";
+    $sql = "SELECT * FROM ( SELECT url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions,time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND ".$sqlDate." AND url like '%".$keyword."%' GROUP BY datum ORDER BY datum desc limit 365 ) as real_query ORDER BY datum asc";
      $db = \Piwik\Db::get();
      $result = $db->fetchAll($sql);
-
+    $sumData=getSumData($result);
      return $this->renderTemplate('PageImpressionsByDateChild', array(
        'result' => $result,
+       'sumData' => $sumData,
      ));
+  }
+
+  function getSumData($data){
+    $sumData =[];
+    foreach ($data as $key => $value) {
+      $sumData['pageimpressions']+=$value['pageimpressions'];
+      $sumData['unique_pageimpressions']+=$value['unique_pageimpressions'];
+      $sumData['time_on_site']+=$value['time_on_site'];
+    }
+    return $sumData;
   }
 
 }
