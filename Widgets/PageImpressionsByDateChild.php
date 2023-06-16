@@ -69,6 +69,9 @@ class PageImpressionsByDateChild extends Widget {
      $result = $db->fetchAll($sql);
      $salSum="SELECT sum(real_query.pageimpressions) as pageimpressions, sum(real_query.unique_pageimpressions) as unique_pageimpressions, sum(time_on_site * unique_pageimpressions) / sum(real_query.unique_pageimpressions) as time_on_site FROM ( SELECT url, datum, pageimpressions, unique_pageimpressions, time_on_site FROM klambt_day_data WHERE site_id=".$idSite." AND ".$sqlDate." AND url like '%".$keyword."%' GROUP BY url,datum ORDER BY datum desc limit 365 ) as real_query";
     $sumData= $db->fetchAll($salSum);
+    if(isset($_GET['debug'])){
+      echo $sql."<br>## sum query:##<br>".$salSum."<br>";
+    }
      return $this->renderTemplate('PageImpressionsByDateChild', array(
        'result' => $result,
        'sumData' => $sumData,
