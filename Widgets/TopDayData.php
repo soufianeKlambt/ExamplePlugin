@@ -48,7 +48,7 @@ class TopDayData extends Widget {
     $sql = "select id,datum,title,url,pageimpressions as nb_visits,unique_pageimpressions as nb_uniq_visitors from klambt_day_data where site_id=".$idSite." and datum = '".$date."' group by url order by pageimpressions desc limit 20";
     $cache=new WKCache();
     $result= $cache->getCacheData('TopDayData-'.$idSite,$sql);
-   return $result;
+   print_r($result);
 
   }
 
