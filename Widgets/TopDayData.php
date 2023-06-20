@@ -45,7 +45,7 @@ class TopDayData extends Widget {
     }
     $idSite = $_GET['idSite'];
     $date = $_GET['date'];
-    $sql = "select id,datum,title,url,unique_pageimpressions as nb_visits,unique_visitors as nb_uniq_visitors,pageimpressions as nb_hits from klambt_day_data where site_id=".$idSite." and datum = '".$date."' group by url order by pageimpressions desc limit 20";
+    $sql = "select id,datum,title as label,url,unique_pageimpressions as nb_visits,unique_visitors as nb_uniq_visitors,pageimpressions as nb_hits from klambt_day_data where site_id=".$idSite." and datum = '".$date."' group by url order by pageimpressions desc limit 20";
     $cache=new WKCache();
     $result= $cache->getCacheData('TopDayData-'.$idSite,$sql);
    return json_encode($result,TRUE);
