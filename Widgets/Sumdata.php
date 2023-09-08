@@ -54,7 +54,7 @@ class Sumdata extends Widget {
         $limit = ' limit '.$_GET['limit'];
     }
     $sql = 'SELECT sum(pageimpressions) as sum_pageimpressions, sum(unique_pageimpressions) as sum_unique_pageimpressions, sum(unique_visitors) as sum_unique_visitors FROM klambt_day_data where datum '.$condition.' and site_id='.$idSite;
-   $sql1 = "SELECT * FROM ( SELECT title,url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions FROM klambt_day_data WHERE site_id=5 AND datum='2023-09-07' GROUP BY title ORDER BY datum desc limit 365 ) as real_query ORDER BY pageimpressions desc limit 20";
+   $sql1 = 'SELECT * FROM ( SELECT title,url,datum,sum(pageimpressions) as pageimpressions,unique_pageimpressions FROM klambt_day_data WHERE site_id='.$idSite.' AND datum '.$condition.' GROUP BY title ORDER BY datum desc limit 365 ) as real_query ORDER BY pageimpressions desc limit 20';
     $cache=new WKCache();
     $result= $cache->getCacheData('SumData-'.$idSite,$sql);
     $result1= $cache->getCacheData('mostVisited-'.$idSite,$sql1);
