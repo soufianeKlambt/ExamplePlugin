@@ -49,7 +49,11 @@ class DataPerDate extends Widget {
     if(isset($_GET['dateto']) && $_GET['dateto'] != ''){
       $condition = ' between "'.$date.'" and "'.$_GET['dateto'].'"';
     }
-    $sql = 'SELECT pageimpressions,unique_pageimpressions,unique_visitors,url,title FROM klambt_day_data where datum '.$condition.' and site_id='.$idSite;
+      $limit = '';
+    if(isset($_GET['limit']) && $_GET['limit'] != ''){
+        $limit = ' limit '.$_GET['limit'];
+    }
+    $sql = 'SELECT pageimpressions,unique_pageimpressions,unique_visitors,url,title FROM klambt_day_data where datum '.$condition.' and site_id='.$idSite.' '.$limit;
 
     $cache=new WKCache();
     $result= $cache->getCacheData('DataPerDate-'.$idSite,$sql);
