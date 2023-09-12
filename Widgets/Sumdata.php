@@ -50,9 +50,9 @@ class Sumdata extends Widget
         $date = $_GET['date'];
         $condition = '="' . $date . '"';
         $cacheName = $idSite . $date;
-        if (isset($_GET['dateto']) && $_GET['dateto'] != '') {
-            $condition = ' between "' . $date . '" and "' . $_GET['dateto'] . '"';
-            $cacheName .= $_GET['dateto'];
+        if (isset($_GET['dateTo']) && $_GET['dateTo'] != '') {
+            $condition = ' between "' . $date . '" and "' . $_GET['dateTo'] . '"';
+            $cacheName .= $_GET['dateTo'];
         }
         $limit = '';
         if (isset($_GET['limit']) && $_GET['limit'] != '') {
